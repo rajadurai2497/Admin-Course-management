@@ -39,6 +39,7 @@ import { AddCourseManagementComponent } from './course-management/add-course-man
     UserManagementComponent,
     CommunityUserComponent,
     AddCourseManagementComponent
-  ]
+  ],
+  entryComponents:[ AddCourseManagementComponent]
 })
 export class DashAnalyticsModule { }

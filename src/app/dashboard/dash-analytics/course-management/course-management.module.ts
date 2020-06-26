@@ -11,7 +11,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
-  declarations: [CourseManagementComponent, AddCourseManagementComponent],
+  declarations: [CourseManagementComponent, 
+    AddCourseManagementComponent],
   imports: [
     CommonModule,
     CourseManagementRoutingModule,
@@ -21,6 +22,5 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatSlideToggleModule
 
   ],
-  entryComponents:[ AddCourseManagementComponent]
 })
 export class CourseManagementModule { }
