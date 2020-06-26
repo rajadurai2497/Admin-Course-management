@@ -1,8 +1,44 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './theme/layout/admin/admin.component';
+import { AuthComponent } from './theme/layout/auth/auth.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: '/auth/signin',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule)
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then(module => module.UsersModule)
+      },
+    ]
+  },
+  {
+    path: '',
+    component: AuthComponent,
+    children: [
+      {
+        path: 'auth',
+        loadChildren: () => import('./authentication/authentication.module').then(module => module.AuthenticationModule)
+      },
+      {
+        path: 'maintenance',
+        loadChildren: () => import('./maintenance/maintenance.module').then(module => module.MaintenanceModule)
+      },
+    ]
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
