@@ -27,6 +27,7 @@ import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule 
 import { OverlayModule } from '@angular/cdk/overlay';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     NgbTooltipModule,
     NgbButtonsModule,
     NgbTabsetModule,
-    OverlayModule
+    OverlayModule,
   ],
   providers: [NavigationItem],
   bootstrap: [AppComponent]

@@ -16,7 +16,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { CommunityUserComponent } from './community-user/community-user.component';
 import { MycourseComponent } from '../dash-learner/course/mycourse/mycourse.component';
 import { AddCourseManagementComponent } from './course-management/add-course-management/add-course-management.component';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +31,9 @@ import { AddCourseManagementComponent } from './course-management/add-course-man
     MatDialogModule,
     MatCardModule,
     MatFormFieldModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule,
+    MatInputModule
   ],
   declarations: [
     DashAnalyticsComponent,
