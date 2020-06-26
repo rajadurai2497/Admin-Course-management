@@ -48,6 +48,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
+    BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
     NgbDropdownModule,
