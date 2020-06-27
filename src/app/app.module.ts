@@ -25,6 +25,7 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatDatepicker, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 
 
 
@@ -59,8 +60,12 @@ import { OverlayModule } from '@angular/cdk/overlay';
     NgbButtonsModule,
     NgbTabsetModule,
     OverlayModule,
+    MatDatepickerModule,
+    MatNativeDateModule 
   ],
-  providers: [NavigationItem],
+  providers: [NavigationItem,
+    MatDatepickerModule,
+    MatNativeDateModule  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,11 +8,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AddChapterComponent } from './add-chapter/add-chapter.component';
 
 
 @NgModule({
   declarations: [CourseManagementComponent, 
-    AddCourseManagementComponent],
+    AddCourseManagementComponent, AddChapterComponent],
   imports: [
     CommonModule,
     CourseManagementRoutingModule,

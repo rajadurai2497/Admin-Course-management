@@ -1,64 +1,4 @@
-<div class="col-md-12">
-    <app-card cardTitle="Inverse Table" blockClass="table-border-style">
-      <div class="table-responsive">
-        <table class="table table-inverse">
-          <thead>
-          <tr >
-            <th>Id</th>
-            <th> Name</th>
-            <th>Email</th>
-            <th>Mobile Number</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Country</th>
-            <th>User Name</th>
-            <th>Password</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>@mdo</td>
-            <td>9078905678</td>
-            <td>Chennai</td>
-            <td>Tamilnadu</td>
-            <td>India</td>
-            <td>Mark mdo</td>
-            <td>mark@123</td>
-           
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>@fat</td>
-            <td>9078905678</td>
-            <td>Chennai</td>
-            <td>Tamilnadu</td>
-            <td>India</td>
-            <td>Mark mdo</td>
-            <td>mark@123</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Larry</td>
-            <td>@twitter</td>
-            <td>9078905678</td>
-            <td>Chennai</td>
-            <td>Tamilnadu</td>
-            <td>India</td>
-            <td>Mark mdo</td>
-            <td>mark@123</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </app-card>
-  </div>
-
-
-
-  <!-- <table mat-table
+  <table mat-table
        [dataSource]="dataSource" multiTemplateDataRows
        class="mat-elevation-z8">
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
@@ -66,20 +6,20 @@
     <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
   </ng-container>
 
-   Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-  <!-- <ng-container matColumnDef="expandedDetail">
+   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns --> -->
+   <ng-container matColumnDef="expandedDetail">
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
       <div class="example-element-detail"
            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <div class="example-element-diagram">
-          <div class="example-element-position"> {{element.position}} </div>
-          <div class="example-element-symbol"> {{element.symbol}} </div>
-          <div class="example-element-name"> {{element.name}} </div>
-          <div class="example-element-weight"> {{element.weight}} </div>
-        </div>
-        <div class="example-element-description">
-          {{element.description}}
-          <span class="example-element-description-attribution"> -- Wikipedia </span>
+           <!-- changing the content -->
+          <div class="col-md-12">
+          <div class="col-md-2"> {{element.name}} </div>
+          <div class="col-md-2"> {{element.email}} </div>
+          <div class="col-md-2"> {{element.mobilenumber}} </div>
+          <div class="col-md-2"> {{element.state}} </div>
+          <div class="col-md-2"> {{element.country}} </div>
+          <div class="col-md-2"> {{element.username}} </div>
+        <div class="col-md-12">{{element.mobilenumber}}</div>
         </div>
       </div>
     </td>
@@ -92,4 +32,4 @@
       (click)="expandedElement = expandedElement === element ? null : element">
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-</table> --> 
+</table> 

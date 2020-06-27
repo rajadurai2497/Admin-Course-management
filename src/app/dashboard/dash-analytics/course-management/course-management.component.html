@@ -1,99 +1,30 @@
-<div class="row">
-    <div class="col-sm-12">
-      <!-- <app-card [hidHeader]="true" cardClass="user-profile-list"> -->
-        <div class="dt-responsive table-responsive">
-            <button type="button" (click)="addCourse()" class="btn btn-primary float-left m-1 m-l-20">Add Course</button>
-          <table datatable class="table table-striped row-border table-hover">
-            <thead>
-              <tr>
-                <th>Course ID</th>
-                <th>Course Name</th>
-                <th>Learners Numbers</th>
-              </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-1.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Quinn Flynn</h6>
-                    <p class="m-b-0">Qf@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Support Lead</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Garrett Winters</h6>
-                    <p class="m-b-0">gw@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Accountant</td>
-              <td>52</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-3.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Ashton Cox</h6>
-                    <p class="m-b-0">ac@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Junior Technical Author</td>
-              <td>54</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Cedric Kelly</h6>
-                    <p class="m-b-0">ck@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Senior Javascript Developer</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Airi Satou</h6>
-                    <p class="m-b-0">as@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Accountant</td>
-              <td>25</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-5.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Brielle Williamson</h6>
-                    <p class="m-b-0">bw@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Integration Specialist</td>
-              <td>65</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      <!-- </app-card> -->
+<button type="button" (click)="addCourse()" class="btn btn-primary float-left m-1 m-l-30">Add Course</button>
+   <table mat-table
+   [dataSource]="dataSource" multiTemplateDataRows
+   class="mat-elevation-z8">
+<ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+<th mat-header-cell *matHeaderCellDef> {{column}} </th>
+<td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+</ng-container>
+
+<!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns --> -->
+<ng-container matColumnDef="expandedDetail">
+<td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+  <div class="example-element-detail"
+       [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+       <!-- changing the content -->
+      <div class="col-md-12">
+      <div class="col-md-2"> {{element.email}} </div>
     </div>
   </div>
-  
+</td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+<tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+  class="example-element-row"
+  [class.example-expanded-row]="expandedElement === element"
+  (click)="expandedElement = expandedElement === element ? null : element">
+</tr>
+<tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table> 
