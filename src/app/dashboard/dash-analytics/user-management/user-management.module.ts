@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserManagementComponent } from './user-management.component';
 import { MatDialogModule, MatCardModule, MatFormFieldModule, MatSlideToggleModule, MatTableModule, MatIconModule, MatButtonModule } from '@angular/material';
-import { TinymceModule } from 'angular2-tinymce';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 
 @NgModule({
@@ -12,14 +12,7 @@ import { TinymceModule } from 'angular2-tinymce';
   imports: [
     CommonModule,
     UserManagementRoutingModule,
-    MatDialogModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSlideToggleModule,
-    TinymceModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule
+    SharedModule
   ],
 })
 export class UserManagementModule { }

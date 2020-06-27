@@ -17,17 +17,15 @@ import { NavBarComponent } from './theme/layout/admin/nav-bar/nav-bar.component'
 import { NavLeftComponent } from './theme/layout/admin/nav-bar/nav-left/nav-left.component';
 import { NavSearchComponent } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
 import { NavRightComponent } from './theme/layout/admin/nav-bar/nav-right/nav-right.component';
-import {ChatUserListComponent} from './theme/layout/admin/nav-bar/nav-right/chat-user-list/chat-user-list.component';
-import {FriendComponent} from './theme/layout/admin/nav-bar/nav-right/chat-user-list/friend/friend.component';
+import { ChatUserListComponent } from './theme/layout/admin/nav-bar/nav-right/chat-user-list/chat-user-list.component';
+import { FriendComponent } from './theme/layout/admin/nav-bar/nav-right/chat-user-list/friend/friend.component';
 import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-full-screen';
 
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { MatDatepicker, MatDatepickerModule, MatNativeDateModule, MatIconModule, MatButtonModule, MatFormFieldModule} from '@angular/material';
-import {TinymceModule} from 'angular2-tinymce';
-import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 
 @NgModule({
@@ -63,14 +61,10 @@ import { FormsModule } from '@angular/forms';
     OverlayModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    TinymceModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule
   ],
   providers: [NavigationItem,
     MatDatepickerModule,
-    MatNativeDateModule  ],
+    MatNativeDateModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

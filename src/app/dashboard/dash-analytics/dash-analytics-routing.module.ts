@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {DashAnalyticsComponent} from './dash-analytics.component';
+import { DashAnalyticsComponent } from './dash-analytics.component';
 import { CourseManagementComponent } from './course-management/course-management.component';
-import { PurchaseManagementComponent } from './purchase-management/purchase-management.component';
-import { UserManagementComponent } from './user-management/user-management.component';
-import { CommunityUserComponent } from './community-user/community-user.component';
 
 const routes: Routes = [
   {
@@ -13,19 +10,19 @@ const routes: Routes = [
   },
   {
     path: 'course-management',
-    component: CourseManagementComponent
+    loadChildren: () => import('./course-management/course-management.module').then(module => module.CourseManagementModule)
   },
   {
     path: 'purchase-management',
-    component: PurchaseManagementComponent
+    loadChildren: () => import('./purchase-management/purchase-management.module').then(module => module.PurchaseManagementModule)
   },
   {
     path: 'user-management',
-    component: UserManagementComponent
+    loadChildren: () => import('./user-management/user-management.module').then(module => module.UserManagementModule)
   },
   {
     path: 'community-user',
-    component:CommunityUserComponent
+    loadChildren: () => import('./community-user/community-user.module').then(module => module.CommunityUserModule)
   }
 ];
 
