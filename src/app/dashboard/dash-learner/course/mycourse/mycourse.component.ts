@@ -13,7 +13,6 @@ isShowDetails=false;
   }
   gotodetails(){
     this.isShowDetails=true;
-    console.log("hellooo")
   }
 
 }

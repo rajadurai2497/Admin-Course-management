@@ -17,7 +17,10 @@ import { CommunityUserComponent } from './community-user/community-user.componen
 import { MycourseComponent } from '../dash-learner/course/mycourse/mycourse.component';
 import { AddCourseManagementComponent } from './course-management/add-course-management/add-course-management.component';
 import {MatTableModule} from '@angular/material/table';
-import {MatInputModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import {MatInputModule, MatDatepickerModule, MatNativeDateModule, MatIconModule, MatButtonModule} from '@angular/material';
+import { TinymceModule } from 'angular2-tinymce';
+import { PreviewCourseComponent } from './course-management/preview-course/preview-course.component';
+import { AddChapterComponent } from './course-management/add-chapter/add-chapter.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,7 +37,10 @@ import {MatInputModule, MatDatepickerModule, MatNativeDateModule} from '@angular
     MatSlideToggleModule,
     MatTableModule,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    TinymceModule,
+    MatIconModule,
+    MatButtonModule
   ],
   declarations: [
     DashAnalyticsComponent,
@@ -42,7 +48,8 @@ import {MatInputModule, MatDatepickerModule, MatNativeDateModule} from '@angular
     PurchaseManagementComponent,
     UserManagementComponent,
     CommunityUserComponent,
-    AddCourseManagementComponent
+    AddCourseManagementComponent,
+    PreviewCourseComponent
   ],
   entryComponents:[ AddCourseManagementComponent]
 })
