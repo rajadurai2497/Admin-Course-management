@@ -10,25 +10,23 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AddChapterComponent } from './add-chapter/add-chapter.component';
 import { TinymceModule } from 'angular2-tinymce';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatTableModule } from '@angular/material';
 import { PreviewCourseComponent } from './preview-course/preview-course.component';
 import { FormsModule } from '@angular/forms';
+import { CourseManagementComponent } from './course-management.component';
 
 
 @NgModule({
   declarations: [
-    AddCourseManagementComponent, AddChapterComponent, PreviewCourseComponent],
+    AddCourseManagementComponent,
+     AddChapterComponent, 
+     PreviewCourseComponent,
+    CourseManagementComponent],
   imports: [
     CommonModule,
     FormsModule,
-    CourseManagementRoutingModule,
-    MatDialogModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSlideToggleModule,
-    TinymceModule,
-    MatIconModule,
-    MatButtonModule
+    CourseManagementRoutingModule
   ],
+  entryComponents:[ AddCourseManagementComponent]
 })
 export class CourseManagementModule { }

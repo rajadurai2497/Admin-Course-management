@@ -27,6 +27,7 @@ import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule 
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatDatepicker, MatDatepickerModule, MatNativeDateModule, MatIconModule, MatButtonModule, MatFormFieldModule} from '@angular/material';
 import {TinymceModule} from 'angular2-tinymce';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({

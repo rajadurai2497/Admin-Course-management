@@ -44,13 +44,6 @@ import { AddChapterComponent } from './course-management/add-chapter/add-chapter
   ],
   declarations: [
     DashAnalyticsComponent,
-    CourseManagementComponent,
-    PurchaseManagementComponent,
-    UserManagementComponent,
-    CommunityUserComponent,
-    AddCourseManagementComponent,
-    PreviewCourseComponent
-  ],
-  entryComponents:[ AddCourseManagementComponent]
+  ]
 })
 export class DashAnalyticsModule { }

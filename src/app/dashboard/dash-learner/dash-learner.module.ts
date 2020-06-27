@@ -9,7 +9,7 @@ import { MycourseViewComponent } from './course/mycourse-view/mycourse-view.comp
 
 
 @NgModule({
-  declarations: [DashLearnerComponent,MycourseComponent,MycourseViewComponent],
+  declarations: [DashLearnerComponent],
   imports: [
     CommonModule,
     DashLearnerRoutingModule,

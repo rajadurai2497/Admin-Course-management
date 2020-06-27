@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { PurchaseManagementRoutingModule } from './purchase-management-routing.module';
 import { PurchaseManagementComponent } from './purchase-management.component';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatDatepickerModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatDatepickerModule, MatInputModule, MatDialogModule, MatCardModule, MatSlideToggleModule, MatTableModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
+import { TinymceModule } from 'angular2-tinymce';
 
 
 @NgModule({
@@ -15,9 +16,6 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
     PurchaseManagementRoutingModule,
     FormsModule,
     SharedModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatInputModule
   ]
 })
 export class PurchaseManagementModule { }

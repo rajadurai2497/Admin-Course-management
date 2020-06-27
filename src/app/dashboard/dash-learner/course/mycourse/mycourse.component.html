@@ -1,6 +1,5 @@
 <div class="row" *ngIf="!isShowDetails">
     <div class="col-sm-12">
-       <app-card [hidHeader]="true" cardClass="user-profile-list"> 
         <div class="dt-responsive table-responsive">
           <table datatable class="table table-striped row-border table-hover">
             <thead>
@@ -135,7 +134,6 @@
             </tbody>
           </table>
         </div>
-       </app-card> 
     </div>
   </div> 
    <app-mycourse-view *ngIf="isShowDetails" (isDetailsExit)="isShowDetails=false">

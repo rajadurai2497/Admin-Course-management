@@ -16,6 +16,8 @@ import { ToastComponent } from './components/toast/toast.component';
 import {ToastService} from './components/toast/toast.service';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import {LightboxModule} from 'ngx-lightbox';
+import { MatFormFieldModule, MatDatepickerModule, MatInputModule, MatDialogModule, MatCardModule, MatSlideToggleModule, MatTableModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { TinymceModule } from 'angular2-tinymce';
 
 /*import 'hammerjs';
 import 'mousetrap';
@@ -36,7 +38,18 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BreadcrumbModule,
     ModalModule,
     ClickOutsideModule,
-    LightboxModule
+    LightboxModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatDialogModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    TinymceModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     CommonModule,
