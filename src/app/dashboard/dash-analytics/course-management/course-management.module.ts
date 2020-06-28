@@ -7,8 +7,7 @@ import { AddChapterComponent } from './add-chapter/add-chapter.component';
 import { PreviewCourseComponent } from './preview-course/preview-course.component';
 import { CourseManagementComponent } from './course-management.component';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
-
-
+import {TinymceModule} from 'angular2-tinymce';
 @NgModule({
   declarations: [
     AddCourseManagementComponent,
@@ -18,7 +17,8 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    CourseManagementRoutingModule
+    CourseManagementRoutingModule,
+    TinymceModule
   ],
   entryComponents: [AddCourseManagementComponent]
 })
