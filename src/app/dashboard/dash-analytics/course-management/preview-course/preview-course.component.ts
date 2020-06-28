@@ -4,19 +4,16 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 @Component({
   selector: 'app-preview-course',
   templateUrl: './preview-course.component.html',
-  styleUrls: ['./preview-course.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+  styleUrls: ['./preview-course.component.scss']
 })
 export class PreviewCourseComponent implements OnInit {
+  isViewDetails=false;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   
+  gotodetails(){
+    this.isViewDetails=true;
+  }
   constructor() { }
 
   ngOnInit() {

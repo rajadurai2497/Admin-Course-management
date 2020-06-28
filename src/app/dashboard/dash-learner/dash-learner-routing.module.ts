@@ -6,8 +6,8 @@ import { MycourseComponent } from './course/mycourse/mycourse.component';
 const routes: Routes = [
   {
     path: 'mycourse',
-    component: MycourseComponent
-  }
+    loadChildren: () => import('./course/course.module').then(module => module.CourseModule)
+  },
 ];
 
 @NgModule({
