@@ -38,11 +38,6 @@ export class PurchaseManagementComponent implements OnInit {
   ngOnInit() {
   }
 
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
-
   filter() {
     let filteredData: PurchaseElement[] = [];
     const fromDate = this.fromDate ?

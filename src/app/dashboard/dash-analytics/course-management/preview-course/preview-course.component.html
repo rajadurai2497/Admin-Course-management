@@ -13,9 +13,16 @@
         dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
         deserunt mollit anim id est laborum.</div>
     <div>
-        <button type="button" (click)="gotodetails()" class="btn btn-primary m-t-30">Add Chapter</button>
+        <button type="button" (click)="gotodetails()" class="btn btn-primary m-b-10">Add Chapter</button>
     </div>
+</div>
 
-    <app-add-chapter *ngIf="isViewDetails" (isDetailsExit)="isViewDetails=false">
-
-    </app-add-chapter> 
+<div class="row">
+    <div class="col-md-3 col-sm-3" *ngFor="let data of ELEMENT_DATA">
+        <app-card [hidHeader]="true" cardClass="bg-c-red order-card">
+            <h5 class="text-black text-center">{{data.chaptername}}</h5>
+        </app-card>
+    </div>
+</div>
+<app-add-chapter *ngIf="isViewDetails" (isDetailsExit)="isViewDetails=false">
+</app-add-chapter>

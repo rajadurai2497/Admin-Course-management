@@ -60,8 +60,6 @@
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  <!-- <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="6">No data matching the filter </td>
-  </tr> -->
+  
 </mat-table>
 <div *ngIf="dataSource.data.length === 0">No records found</div>

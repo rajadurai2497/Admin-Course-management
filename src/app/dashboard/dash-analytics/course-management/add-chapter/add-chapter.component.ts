@@ -6,11 +6,21 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./add-chapter.component.scss']
 })
 export class AddChapterComponent implements OnInit {
+  topicList: any[] = [];
+
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit() {
+  }
+  addTopic() {
+    const topicMap = {
+      name: "",
+      link:"",
+      description: ""     
+    }
+    this.topicList.push(topicMap);
   }
 
 }
