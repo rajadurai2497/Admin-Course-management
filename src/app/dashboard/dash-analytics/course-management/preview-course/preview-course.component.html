@@ -1,0 +1,28 @@
+<div *ngIf="!isViewDetails">
+    <div>Course Id :23045</div>
+    <div>Course Name : Java</div>
+    <div><br>About Course:<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.</div>
+    <div></div>
+    <div><br>What we Provide:<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.</div>
+    <div>
+        <button type="button" (click)="gotodetails()" class="btn btn-primary m-b-10">Add Chapter</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-sm-3" *ngFor="let data of ELEMENT_DATA">
+        <app-card [hidHeader]="true" cardClass="bg-c-red order-card">
+            <h5 class="text-black text-center">{{data.chaptername}}</h5>
+        </app-card>
+    </div>
+</div>
+<app-add-chapter *ngIf="isViewDetails" (isDetailsExit)="isViewDetails=false">
+</app-add-chapter>

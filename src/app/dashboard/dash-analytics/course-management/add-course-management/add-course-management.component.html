@@ -6,31 +6,27 @@
                   <div class="text-left">
                     <div class="form-group">
                       <label>Course Name</label>
-                      <input type="text" class="form-control" id="fname" placeholder="Content name">
+                      <input type="text" class="form-control" id="crname" placeholder="Content name">
+                    </div>
+
+
+                    <div class="form-group">
+                      <label>About Course</label>
+                      <app-tinymce [(ngModel)]='basicContent' #tinymce='tinymce' name="tinymce"></app-tinymce>
                     </div>
 
                     <div class="form-group">
-                      <label>Chapter Name</label>
-                      <input type="text" class="form-control" id="fname" placeholder="Chapter name">
-                    </div>
-                    <div class="form-group">
-                      <label>Topic Name</label>
-                      <input type="text" class="form-control" id="sname" placeholder="Topic name">
-                    </div>
-                    <div class="form-group">
-                      <label>Add Files</label>
-                    <div ng-app="MyApp" ng-controller="AppCtrl" layout-margin layout-padding>
-                      <input class="ng-hide" id="input-file-id" multiple type="file" />
-                    <label for="input-file-id" class="md-button md-raised md-primary"></label>
-                    </div>
+                      <label>What We Provide</label>
+                      <app-tinymce [(ngModel)]='basicContent' #tinymce='tinymce'></app-tinymce>
                     </div>
 
-                    <div class="form-group m-t-30">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-control" ></textarea>
+                    <div class="form-group">
+                      <label>Price</label>
+                      <input type="text" class="form-control" id="cname" placeholder="Price">
                     </div>
+                   
                     <div class="m-b-30" >
-                      <button mat-button  cdkFocusInitial class="btn btn-primary float-left">Add Course</button>
+                      <button mat-button  cdkFocusInitial class="btn btn-primary float-left">Create</button>
                       <button mat-button (click)="onNoClick()" class="btn btn-primary float-right">Cancel</button>
                     </div>  
                   </div>

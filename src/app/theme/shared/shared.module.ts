@@ -11,11 +11,13 @@ import { ClickOutsideModule } from 'ng-click-outside';
 
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ApexChartComponent } from './components/chart/apex-chart/apex-chart.component';
-import {ApexChartService} from './components/chart/apex-chart/apex-chart.service';
+import { ApexChartService } from './components/chart/apex-chart/apex-chart.service';
 import { ToastComponent } from './components/toast/toast.component';
-import {ToastService} from './components/toast/toast.service';
+import { ToastService } from './components/toast/toast.service';
 import { GalleryComponent } from './components/gallery/gallery.component';
-import {LightboxModule} from 'ngx-lightbox';
+import { LightboxModule } from 'ngx-lightbox';
+import { MatFormFieldModule, MatDatepickerModule, MatInputModule, MatDialogModule, MatCardModule, MatSlideToggleModule, MatTableModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { NgbProgressbarModule, NgbPopoverModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
 
 /*import 'hammerjs';
 import 'mousetrap';
@@ -36,7 +38,20 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BreadcrumbModule,
     ModalModule,
     ClickOutsideModule,
-    LightboxModule
+    LightboxModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatDialogModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    NgbProgressbarModule,
+    NgbPopoverModule,
+    NgbTabsetModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -54,7 +69,29 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SpinnerComponent,
     ApexChartComponent,
     GalleryComponent,
-    ToastComponent
+    ToastComponent,
+    PerfectScrollbarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AlertModule,
+    CardModule,
+    BreadcrumbModule,
+    ModalModule,
+    ClickOutsideModule,
+    LightboxModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatDialogModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    NgbProgressbarModule,
+    NgbPopoverModule,
+    NgbTabsetModule,
+    ReactiveFormsModule
   ],
   declarations: [
     DataFilterPipe,

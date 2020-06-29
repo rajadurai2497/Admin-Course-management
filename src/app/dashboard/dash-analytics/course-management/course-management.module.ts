@@ -2,25 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CourseManagementRoutingModule } from './course-management-routing.module';
-import { CourseManagementComponent } from './course-management.component';
 import { AddCourseManagementComponent } from './add-course-management/add-course-management.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-
+import { AddChapterComponent } from './add-chapter/add-chapter.component';
+import { PreviewCourseComponent } from './preview-course/preview-course.component';
+import { CourseManagementComponent } from './course-management.component';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
+import {TinymceModule} from 'angular2-tinymce';
 @NgModule({
-  declarations: [CourseManagementComponent, AddCourseManagementComponent],
+  declarations: [
+    AddCourseManagementComponent,
+    AddChapterComponent,
+    PreviewCourseComponent,
+    CourseManagementComponent],
   imports: [
     CommonModule,
+    SharedModule,
     CourseManagementRoutingModule,
-    MatDialogModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSlideToggleModule
-
+    TinymceModule
   ],
-  entryComponents:[ AddCourseManagementComponent]
+  entryComponents: [AddCourseManagementComponent]
 })
 export class CourseManagementModule { }

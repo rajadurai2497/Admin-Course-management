@@ -1,84 +1,65 @@
-<div class="col-md-12">
-    <!-- <app-card cardTitle="Contextual Classes" blockClass="table-border-style"> -->
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Course</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Paid Amount</th>
-            <th>Paid on</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr class="table-active">
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>04651345678</td>
-            <td>500</td>
-            <td>25/6/2012</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>04651345678</td>
-            <td>500</td>
-            <td>25/6/2012</td>
-          </tr>
-          <tr class="table-success">
-            <td>3</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>04651345678</td>
-            <td>500</td>
-            <td>25/6/2012</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>04651345678</td>
-            <td>500</td>
-            <td>25/6/2012</td>
-          </tr>
-          <tr class="table-warning">
-            <td>5</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>04651345678</td>
-            <td>500</td>
-            <td>25/6/2012</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>04651345678</td>
-            <td>500</td>
-            <td>25/6/2012</td>
-          </tr>
-          <tr class="table-danger">
-            <td>7</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>04651345678</td>
-            <td>500</td>
-            <td>25/6/2012</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    <!-- </app-card> -->
-  </div>
+<div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fromDate" (ngModelChange)="filter()"
+      placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <span> - </span>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker1" [(ngModel)]="toDate" (ngModelChange)="filter()"
+      placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource.data.length > 0">
+  <!-- id Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Course Column -->
+  <ng-container matColumnDef="course">
+    <mat-header-cell *matHeaderCellDef> Course </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.course}} </mat-cell>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+  </ng-container>
+
+  <!-- Phone number Column -->
+  <ng-container matColumnDef="phonenumber">
+    <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.phonenumber}} </mat-cell>
+  </ng-container>
+
+  <!-- Paid Amount Column -->
+  <ng-container matColumnDef="paidamount">
+    <mat-header-cell *matHeaderCellDef> Paid Amount </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.paidamount}} </mat-cell>
+  </ng-container>
+
+
+  <!-- Paid On Column -->
+  <ng-container matColumnDef="paidon">
+    <mat-header-cell *matHeaderCellDef> Paid On </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.paidon}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+</mat-table>
+<div *ngIf="dataSource.data.length === 0">No records found</div>

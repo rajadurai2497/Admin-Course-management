@@ -25,14 +25,17 @@
 @import "~nouislider/distribute/nouislider.min.css";
 @import "~famfamfam-flags/dist/sprite/famfamfam-flags.min.css";
 
-@import "~tinymce/skins/lightgray/skin.min.css";
-@import "~tinymce/skins/lightgray/content.min.css";
+// @import "~tinymce/skins/lightgray/skin.min.css";
+// @import "~tinymce/skins/lightgray/content.min.css";
 
 @import "~fullcalendar/dist/fullcalendar.min.css";
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
 
 @import '~angular-archwizard/archwizard.scss';
+
+@import "~tinymce/skins/lightgray/skin.min.css";
+@import "~tinymce/skins/lightgray/content.min.css";
 
 @import "range-slidar";
 @import "ng-select";

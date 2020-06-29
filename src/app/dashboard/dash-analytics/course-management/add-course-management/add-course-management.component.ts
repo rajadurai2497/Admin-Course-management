@@ -13,10 +13,10 @@ export interface DialogData {
   styleUrls: ['./add-course-management.component.scss'],
 })
 export class AddCourseManagementComponent implements OnInit {
-
+  basicContent: string;
   constructor(
     public dialogRef: MatDialogRef<AddCourseManagementComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   onNoClick(): void {
     this.dialogRef.close();

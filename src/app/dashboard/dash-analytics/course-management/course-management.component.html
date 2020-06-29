@@ -1,99 +1,50 @@
-<div class="row">
-    <div class="col-sm-12">
-      <!-- <app-card [hidHeader]="true" cardClass="user-profile-list"> -->
-        <div class="dt-responsive table-responsive">
-            <button type="button" (click)="addCourse()"class="btn btn-primary float-left m-1 m-l-5">Add Course</button>
-          <table datatable class="table table-striped row-border table-hover">
-            <thead>
-              <tr>
-                <th>Course ID</th>
-                <th>Course Name</th>
-                <th>Learners Numbers</th>
-              </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-1.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Quinn Flynn</h6>
-                    <p class="m-b-0">Qf@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Support Lead</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Garrett Winters</h6>
-                    <p class="m-b-0">gw@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Accountant</td>
-              <td>52</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-3.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Ashton Cox</h6>
-                    <p class="m-b-0">ac@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Junior Technical Author</td>
-              <td>54</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Cedric Kelly</h6>
-                    <p class="m-b-0">ck@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Senior Javascript Developer</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Airi Satou</h6>
-                    <p class="m-b-0">as@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Accountant</td>
-              <td>25</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-inline-block align-middle">
-                  <img src="assets/images/user/avatar-5.jpg" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                  <div class="d-inline-block">
-                    <h6 class="m-b-0">Brielle Williamson</h6>
-                    <p class="m-b-0">bw@domain.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>Integration Specialist</td>
-              <td>65</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      <!-- </app-card> -->
-    </div>
-  </div>
-  
+<div *ngIf="!isShowDetails" >
+<button type="button" (click)="addCourse()"class="btn btn-primary m-b-10">Add Course</button>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="coursename">
+    <mat-header-cell *matHeaderCellDef>Course Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.coursename}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+  </ng-container>
+
+  <!-- Leaners number Column -->
+  <ng-container matColumnDef="learnernumber">
+    <mat-header-cell *matHeaderCellDef> Learners Number </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.learnernumber}} </mat-cell>
+  </ng-container>
+
+  <!-- Icon Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell  *matHeaderCellDef > </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button mat-raised-button (click)="gotodetails()" ><mat-icon>remove_red_eye</mat-icon></button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</div>
+
+<app-preview-course *ngIf="isShowDetails" (isDetailsExit)="isShowDetails=false">
+
+</app-preview-course> 
+
