@@ -26,6 +26,7 @@ import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
     OverlayModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    HttpClientModule
   ],
   providers: [NavigationItem,
     MatDatepickerModule,

@@ -1,33 +1,61 @@
-  <mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
-       class="mat-elevation-z8"  >
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-    <mat-header-cell mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
-    <mat-cell mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
+<table mat-table [dataSource]="userManagement.allUserList" class="full-width">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
   </ng-container>
 
-   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns --> -->
-   <ng-container matColumnDef="expandedDetail">
-    <mat-cell mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-      <div class="example-element-detail"
-           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-           <!-- changing the content -->
-          <div class="col-md-2"> {{element.name}} </div>
-          <div class="col-md-2"> {{element.email}} </div>
-          <div class="col-md-2"> {{element.mobilenumber}} </div>
-          <div class="col-md-2"> {{element.state}} </div>
-          <div class="col-md-2"> {{element.country}} </div>
-          <div class="col-md-2"> {{element.username}} </div>
-        <div class="col-md-12">{{element.mobilenumber}}</div>
-      </div>
-      </mat-cell>
+  <!-- User Name -->
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef>User Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
   </ng-container>
 
-  <mat-row mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-row>
-  <mat-row mat-row *matRowDef="let element; columns: columnsToDisplay;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-  </mat-row>
-  <mat-row mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></mat-row>
-</mat-table> 
+  <!-- Password -->
+  <ng-container matColumnDef="password">
+    <th mat-header-cell *matHeaderCellDef>Password</th>
+    <td mat-cell *matCellDef="let element">{{ element.passWord }}</td>
+  </ng-container>
+
+  <!-- Name-->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <!-- Email Id-->
+  <ng-container matColumnDef="emailId">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{ element.emailId }}</td>
+  </ng-container>
+
+  <!-- Phone-->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+    <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+  </ng-container>
+
+  <!-- City-->
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef>City</th>
+    <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+  </ng-container>
+
+  <!--Action-->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>
+      <section class="actions-wrapper"></section>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <section class="actions-wrapper">
+        <button mat-button color="primary" disableRipple>
+          <mat-icon>edit_outline</mat-icon>
+        </button>
+      </section>
+    </td>
+  </ng-container>
+
+  <!--Action-->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
