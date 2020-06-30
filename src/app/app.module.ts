@@ -50,9 +50,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
-    BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
     NgbDropdownModule,
@@ -62,7 +59,7 @@ import { HttpClientModule } from '@angular/common/http';
     OverlayModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [NavigationItem,
     MatDatepickerModule,
