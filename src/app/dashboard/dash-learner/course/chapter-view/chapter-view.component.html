@@ -1,23 +1,6 @@
-<!-- <div>
-    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      
-        
-   
-      <ng-container matColumnDef="status">
-        <mat-header-cell  *matHeaderCellDef > </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <button mat-raised-button  ><mat-icon>remove_red_eye</mat-icon></button>
-        </mat-cell>
-      </ng-container>
-    
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-</div>
-
- -->
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8"*ngIf="!isShowChapter" >
+<div *ngIf="!isShowChapter">
+ <button mat-button  (click)="isDetailsExit.emit(true)"  class="btn btn-primary float-left">Back</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
 
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
@@ -60,7 +43,7 @@
     </tr>
   </table>
 
-
+</div>
   <app-mycourse-view *ngIf="isShowChapter" (isDetailsExit)="isShowChapter=false">
 
 </app-mycourse-view> 
