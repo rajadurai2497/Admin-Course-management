@@ -18,7 +18,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { LightboxModule } from 'ngx-lightbox';
 import { MatFormFieldModule, MatDatepickerModule, MatInputModule, MatDialogModule, MatCardModule, MatSlideToggleModule, MatTableModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { NgbProgressbarModule, NgbPopoverModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 /*import 'hammerjs';
 import 'mousetrap';
 import { GalleryModule } from '@ks89/angular-modal-gallery';*/
@@ -51,7 +51,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbProgressbarModule,
     NgbPopoverModule,
     NgbTabsetModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   exports: [
     CommonModule,
@@ -70,13 +71,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ApexChartComponent,
     GalleryComponent,
     ToastComponent,
-    PerfectScrollbarModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AlertModule,
-    CardModule,
-    BreadcrumbModule,
-    ModalModule,
     ClickOutsideModule,
     LightboxModule,
     MatFormFieldModule,
@@ -91,7 +85,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbProgressbarModule,
     NgbPopoverModule,
     NgbTabsetModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   declarations: [
     DataFilterPipe,

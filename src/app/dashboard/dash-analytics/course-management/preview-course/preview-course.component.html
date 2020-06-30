@@ -1,4 +1,4 @@
-<div *ngIf="!isViewDetails">
+<div *ngIf="!isViewDetails && !isChapterDetails">
     <div>Course Id :23045</div>
     <div>Course Name : Java</div>
     <div><br>About Course:<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -15,14 +15,78 @@
     <div>
         <button type="button" (click)="gotodetails()" class="btn btn-primary m-b-10">Add Chapter</button>
     </div>
-</div>
 
-<div class="row">
+</div>
+<!-- <div class="row">
     <div class="col-md-3 col-sm-3" *ngFor="let data of ELEMENT_DATA">
-        <app-card [hidHeader]="true" cardClass="bg-c-red order-card">
+        <app-card [hidHeader]="true" cardClass="order-card" (click)="gotochapter()">
             <h5 class="text-black text-center">{{data.chaptername}}</h5>
         </app-card>
     </div>
-</div>
+</div> -->
+
+<!-- <div *ngIf="!isChapterDetails" >
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+    
+
+      <ng-container matColumnDef="chaptername">
+        <mat-header-cell *matHeaderCellDef>Chapter Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.chaptername}} </mat-cell>
+      </ng-container> 
+    
+   
+      <ng-container matColumnDef="actions">
+        <mat-header-cell  *matHeaderCellDef > </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-raised-button (click)="gotochapter()" ><mat-icon>remove_red_eye</mat-icon></button>
+        </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div> -->
+
+
+
+    <mat-table
+    [dataSource]="dataSource" multiTemplateDataRows
+    class="mat-elevation-z8"  >
+<ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+ <mat-header-cell mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
+ <mat-cell mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
+</ng-container>
+
+
+<ng-container matColumnDef="expandedDetail">
+ <mat-cell mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+   <div class="example-element-detail"
+        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <mat-cell *matCellDef="let row">
+          <button mat-raised-button (click)="gotochapter()" ><mat-icon>remove_red_eye</mat-icon></button>
+        </mat-cell>
+       <div> {{element.chaptername}} </div>
+   </div>
+   </mat-cell>
+</ng-container>
+
+<mat-row mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-row>
+<mat-row mat-row *matRowDef="let element; columns: columnsToDisplay;"
+   class="example-element-row"
+   [class.example-expanded-row]="expandedElement === element"
+   (click)="expandedElement = expandedElement === element ? null : element">
+</mat-row>
+<mat-row mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></mat-row>
+</mat-table> 
+
+
 <app-add-chapter *ngIf="isViewDetails" (isDetailsExit)="isViewDetails=false">
 </app-add-chapter>
+
+<app-chapter-detail *ngIf="isChapterDetails" (isDetailsExit)="isChapterDetails=false">
+</app-chapter-detail>

@@ -2,33 +2,26 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material';
 
-export interface ChapterElement {
-  id: number;
-  chaptername: string;
-  topicname: string;
-  email: string;
-  phonenumber: number;
-  paidamount: number;
-  paidon: string;
-}
-
 @Component({
   selector: 'app-preview-course',
   templateUrl: './preview-course.component.html',
-  styleUrls: ['./preview-course.component.scss']
+  styleUrls: ['./preview-course.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class PreviewCourseComponent implements OnInit {
   isViewDetails=false;
+  isChapterDetails=false;
 
-  ELEMENT_DATA: ChapterElement[] = [
-    { id: 1, chaptername: 'Hydrogen', topicname: 'java', email: 'kavi@gmail', phonenumber: 907856435673, paidamount: 500, paidon: '22/04/2020' },
-    { id: 2, chaptername: 'Hello', topicname: 'c++', email: 'kavi@gmail', phonenumber: 907856435673, paidamount: 500, paidon: '14/04/2020' },
-    { id: 3, chaptername: 'shyam', topicname: 'C', email: 'kavi@gmail', phonenumber: 907856435673, paidamount: 500, paidon: '11/02/2020' },
-    { id: 4, chaptername: 'Man', topicname: 'java', email: 'kavi@gmail', phonenumber: 907856435673, paidamount: 500, paidon: '02/03/2020' },
-    { id: 5, chaptername: 'amuthan', topicname: 'Digital', email: 'kavi@gmail', phonenumber: 907856435673, paidamount: 500, paidon: '20/12/2019' },
-    { id: 6, chaptername: 'kavitha', topicname: 'java', email: 'kavi@gmail', phonenumber: 907856435673, paidamount: 500, paidon: '25/11/2019' },
-    { id: 7, chaptername: 'Hydro', topicname: 'java', email: 'kavi@gmail', phonenumber: 907856435673, paidamount: 500, paidon: '26/12/2019' },
-  ];
+
+  dataSource = ELEMENT_DATA;
+  columnsToDisplay = ['id', 'chaptername'];
+  expandedElement: ChapterElement | null;
 
 
   
@@ -38,9 +31,28 @@ export class PreviewCourseComponent implements OnInit {
   gotodetails(){
     this.isViewDetails=true;
   }
+
+  gotochapter(){
+    this.isChapterDetails=true;
+  }
   constructor() { }
 
   ngOnInit() {
   }
   
 }
+export interface ChapterElement {
+  id: number;
+  chaptername:string;
+}
+const ELEMENT_DATA: ChapterElement[] = [
+  { id: 1, chaptername: 'python'},
+  { id: 2, chaptername: 'java' },
+  { id: 3, chaptername: 'C++' },
+  { id: 4, chaptername: 'C' },
+  { id: 5, chaptername: 'Digital Marketing'},
+  { id: 6, chaptername: 'Digital Analysis' },
+  { id: 7, chaptername: 'Marketing'},
+];
+
+
