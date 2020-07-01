@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { browser } from 'protractor';
 
 @Component({
   selector: 'app-add-chapter',
@@ -18,7 +19,8 @@ export class AddChapterComponent implements OnInit {
     const topicMap = {
       name: "",
       link:"",
-      description: ""     
+      description: "",   
+      browse:""  
     }
     this.topicList.push(topicMap);
   }

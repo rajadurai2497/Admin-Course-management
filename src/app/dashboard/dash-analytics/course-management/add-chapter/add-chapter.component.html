@@ -26,11 +26,20 @@
                     <label>URL link</label>
                     <input type="text" class="form-control" placeholder="URL link" [(ngModel)]="topic.link">
                   </div>
+
                   <div class="col-md-12 form-group">
                     <label>Topic Description</label>
-                    <textarea class="form-control" placeholder="Topic Description"
-                      [(ngModel)]="topic.description"></textarea>
+                    <app-tinymce [(ngModel)]='topic.description' #tinymce='tinymce'></app-tinymce>
                   </div>
+
+                  <div class="col-md-12 form-group">
+                    <label>Add Files</label>
+                    <div ng-app="MyApp" ng-controller="AppCtrl" [(ngModel)]='topic.browse' layout-margin layout-padding>
+                      <input class="ng-hide" id="input-file-id" multiple type="file" />
+                      <label for="input-file-id" class="md-button md-raised md-primary"></label>
+                    </div>
+                  </div>
+
                 </div>
               </mat-card>
             </ng-container>

@@ -1,4 +1,10 @@
-<div *ngIf="!isEditTopic">
+<div *ngIf="!isEditTopic && !isAddTopic">
+<div class="m-b-20">
+    <button mat-raised-button (click)="addtopic()" class="btn btn-primary">
+        <mat-icon>add</mat-icon> Add Topic
+      </button>
+<button mat-button class="btn btn-primary float-right" (click)="isDetailsExit.emit(true)">Back</button>  
+</div>
 <mat-card class="col-lg-12">
     <div class="col-lg-9">
         <h4>Chapter Name: OOps Concept</h4>
@@ -42,11 +48,12 @@
         </div>
     </div>
 </mat-card>
-
-<button mat-button class="btn btn-primary float-right" (click)="isDetailsExit.emit(true)">Back</button>
-
 </div>
 
 <app-edit-topic *ngIf="isEditTopic" (isDetailsExit)="isEditTopic=false">
 
 </app-edit-topic>
+
+<app-add-topic *ngIf="isAddTopic" (isDetailsExit)="isAddTopic=false">
+
+</app-add-topic>

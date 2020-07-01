@@ -8,7 +8,7 @@ import { CommunityUserModel } from 'src/app/models/community-user.model';
   styleUrls: ['./community-user.component.scss']
 })
 export class CommunityUserComponent implements OnInit {
-  publiccommunityUser: CommunityUserModel;
+  // publiccommunityUser: CommunityUserModel;
   displayedColumns: string[];
   communityUser: CommunityUserModel;
 

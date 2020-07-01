@@ -9,6 +9,7 @@ import { EditChapterComponent } from '../edit-chapter/edit-chapter.component';
 })
 export class ChapterDetailComponent implements OnInit {
   isEditTopic=false;
+  isAddTopic=false;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   dialogRef: any;
@@ -23,9 +24,12 @@ export class ChapterDetailComponent implements OnInit {
       height: '300px',
       width: '500px',
     });
-
   }
   
+  addtopic(){
+    this.isAddTopic=true;
+  }
+
   ngOnInit() {
   }
 
