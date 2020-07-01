@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CourseManagementService } from 'src/app/services/course-management.service';
+import { AddcoursemanagementService } from 'src/app/services/course-management/addcoursemanagement.service';
 
 export interface DialogData {
   animal: string;
@@ -11,7 +11,7 @@ export interface DialogData {
   selector: 'app-add-course-management',
   templateUrl: './add-course-management.component.html',
   styleUrls: ['./add-course-management.component.scss'],
-  providers:[CourseManagementService]
+  providers:[AddcoursemanagementService]
 })
 export class AddCourseManagementComponent implements OnInit {
   basicContent: string;
@@ -22,7 +22,7 @@ export class AddCourseManagementComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddCourseManagementComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private courseManagementService:CourseManagementService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private AddcoursemanagementService:AddcoursemanagementService) { }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -37,7 +37,7 @@ export class AddCourseManagementComponent implements OnInit {
         description: this.abtCourse,
         provideWhat:this.weprovide
     }
-    this.courseManagementService.addCourse(course).then(data=>{
+    this.AddcoursemanagementService.addCourse(course).then(data=>{
 
     })
 

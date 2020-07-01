@@ -11,6 +11,7 @@ import {TinymceModule} from 'angular2-tinymce';
 import { ChapterDetailComponent } from './chapter-detail/chapter-detail.component';
 import { EditTopicComponent } from './edit-topic/edit-topic.component';
 import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
+import { AddTopicComponent } from './add-topic/add-topic.component';
 @NgModule({
   declarations: [
     AddCourseManagementComponent,
@@ -19,7 +20,8 @@ import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
     CourseManagementComponent,
     ChapterDetailComponent,
     EditTopicComponent,
-    EditChapterComponent],
+    EditChapterComponent,
+    AddTopicComponent],
   imports: [
     CommonModule,
     SharedModule,

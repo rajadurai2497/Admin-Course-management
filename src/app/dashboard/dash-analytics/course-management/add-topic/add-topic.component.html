@@ -1,0 +1,42 @@
+<div class="form-group m-t-30">
+    <label class="form-label">Topics</label>
+    <ng-container *ngFor="let topic of topicsList">
+      <mat-card>
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label>Topic Name</label>
+            <input type="text" class="form-control" placeholder="Topic Name" [(ngModel)]="topic.name">
+          </div>
+          <div class="col-md-6 form-group">
+            <label>URL link</label>
+            <input type="text" class="form-control" placeholder="URL link" [(ngModel)]="topic.link">
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label>Topic Description</label>
+            <app-tinymce [(ngModel)]='topic.description' #tinymce='tinymce'></app-tinymce>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <label>Add Files</label>
+            <div ng-app="MyApp" ng-controller="AppCtrl" [(ngModel)]='topic.browse' layout-margin layout-padding>
+              <input class="ng-hide" id="input-file-id" multiple type="file" />
+              <label for="input-file-id" class="md-button md-raised md-primary"></label>
+            </div>
+          </div>
+
+        </div>
+      </mat-card>
+    </ng-container>
+  </div>
+  <div class="m-b-30">
+    <button mat-raised-button (click)="addTopics()">
+      <mat-icon>add</mat-icon> Add Topic
+    </button>
+  </div>
+
+
+  <div class="m-t-30">
+    <button mat-button class="btn btn-primary float-left">Save</button>
+    <button mat-button class="btn btn-primary float-right" (click)="isDetailsExit.emit(true)">Cancel</button>
+  </div> 

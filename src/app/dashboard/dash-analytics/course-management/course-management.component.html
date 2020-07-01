@@ -1,42 +1,46 @@
 <div *ngIf="!isShowDetails" >
 <button type="button" (click)="addCourse()"class="btn btn-primary m-b-10">Add Course</button>
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="allCourse.allCourse" class="full-width">
   <!-- Id Column -->
-  <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+
+
+  <ng-container matColumnDef="courseMasterId">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
   </ng-container>
 
+
   <!-- Name Column -->
-  <ng-container matColumnDef="coursename">
-    <mat-header-cell *matHeaderCellDef>Course Name </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.coursename}} </mat-cell>
+  <ng-container matColumnDef="courseName">
+    <th mat-header-cell *matHeaderCellDef>Course Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.courseName}} </td>
   </ng-container>
 
  
   <!-- Price Column -->
-  <ng-container matColumnDef="price">
-    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+  <ng-container matColumnDef="courseAmount">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.courseAmount}} </td>
+  </ng-container>
+  
+  <!-- Leaners number Column -->
+  <ng-container matColumnDef="leanresnumber">
+    <th mat-header-cell *matHeaderCellDef> Learners Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.learnersNumber}} </td>
   </ng-container>
 
-  <!-- Leaners number Column -->
-  <ng-container matColumnDef="learnernumber">
-    <mat-header-cell *matHeaderCellDef> Learners Number </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.learnernumber}} </mat-cell>
-  </ng-container>
 
   <!-- Icon Column -->
   <ng-container matColumnDef="actions">
-    <mat-header-cell  *matHeaderCellDef > </mat-header-cell>
-    <mat-cell *matCellDef="let row">
+    <th mat-header-cell  *matHeaderCellDef > </th>
+    <td mat-cell *matCellDef="let row">
       <button mat-button (click)="gotodetails()" ><mat-icon>remove_red_eye</mat-icon></button>
-    </mat-cell>
+    </td>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 </div>
 
 <app-preview-course *ngIf="isShowDetails" (isDetailsExit)="isShowDetails=false">
