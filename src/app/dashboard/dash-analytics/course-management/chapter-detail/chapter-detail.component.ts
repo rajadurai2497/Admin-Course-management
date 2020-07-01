@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { EditChapterComponent } from '../edit-chapter/edit-chapter.component';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -6,12 +8,24 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./chapter-detail.component.scss']
 })
 export class ChapterDetailComponent implements OnInit {
-
+  isEditTopic=false;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
+  dialogRef: any;
   
-  constructor() { }
+  constructor(private dialog:MatDialog) { }
+  
+  edittopic(){
+    this.isEditTopic=true;
+  }
+  editChapter(){
+    let dialogRef = this.dialog.open(EditChapterComponent, {
+      height: '300px',
+      width: '500px',
+    });
 
+  }
+  
   ngOnInit() {
   }
 

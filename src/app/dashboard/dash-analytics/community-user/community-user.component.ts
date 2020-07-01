@@ -21,7 +21,7 @@ export class CommunityUserComponent implements OnInit {
   }
 
   public getAllCommunityUser(): void {
-    this._communityUserService.getAllCommunityUser().subscribe((data: CommunityUserModel) => {
+    this._communityUserService.getAllCommunityUser().then((data: CommunityUserModel) => {
       this.communityUser = data;
     });
   }

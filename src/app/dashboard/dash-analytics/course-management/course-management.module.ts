@@ -9,19 +9,23 @@ import { CourseManagementComponent } from './course-management.component';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import {TinymceModule} from 'angular2-tinymce';
 import { ChapterDetailComponent } from './chapter-detail/chapter-detail.component';
+import { EditTopicComponent } from './edit-topic/edit-topic.component';
+import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
 @NgModule({
   declarations: [
     AddCourseManagementComponent,
     AddChapterComponent,
     PreviewCourseComponent,
     CourseManagementComponent,
-    ChapterDetailComponent],
+    ChapterDetailComponent,
+    EditTopicComponent,
+    EditChapterComponent],
   imports: [
     CommonModule,
     SharedModule,
     CourseManagementRoutingModule,
     TinymceModule
   ],
-  entryComponents: [AddCourseManagementComponent]
+  entryComponents: [AddCourseManagementComponent,EditChapterComponent]
 })
 export class CourseManagementModule { }

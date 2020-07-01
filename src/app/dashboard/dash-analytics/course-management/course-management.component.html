@@ -13,12 +13,7 @@
     <mat-cell *matCellDef="let element"> {{element.coursename}} </mat-cell>
   </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
-  </ng-container>
-
+ 
   <!-- Price Column -->
   <ng-container matColumnDef="price">
     <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
@@ -35,7 +30,7 @@
   <ng-container matColumnDef="actions">
     <mat-header-cell  *matHeaderCellDef > </mat-header-cell>
     <mat-cell *matCellDef="let row">
-      <button mat-raised-button (click)="gotodetails()" ><mat-icon>remove_red_eye</mat-icon></button>
+      <button mat-button (click)="gotodetails()" ><mat-icon>remove_red_eye</mat-icon></button>
     </mat-cell>
   </ng-container>
 

@@ -11,7 +11,7 @@ import { AddCourseManagementComponent } from './add-course-management/add-course
 })
 export class CourseManagementComponent implements OnInit {
   isShowDetails=false;
-    displayedColumns: string[] = ['id', 'coursename', 'email','price', 'learnernumber','actions'];
+    displayedColumns: string[] = ['id', 'coursename','price', 'learnernumber','actions'];
     dataSource = ELEMENT_DATA;
   constructor(private dialog:MatDialog) { }
 
@@ -33,7 +33,6 @@ export class CourseManagementComponent implements OnInit {
 export interface PeriodicElement {
   id: number;
     coursename:string;
-    email: string;
     price:number;
     learnernumber:number
 }
@@ -42,13 +41,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
     id: 1,
     coursename:'java',
-    email: 'kavi2gmail.com',
     price:700,
     learnernumber:60,
   }, {
     id: 2,
     coursename:'python',
-    email: 'gt@gmail.com',
     price:1000,
     learnernumber:20,
   }

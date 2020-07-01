@@ -15,19 +15,19 @@ import { MatTableDataSource } from '@angular/material';
   ],
 })
 export class PreviewCourseComponent implements OnInit {
+  @Output()
+  isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   isViewDetails=false;
   isChapterDetails=false;
+  // isEditTopic=false
 
 
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['id', 'chaptername'];
-  expandedElement: ChapterElement | null;
+  columnsToDisplay = ['id','chaptername'];
+  expandedElement: PeriodicElement | null;
 
 
-  
-  @Output()
-  isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
-  
   gotodetails(){
     this.isViewDetails=true;
   }
@@ -35,24 +35,28 @@ export class PreviewCourseComponent implements OnInit {
   gotochapter(){
     this.isChapterDetails=true;
   }
+
+  // edittopic(){
+  //   this.isEditTopic=true;
+  // }
   constructor() { }
 
   ngOnInit() {
   }
   
 }
-export interface ChapterElement {
-  id: number;
-  chaptername:string;
+
+export interface PeriodicElement {
+  id:number
+  chaptername: string
 }
-const ELEMENT_DATA: ChapterElement[] = [
-  { id: 1, chaptername: 'python'},
-  { id: 2, chaptername: 'java' },
-  { id: 3, chaptername: 'C++' },
-  { id: 4, chaptername: 'C' },
-  { id: 5, chaptername: 'Digital Marketing'},
-  { id: 6, chaptername: 'Digital Analysis' },
-  { id: 7, chaptername: 'Marketing'},
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {
+    id: 1,
+    chaptername:"Oops concept"
+  }, {
+    id: 2,
+    chaptername:"digital Marketting"
+  }
 ];
-
-
