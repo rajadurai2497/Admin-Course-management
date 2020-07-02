@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserManagementModel } from '../models/user-management.model';
 import { ROUTE_CONFIG } from '../models/constant';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserManagementService {
-public routePrefix = 'Admin/GetAllUserMangement';
+export class UserManagementService extends ApiService{
 
-  constructor(private readonly httpClient: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) { 
+  super(httpClient);
 
-  getAllUserManagement(): Observable<UserManagementModel> {
-    const apiUrl = `${ROUTE_CONFIG.CourseManagementURL}/${this.routePrefix}`;
-    return this.httpClient.get<UserManagementModel>(apiUrl);
+  }
+
+  getAllUserManagement(): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/GetAllUserMangement`;
+  return this.doGet(apiUrl,true);
   }
 
 }
+
+

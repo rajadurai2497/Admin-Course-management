@@ -6,14 +6,15 @@ import { HttpClient, HttpHeaders, } from '@angular/common/http';
 })
 export class ApiService {
 
+  currentUser=JSON.parse(localStorage.getItem('currentUser'))
   constructor(private _http: HttpClient) {
 
   }
 
   doGet(url: string, isShowLoading?: boolean): any {
     let headers = new HttpHeaders();
-   var t="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJBZG1pbiIsInN1YiI6IkFkbWluIiwiZW1haWwiOiIiLCJqdGkiOiI2RDQxQjM2Ni02OUFDLTRBMzItQUQxRi01MTUxOThCRjY4OEUiLCJleHAiOjE1OTU0MTE2MjcsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTMwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUzMDAwIn0.ieRtRRSqaM_4DGgpquT-7GWJb0m4fL888CBGGSHNCJk"
-    headers = headers.append('Authorization',"Bearer" + t);
+   
+    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
     const requestOptions = {
       headers: headers,
     };
@@ -23,7 +24,7 @@ export class ApiService {
   }
   doDelete(url: string, isShowLoading?: boolean): any {
     let headers = new HttpHeaders();
-    // headers = headers.append('Authorization', "jwt token");
+    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
     const requestOptions = {
       headers: headers,
     };
@@ -36,8 +37,8 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    var t="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJBZG1pbiIsInN1YiI6IkFkbWluIiwiZW1haWwiOiIiLCJqdGkiOiI2RDQxQjM2Ni02OUFDLTRBMzItQUQxRi01MTUxOThCRjY4OEUiLCJleHAiOjE1OTU0MTE2MjcsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTMwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUzMDAwIn0.ieRtRRSqaM_4DGgpquT-7GWJb0m4fL888CBGGSHNCJk"
-    headers = headers.append('Authorization',"Bearer" + t);
+    
+    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
     const requestOptions = {
       headers: headers,
     };
@@ -54,10 +55,7 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    // if (this._communicationService.userToken) {
-    //   headers = headers.append('userToken', this._communicationService.userToken + '');
-    // }
-    // headers = headers.append('Authorization', "jwt token");
+    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
     const requestOptions = {
       headers: headers,
     };
@@ -77,7 +75,7 @@ export class ApiService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    // headers = headers.append('Authorization', "jwt token");
+    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
 
     const requestOptions = {
       headers: headers,

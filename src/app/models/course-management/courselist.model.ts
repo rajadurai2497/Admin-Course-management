@@ -1,7 +1,3 @@
-export interface AllCourseModel {
-    allCourse: AllCourse[];
-    result: true;
-}
 
 export interface AllCourse {
     courseMasterId: string,

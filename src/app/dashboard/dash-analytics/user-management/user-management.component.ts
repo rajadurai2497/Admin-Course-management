@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserManagementService } from 'src/app/services/user-management.service';
-import { UserManagementModel } from 'src/app/models/user-management.model';
+import { AllUserList } from 'src/app/models/user-management.model';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-user-management',
@@ -8,31 +9,38 @@ import { UserManagementModel } from 'src/app/models/user-management.model';
   styleUrls: ['./user-management.component.scss'],
 })
 export class UserManagementComponent implements OnInit {
-  public userManagement: UserManagementModel;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator; 
+
   displayedColumns: string[];
+  public userManagement: AllUserList[]=[];
+  dataSource = new MatTableDataSource<AllUserList>();
+  
 
   constructor(private readonly _userManagementService: UserManagementService) {}
 
   ngOnInit(): void {
-    this._initializeValues();
-    this._initializeProperties();
+    this.displayedColumns = ['id', 'userName', 'password', 'name', 'emailId', 'phone', 'city'];
     this.getAllUserManagement();
   }
 
   public getAllUserManagement(): void {
-    this._userManagementService.getAllUserManagement().subscribe((data: UserManagementModel) => {
-      this.userManagement = data;
+    this._userManagementService.getAllUserManagement().then((data) => {
+      if(data && data.result){
+        this.userManagement = data.allUserList;
+        this.dataSource=new MatTableDataSource<AllUserList>(this.userManagement);
+        this.dataSource.paginator = this.paginator;
+      }
     });
   }
 
-  private _initializeValues(): void {
-    this.userManagement = {
-      allUserList: [],
-      result: true,
-    };
-  }
 
-  private _initializeProperties(): void {
-    this.displayedColumns = ['id', 'userName', 'password', 'name', 'emailId', 'phone', 'city'];
-  }
 }
+
+
+
+
+  
+   
+
+ 
+    

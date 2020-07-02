@@ -1,4 +1,19 @@
-<table mat-table [dataSource]="purchaseManagement.paymentDetails" class="full-width">
+<div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fromDate" (ngModelChange)="filter()"
+      placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <span> - </span>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker1" [(ngModel)]="toDate" (ngModelChange)="filter()"
+      placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+</div>
+<table mat-table [dataSource]="dataSource" class="full-width">
   <!-- ID Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>#</th>
@@ -64,4 +79,9 @@
   <!--Action-->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter </td>
+  </tr>
 </table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

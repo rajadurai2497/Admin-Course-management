@@ -26,8 +26,15 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   constructor(public nav: NavigationItem, private zone: NgZone, private location: Location) {
     this.gradientConfig = GradientConfig.config;
     this.windowWidth = window.innerWidth;
+    const currentUser=JSON.parse(localStorage.getItem('currentUser'))
 
-    this.navigation = this.nav.get();
+        if(currentUser.roles=='Admin'){
+          this.navigation = this.nav.getAdmin();
+        }
+        else{
+          this.navigation = this.nav.getLearner();
+        }
+    // this.navigation = this.nav.get();
     this.prevDisabled = 'disabled';
     this.nextDisabled = '';
     this.scrollWidth = 0;

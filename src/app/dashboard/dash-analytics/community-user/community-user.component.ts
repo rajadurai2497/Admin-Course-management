@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommunityUserService } from 'src/app/services/community-user.service';
-import { CommunityUserModel } from 'src/app/models/community-user.model';
+import { ComunityUserList } from 'src/app/models/community-user.model';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-community-user',
@@ -8,34 +9,30 @@ import { CommunityUserModel } from 'src/app/models/community-user.model';
   styleUrls: ['./community-user.component.scss']
 })
 export class CommunityUserComponent implements OnInit {
-  // publiccommunityUser: CommunityUserModel;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator; 
+
   displayedColumns: string[];
-  communityUser: CommunityUserModel;
+  communityUser: ComunityUserList[]=[];
+  dataSource = new MatTableDataSource<ComunityUserList>();
 
   constructor(private readonly _communityUserService: CommunityUserService) { }
 
   ngOnInit(): void {
-    this._initializeValues();
-    this._initializeProperties();
+    this.displayedColumns = ['id', 'fullName', 'emailId', 'phoneNumber'];
     this.getAllCommunityUser();
   }
 
   public getAllCommunityUser(): void {
-    this._communityUserService.getAllCommunityUser().then((data: CommunityUserModel) => {
-      this.communityUser = data;
+    this._communityUserService.getAllCommunityUser().then((data) => {
+      if(data && data.result){
+        this.communityUser = data.comunityUserList;
+        this.dataSource=new MatTableDataSource<ComunityUserList>(this.communityUser);
+        this.dataSource.paginator = this.paginator;
+      }
+      
     });
   }
-
-
-  private _initializeValues(): void {
-    this.communityUser = {
-      comunityUserList: [],
-      result: true,
-    };
-  }
-
-  private _initializeProperties(): void {
-    this.displayedColumns = ['id', 'fullName', 'emailId', 'phoneNumber'];
-  }
-
 }
+
+
+

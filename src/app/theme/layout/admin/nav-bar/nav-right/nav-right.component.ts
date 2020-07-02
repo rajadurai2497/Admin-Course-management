@@ -2,12 +2,13 @@ import {Component, DoCheck, OnInit} from '@angular/core';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {GradientConfig} from '../../../../../app-config';
+import { AuthenticationService } from 'src/app/theme/shared/service/authentication.service';
 
 @Component({
   selector: 'app-nav-right',
   templateUrl: './nav-right.component.html',
   styleUrls: ['./nav-right.component.scss'],
-  providers: [NgbDropdownConfig],
+  providers: [NgbDropdownConfig,AuthenticationService],
   animations: [
     trigger('slideInOutLeft', [
       transition(':enter', [
@@ -35,7 +36,7 @@ export class NavRightComponent implements OnInit, DoCheck {
   public friendId: boolean;
   public gradientConfig: any;
 
-  constructor() {
+  constructor(private authenticationService:AuthenticationService) {
     this.visibleUserList = false;
     this.chatMessage = false;
     this.gradientConfig = GradientConfig.config;
@@ -47,12 +48,15 @@ export class NavRightComponent implements OnInit, DoCheck {
     this.friendId = friendID;
     this.chatMessage = !this.chatMessage;
   }
-
+ 
   ngDoCheck() {
     if (document.querySelector('body').classList.contains('elite-rtl')) {
       this.gradientConfig['rtl-layout'] = true;
     } else {
       this.gradientConfig['rtl-layout'] = false;
     }
+  }
+  logout(){
+    this.authenticationService.logout();
   }
 }

@@ -1,6 +1,6 @@
 <div *ngIf="!isShowDetails" >
 <button type="button" (click)="addCourse()"class="btn btn-primary m-b-10">Add Course</button>
-<table mat-table [dataSource]="allCourse.allCourse" class="full-width">
+<table mat-table [dataSource]="dataSource" class="full-width">
   <!-- Id Column -->
 
 
@@ -41,6 +41,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
 
 <app-preview-course *ngIf="isShowDetails" (isDetailsExit)="isShowDetails=false">

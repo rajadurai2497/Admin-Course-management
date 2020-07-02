@@ -1,8 +1,3 @@
-export interface PurchaseManagementModel {
-  paymentDetails: PaymentDetails[];
-  result: true;
-}
-
 export interface PaymentDetails {
   id: string;
   name: string;

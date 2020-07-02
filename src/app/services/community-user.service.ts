@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CommunityUserModel } from '../models/community-user.model';
 import { Observable } from 'rxjs';
 import { ROUTE_CONFIG } from '../models/constant';
 import { ApiService } from './api.service';
@@ -15,7 +14,7 @@ export class CommunityUserService extends ApiService {
     super(httpClient);
   }
 
-  getAllCommunityUser(): Promise<CommunityUserModel> {
+  getAllCommunityUser(): Promise<any> {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/GetCommunityMangement`;
     return this.doGet(apiUrl, true);
   }

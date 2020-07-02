@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { promise } from 'protractor';
 import { ApiService } from '../api.service';
 import { ROUTE_CONFIG } from 'src/app/models/constant';
-import { AllCourseModel } from 'src/app/models/course-management/courselist.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,7 @@ export class CourselistService extends ApiService {
     super(httpClient);
   }
 
-  getAllCourselist(): Promise<AllCourseModel> {
+  getAllCourselist(): Promise<any> {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetAllCourseList`;
     return this.doGet(apiUrl, true);
   }
