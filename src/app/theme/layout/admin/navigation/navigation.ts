@@ -85,14 +85,14 @@ const NavLearner=[
 @Injectable()
 export class NavigationItem {
   public get() {
+    // return NavAdmin;
+    return NavLearner;
+  }
+  public getAdmin() {
     return NavAdmin;
   }
 
-  // public getAdmin() {
-  //   return NavAdmin;
-  // }
-
-  // public getLeaner() {
-  //   return NavLearner;
-  // }
+  public getLearner() {
+    return NavLearner;
+  }
 }

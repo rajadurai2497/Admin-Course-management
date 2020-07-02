@@ -23,12 +23,16 @@ export class AuthSigninV2Component implements OnInit {
   public login(): void {
     if (this.userName !== '' && this.password !== '') {
       this.authenticationService.login(this.userName, this.password).subscribe((data) => {
-        if (data.isAuthorize) {
-          console.log(data.roles)
-          this._router.navigate(['/dashboard/admin']);
+        if (data && data.isAuthorize) {
+          // this._router.navigate(['/dashboard/admin']);
+          if(data.roles=='Admin'){
+            this._router.navigate(['/dashboard/admin']);
+          }
+          else{
+            this._router.navigate(['/dashboard/learner/mycourse']);
+          }
+
         }
-        // localStorage.setItem('dataSource', this.dataSource.length);
-        // console.log(localStorage.getItem('dataSource'));
       });
     }
   }

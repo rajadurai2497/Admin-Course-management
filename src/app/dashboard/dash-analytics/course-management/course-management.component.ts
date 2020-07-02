@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCourseManagementComponent } from './add-course-management/add-course-management.component';
-import { AllCourseModel } from 'src/app/models/course-management/courselist.model';
+import { AllCourse } from 'src/app/models/course-management/courselist.model';
 import { CourselistService } from 'src/app/services/course-management/courselist.service';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { constructor } from 'jquery';
 
 
 @Component({
@@ -12,20 +14,21 @@ import { CourselistService } from 'src/app/services/course-management/courselist
   providers: [MatDialog]
 })
 export class CourseManagementComponent implements OnInit {
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator; 
   isShowDetails = false;
+  allCourse: AllCourse[]=[];
+  dataSource = new MatTableDataSource<AllCourse>();
 
 
   displayedColumns: string[];
-  allCourse: AllCourseModel;
+  
 
   constructor(private dialog: MatDialog, private readonly _courselistService: CourselistService) { }
 
   ngOnInit(): void {
-    this._initializeValues();
-    this._initializeProperties();
+    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount','leanresnumber','actions'];
     this.getAllCourselist();
   }
-
 
   gotodetails() {
     this.isShowDetails = true;
@@ -38,20 +41,15 @@ export class CourseManagementComponent implements OnInit {
   }
 
   public getAllCourselist(): void {
-    this._courselistService.getAllCourselist().then((data: AllCourseModel) => {
-      this.allCourse = data;
+    this._courselistService.getAllCourselist().then((data) => {
+      if(data && data.result){
+        this.allCourse = data.allCourse;
+        this.dataSource=new MatTableDataSource<AllCourse>(this.allCourse);
+        this.dataSource.paginator = this.paginator;
+      }
     });
   }
 
-  private _initializeValues(): void {
-    this.allCourse = {
-      allCourse: [],
-      result: true,
-    };
-  }
-  private _initializeProperties(): void {
-    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount','leanresnumber','actions'];
-  }
 }
 
 

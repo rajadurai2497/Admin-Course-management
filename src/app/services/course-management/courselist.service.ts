@@ -21,7 +21,7 @@ export class CourselistService extends ApiService {
     super(httpClient);
   }
 
-  getAllCourselist(): Promise<AllCourseModel> {
+  getAllCourselist(): Promise<any> {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetAllCourseList`;
     return this.doGet(apiUrl, true);
   }
