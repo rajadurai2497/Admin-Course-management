@@ -88,11 +88,11 @@ export class NavigationItem {
     return NavAdmin;
   }
 
-  public getAdmin() {
-    return NavAdmin;
-  }
+  // public getAdmin() {
+  //   return NavAdmin;
+  // }
 
-  public getLeaner() {
-    return NavLearner;
-  }
+  // public getLeaner() {
+  //   return NavLearner;
+  // }
 }
