@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { promise } from 'protractor';
 import { ApiService } from '../api.service';
 import { ROUTE_CONFIG } from 'src/app/models/constant';
-import { AllCourseModel } from 'src/app/models/course-management/courselist.model';
 
 @Injectable({
   providedIn: 'root'
