@@ -9,14 +9,14 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
   styleUrls: ['./user-management.component.scss'],
 })
 export class UserManagementComponent implements OnInit {
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator; 
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   displayedColumns: string[];
-  public userManagement: AllUserList[]=[];
+  userManagement: AllUserList[] = [];
   dataSource = new MatTableDataSource<AllUserList>();
-  
 
-  constructor(private readonly _userManagementService: UserManagementService) {}
+
+  constructor(private readonly _userManagementService: UserManagementService) { }
 
   ngOnInit(): void {
     this.displayedColumns = ['id', 'userName', 'password', 'name', 'emailId', 'phone', 'city'];
@@ -25,9 +25,9 @@ export class UserManagementComponent implements OnInit {
 
   public getAllUserManagement(): void {
     this._userManagementService.getAllUserManagement().then((data) => {
-      if(data && data.result){
+      if (data && data.result) {
         this.userManagement = data.allUserList;
-        this.dataSource=new MatTableDataSource<AllUserList>(this.userManagement);
+        this.dataSource = new MatTableDataSource<AllUserList>(this.userManagement);
         this.dataSource.paginator = this.paginator;
       }
     });
@@ -39,8 +39,7 @@ export class UserManagementComponent implements OnInit {
 
 
 
-  
-   
 
- 
-    
+
+
+

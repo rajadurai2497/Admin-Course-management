@@ -13,19 +13,19 @@ import { AllCourse } from 'src/app/models/course-management.model';
   providers: [MatDialog]
 })
 export class CourseManagementComponent implements OnInit {
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator; 
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   isShowDetails = false;
-  allCourse: AllCourse[]=[];
+  allCourse: AllCourse[] = [];
   dataSource = new MatTableDataSource<AllCourse>();
 
 
   displayedColumns: string[];
-  
+
 
   constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount','leanresnumber','actions'];
+    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'leanresnumber', 'actions'];
     this.getAllCourselist();
   }
 
@@ -37,13 +37,18 @@ export class CourseManagementComponent implements OnInit {
       height: '500px',
       width: '800px',
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAllCourselist();
+      }
+    });
   }
 
   public getAllCourselist(): void {
     this._courselistService.getAllCourselist().then((data) => {
-      if(data && data.result){
+      if (data && data.result) {
         this.allCourse = data.allCourse;
-        this.dataSource=new MatTableDataSource<AllCourse>(this.allCourse);
+        this.dataSource = new MatTableDataSource<AllCourse>(this.allCourse);
         this.dataSource.paginator = this.paginator;
       }
     });
