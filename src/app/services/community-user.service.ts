@@ -1,17 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable, Injector } from '@angular/core';
 import { ROUTE_CONFIG } from '../models/constant';
 import { ApiService } from './api.service';
-import { promise } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommunityUserService extends ApiService {
 
-  constructor(private readonly httpClient: HttpClient) {
-    super(httpClient);
+  constructor(private readonly injector: Injector) {
+    super(injector);
   }
 
   getAllCommunityUser(): Promise<any> {

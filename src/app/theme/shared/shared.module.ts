@@ -18,7 +18,8 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { LightboxModule } from 'ngx-lightbox';
 import { MatFormFieldModule, MatDatepickerModule, MatInputModule, MatDialogModule, MatCardModule, MatSlideToggleModule, MatTableModule, MatIconModule, MatButtonModule, MatPaginatorModule } from '@angular/material';
 import { NgbProgressbarModule, NgbPopoverModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LoadingService } from 'src/app/services/loading.service';
 
 /*import 'hammerjs';
 import 'mousetrap';
@@ -106,7 +107,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
     ApexChartService,
-    ToastService
+    ToastService,
+    LoadingService
   ]
 })
 export class SharedModule { }

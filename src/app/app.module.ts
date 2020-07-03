@@ -27,6 +27,7 @@ import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule 
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingService } from './services/loading.service';
 
 
 @NgModule({
@@ -61,9 +62,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     HttpClientModule,
   ],
-  providers: [NavigationItem,
+  providers: [
+    NavigationItem,
     MatDatepickerModule,
-    MatNativeDateModule],
+    MatNativeDateModule,
+    LoadingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
