@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CourseManagementService } from 'src/app/services/course-management.service';
+import { AllCourse } from 'src/app/models/course-management.model';
+import { MatTableDataSource } from '@angular/material';
 
 export interface DialogData {
   animal: string;
@@ -13,21 +15,29 @@ export interface DialogData {
   styleUrls: ['./add-course-management.component.scss'],
   providers: [CourseManagementService]
 })
+
 export class AddCourseManagementComponent implements OnInit {
+
   basicContent: string;
   courseName: string;
   abtCourse: string;
   weprovide: string;
   price: number;
 
-  constructor(
-    public dialogRef: MatDialogRef<AddCourseManagementComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private AddcoursemanagementService: CourseManagementService) { }
+  displayedColumns: string[];
+  addCourses: AllCourse[] = [];
+  dataSource = new MatTableDataSource<AllCourse>();
 
-  ngOnInit() {
+
+  constructor(public dialogRef: MatDialogRef<AddCourseManagementComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private readonly _courseManagementService: CourseManagementService) { }
+
+  ngOnInit(): void {
+    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'description', 'provideWhat'];
+    this.addCourse();
   }
 
-  addCourse() {
+  public addCourse(): void {
     const course = {
       courseMasterId: 0,
       courseName: this.courseName,
@@ -35,15 +45,14 @@ export class AddCourseManagementComponent implements OnInit {
       description: this.abtCourse,
       provideWhat: this.weprovide
     }
-
-    this.AddcoursemanagementService.addCourse(course).then(data => {
+    this._courseManagementService.addCourse(course).then((data) => {
       if (data && data.result) {
         this.dialogRef.close(true);
       }
     });
   }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
+
 }
