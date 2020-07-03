@@ -5,16 +5,15 @@ import { HttpClient, HttpHeaders, } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  currentUser=JSON.parse(localStorage.getItem('currentUser'))
   constructor(private _http: HttpClient) {
-
   }
 
   doGet(url: string, isShowLoading?: boolean): any {
     let headers = new HttpHeaders();
-   
-    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
+
+    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     const requestOptions = {
       headers: headers,
     };
@@ -24,7 +23,7 @@ export class ApiService {
   }
   doDelete(url: string, isShowLoading?: boolean): any {
     let headers = new HttpHeaders();
-    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
+    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     const requestOptions = {
       headers: headers,
     };
@@ -37,8 +36,8 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    
-    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
+
+    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     const requestOptions = {
       headers: headers,
     };
@@ -55,7 +54,7 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
+    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     const requestOptions = {
       headers: headers,
     };
@@ -75,7 +74,7 @@ export class ApiService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    headers = headers.append('Authorization',"bearer " + this.currentUser.access_token);
+    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
 
     const requestOptions = {
       headers: headers,
