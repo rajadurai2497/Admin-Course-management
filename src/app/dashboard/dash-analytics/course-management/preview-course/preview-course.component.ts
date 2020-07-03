@@ -1,6 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material';
+import { CourseManagementService } from 'src/app/services/course-management.service';
+import { AllCourse } from 'src/app/models/course-management.model';
 
 @Component({
   selector: 'app-preview-course',
@@ -15,12 +17,13 @@ import { MatTableDataSource } from '@angular/material';
   ],
 })
 export class PreviewCourseComponent implements OnInit {
+  @Input() course:AllCourse;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   isViewDetails=false;
   isChapterDetails=false;
-  // isEditTopic=false
+  isEditTopic=false
 
 
   dataSource = ELEMENT_DATA;
@@ -36,12 +39,12 @@ export class PreviewCourseComponent implements OnInit {
     this.isChapterDetails=true;
   }
 
-  // edittopic(){
-  //   this.isEditTopic=true;
-  // }
+  
   constructor() { }
 
   ngOnInit() {
+    console.log(this.course)
+    
   }
   
 }
@@ -60,3 +63,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     chaptername:"digital Marketting"
   }
 ];
+
+
+
+
