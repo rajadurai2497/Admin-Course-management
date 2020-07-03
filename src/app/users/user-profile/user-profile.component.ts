@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IAlbum, IEvent, Lightbox, LIGHTBOX_EVENT, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
 import {Subscription} from 'rxjs';
+import { UserProfileModel } from 'src/app/models/user/user-profile.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,6 +22,9 @@ export class UserProfileComponent implements OnInit {
 
   public albums: Array<IAlbum>;
   private subscription: Subscription;
+  private _UserProfileService: any;
+  userProfile: UserProfileModel;
+  displayedColumns: string[];
 
   constructor(private lightbox: Lightbox, private lightboxEvent: LightboxEvent, private lighboxConfig: LightboxConfig) {
     this.activeTab = 'home';
@@ -47,7 +51,18 @@ export class UserProfileComponent implements OnInit {
     lighboxConfig.fadeDuration = 1;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this._initializeValues();
+    this._initializeProperties();
+    this.getAllUserProfile();
+
+
+  }
+
+  public getAllUserProfile(): void {
+    this._UserProfileService. getAllUserProfile().then((data: UserProfileModel) => {
+      this.userProfile = data;
+    });
   }
 
   open(index: number): void {
@@ -60,5 +75,20 @@ export class UserProfileComponent implements OnInit {
       this.subscription.unsubscribe();
     }
   }
+
+  private _initializeValues(): void {
+    this.userProfile = {
+      userProfileList: [],
+      result: true,
+    };
+  }
+
+  private _initializeProperties(): void {
+    this.displayedColumns = ['fullName', 'gender', 'birthDate', 'martailSttus' , 'location'];
+  }
+
+
+
+
 
 }

@@ -22,31 +22,31 @@
       <hr class="wid-80 b-wid-3 my-4">
       <div class="row text-center">
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Full Name</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">{{ element.full Name }}</label>
           <div class="col-sm-9">
             Lary Doe
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Gender</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">{{element.gender}} </label>
           <div class="col-sm-9">
             Male
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Birth Date</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">{{element.birth Date}}</label>
           <div class="col-sm-9">
             16-12-1994
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Martail Status</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">{{element.martail Status}}</label>
           <div class="col-sm-9">
             Unmarried
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Location</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">{{element.location}}</label>
           <div class="col-sm-9">
             <p class="mb-0 text-muted">4289 Calvin Street</p>
             <p class="mb-0 text-muted">Baltimore, near MD Tower Maryland,</p>
@@ -56,7 +56,9 @@
       </div>
   </div>
 </div>
- 
+  <!--Action-->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
  
  
  
