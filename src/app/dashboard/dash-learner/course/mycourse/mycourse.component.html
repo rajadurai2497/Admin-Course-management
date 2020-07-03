@@ -1,4 +1,4 @@
-<div class="row" *ngIf="!isShowDetails">
+<!-- <div class="row" *ngIf="!isShowDetails">
     <div class="col-sm-12">
         <div class="dt-responsive table-responsive">
           <table datatable class="table table-striped row-border table-hover">
@@ -103,4 +103,19 @@
   </app-chapter-view> 
 
 
-  
+   -->
+
+<div *ngIf="!isShowDetails">
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell (click)="gotodetails()" *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<app-chapter-view *ngIf="isShowDetails" (isDetailsExit)="isShowDetails=false">
+
+</app-chapter-view>
