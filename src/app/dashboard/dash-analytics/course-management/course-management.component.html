@@ -44,7 +44,7 @@
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
 
-<app-preview-course *ngIf="isShowDetails" (isDetailsExit)="isShowDetails=false">
+<app-preview-course *ngIf="isShowDetails" (isDetailsExit)="isShowDetails=false;getAllCourselist()">
 
 </app-preview-course> 
 

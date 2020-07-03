@@ -17,8 +17,6 @@ export class CourseManagementComponent implements OnInit {
   isShowDetails = false;
   allCourse: AllCourse[]=[];
   dataSource = new MatTableDataSource<AllCourse>();
-
-
   displayedColumns: string[];
   
 
@@ -48,8 +46,6 @@ export class CourseManagementComponent implements OnInit {
       }
     });
   }
-
 }
-
 
 

@@ -41,6 +41,7 @@ export class AddCourseManagementComponent implements OnInit {
     this.AddcoursemanagementService.addCourse(course).then(data=>{
 
     })
+    this.dialogRef.close();
 
   }
 }
