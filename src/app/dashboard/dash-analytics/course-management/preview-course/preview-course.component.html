@@ -1,61 +1,106 @@
 <div *ngIf="!isViewDetails && !isChapterDetails ">
-    <div>Course Id :23045</div>
-    <div>Course Name : Java</div>
-    <div><br>About Course:<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.</div>
-    <div></div>
-    <div><br>What we Provide:<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.</div>
+  <div>Course Id :{{course.courseMasterId}}</div>
+  <div>Course Name : {{course.courseName}}</div>
+  <div><br>About Course:<br>
+    <div [innerHTML]="course.description">
+    </div>
+  </div>
+  <div><br>What we Provide:<br>
+    <div [innerHTML]="course.provideWhat">
+    </div>
+  </div>
     <div>
-        <button type="button" (click)="gotodetails()" class="btn btn-primary m-b-10">Add Chapter</button>
+      <button type="button" (click)="gotodetails()" class="btn btn-primary float-left m-b-10">Add Chapter</button>
+      <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary m-b-10 float-right">Back</button>
     </div>
 
- <table mat-table
-[dataSource]="dataSource" multiTemplateDataRows
-class="mat-elevation-z8">
-<ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-<th mat-header-cell *matHeaderCellDef> {{column}} </th>
-<td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-</ng-container>
+    <div>
 
-<ng-container matColumnDef="expandedDetail">
-<td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-<div class="example-element-detail"
-    [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-    <div class="col-lg-9">
-      topic:1 oops defnition
     </div>
- <div class="col-lg-3 m-l-45">
-   <button class="col-lg-6 btn-shadow" mat-button (click)="gotochapter()"><mat-icon>remove_red_eye</mat-icon></button>
-   <!-- <button class="col-lg-6 btn-shadow" mat-button (click)="edittopic()"><mat-icon>edit</mat-icon></button>  -->
- </div>
- 
-</div>
-</td>
-</ng-container> 
 
-<tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-<tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-class="example-element-row"
-[class.example-expanded-row]="expandedElement === element"
-(click)="expandedElement = expandedElement === element ? null : element">
-</tr>
-<tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-</table> 
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+      <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+        <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+      </ng-container>
 
-</div>
-<app-add-chapter *ngIf="isViewDetails" (isDetailsExit)="isViewDetails=false">
-</app-add-chapter>
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <div class="col-lg-9">
+              topic:1 oops defnition
+            </div>
+            <div class="col-lg-3 m-l-45">
+              <button class="col-lg-6 btn-shadow" mat-button (click)="gotochapter()">
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+            </div>
 
-<app-chapter-detail *ngIf="isChapterDetails" (isDetailsExit)="isChapterDetails=false">
-</app-chapter-detail>
+          </div>
+        </td>
+      </ng-container>
 
-<!-- <app-edit-topic *ngIf="isEditTopic" (isDetailsExit)="isEditTopic=false">
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
 
-</app-edit-topic> -->
+  </div>
+  <app-add-chapter *ngIf="isViewDetails" (isDetailsExit)="isViewDetails=false">
+  </app-add-chapter>
+
+  <app-chapter-detail *ngIf="isChapterDetails" (isDetailsExit)="isChapterDetails=false">
+  </app-chapter-detail>
+
+
+  <!-- <div  [dataSource]="dataSource">
+
+  <ng-container matColumnDef="courseMasterId">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+  </ng-container> -->
+
+
+  <!-- Name Column -->
+  <!-- <ng-container matColumnDef="courseName">
+    <th mat-header-cell *matHeaderCellDef>Course Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.courseName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>provideWhat </th>
+    <td mat-cell *matCellDef="let element"> {{element.provideWhat}} </td>
+  </ng-container>
+</div> -->
+
+  <!-- <div>Course Id :23045</div>
+  <div>Course Name : Java</div>
+  <div><br>About Course:<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+      anim id est laborum.</div>
+  <div></div>
+  <div><br>What we Provide:<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.</div>
+  
+      <div>
+        <button type="button" (click)="gotodetails()" class="btn btn-primary float-left m-b-10">Add Chapter</button>
+        <button mat-button (click)="isDetailsExit.emit(true)"  class="btn btn-primary m-b-10 float-right">Back</button>
+      </div> 
+  
+      <div>
+      
+  </div>
+  </div> -->
