@@ -10,10 +10,10 @@ import * as moment from 'moment';
   styleUrls: ['./purchase-management.component.scss'],
 })
 export class PurchaseManagementComponent implements OnInit {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   dataSource = new MatTableDataSource<PaymentDetails>();
-  public purchaseManagement: PaymentDetails[] = [];
+  purchaseManagement: PaymentDetails[] = [];
   displayedColumns: string[];
 
 
@@ -36,10 +36,7 @@ export class PurchaseManagementComponent implements OnInit {
       }
     });
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+
   filter() {
     let filteredData: PaymentDetails[] = [];
     const fromDate = this.fromDate ?

@@ -9,10 +9,10 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
   styleUrls: ['./community-user.component.scss']
 })
 export class CommunityUserComponent implements OnInit {
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator; 
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   displayedColumns: string[];
-  communityUser: ComunityUserList[]=[];
+  communityUser: ComunityUserList[] = [];
   dataSource = new MatTableDataSource<ComunityUserList>();
 
   constructor(private readonly _communityUserService: CommunityUserService) { }
@@ -24,12 +24,12 @@ export class CommunityUserComponent implements OnInit {
 
   public getAllCommunityUser(): void {
     this._communityUserService.getAllCommunityUser().then((data) => {
-      if(data && data.result){
+      if (data && data.result) {
         this.communityUser = data.comunityUserList;
-        this.dataSource=new MatTableDataSource<ComunityUserList>(this.communityUser);
+        this.dataSource = new MatTableDataSource<ComunityUserList>(this.communityUser);
         this.dataSource.paginator = this.paginator;
       }
-      
+
     });
   }
 }
