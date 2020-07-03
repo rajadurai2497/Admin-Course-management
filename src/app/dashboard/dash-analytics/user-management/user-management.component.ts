@@ -14,7 +14,6 @@ export class UserManagementComponent implements OnInit {
   displayedColumns: string[];
   public userManagement: AllUserList[]=[];
   dataSource = new MatTableDataSource<AllUserList>();
-  
 
   constructor(private readonly _userManagementService: UserManagementService) {}
 
