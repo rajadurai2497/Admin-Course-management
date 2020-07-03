@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCourseManagementComponent } from './add-course-management/add-course-management.component';
-import { AllCourse } from 'src/app/models/course-management/courselist.model';
-import { CourselistService } from 'src/app/services/course-management/courselist.service';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { constructor } from 'jquery';
+import { CourseManagementService } from 'src/app/services/course-management.service';
+import { AllCourse } from 'src/app/models/course-management.model';
 
 
 @Component({
@@ -23,7 +22,7 @@ export class CourseManagementComponent implements OnInit {
   displayedColumns: string[];
   
 
-  constructor(private dialog: MatDialog, private readonly _courselistService: CourselistService) { }
+  constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService) { }
 
   ngOnInit(): void {
     this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount','leanresnumber','actions'];
