@@ -1,16 +1,17 @@
-<div class="row" *ngIf="userProfile"> 
-  <div class="col-sm-12 ">
-      <div class="app-card-header">
-        <div class="cover-img-block text-center">
-          <img src="assets/images/widget/slider5.jpg" alt="" class="img-fluid">
-        </div>
+<div class="row user-profile-div" *ngIf="userProfile">
+  <div class="col-sm-12">
+    <app-card>
+      <!-- <div class="app-card-header">
+      <div class="cover-img-block text-center">
+        <img src="assets/images/widget/slider5.jpg" alt="" class="img-fluid">
       </div>
+    </div> -->
       <div class="user-about-block text-center">
         <div class="row align-items-end">
           <div class="col"></div>
           <div class="col">
             <div class="position-relative d-inline-block">
-              <img class="img-radius img-fluid wid-80" src="assets/images/user/avatar-2.jpg" alt="User image">
+              <img class="img-radius img-fluid wid-100" src="assets/images/user/avatar-2.jpg" alt="User image">
             </div>
           </div>
           <div class="col"></div>
@@ -20,35 +21,40 @@
         <h6 class="mb-1 mt-3">{{userProfile.userName}}</h6>
       </div>
       <hr class="wid-80 b-wid-3 my-4">
-      <div class="row text-center">
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Name</label>
-          <div class="col-sm-9">
-            {{userProfile.name}}
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bolder">Name</label>
+            <div class="col-sm-9">
+              {{userProfile.name}}
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
-          <div class="col-sm-9">
-            {{userProfile.emailId}}
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
+            <div class="col-sm-9">
+              {{userProfile.emailId}}
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Phone Number</label>
-          <div class="col-sm-9">
-            {{userProfile.phoneNumber}}
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bolder">Phone Number</label>
+            <div class="col-sm-9">
+              {{userProfile.phoneNumber}}
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">City</label>
-          <div class="col-sm-9">
-            {{userProfile.city}}
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bolder">City</label>
+            <div class="col-sm-9">
+              {{userProfile.city}}
+            </div>
           </div>
         </div>
       </div>
+    </app-card>
   </div>
 </div>
- 
- 
- 
- 
