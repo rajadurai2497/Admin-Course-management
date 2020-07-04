@@ -1,7 +1,7 @@
-<div class="row"> 
-  <div class="col-sm-5 ">
+<div class="row" *ngIf="userProfile"> 
+  <div class="col-sm-12 ">
       <div class="app-card-header">
-        <div class="cover-img-block">
+        <div class="cover-img-block text-center">
           <img src="assets/images/widget/slider5.jpg" alt="" class="img-fluid">
         </div>
       </div>
@@ -17,40 +17,32 @@
         </div>
       </div>
       <div class="text-center">
-        <h6 class="mb-1 mt-3">Josephin Doe</h6>
+        <h6 class="mb-1 mt-3">{{userProfile.userName}}</h6>
       </div>
       <hr class="wid-80 b-wid-3 my-4">
       <div class="row text-center">
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Full Name</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Name</label>
           <div class="col-sm-9">
-            Lary Doe
+            {{userProfile.name}}
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Gender</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
           <div class="col-sm-9">
-            Male
+            {{userProfile.emailId}}
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Birth Date</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Phone Number</label>
           <div class="col-sm-9">
-            16-12-1994
+            {{userProfile.phoneNumber}}
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Martail Status</label>
+          <label class="col-sm-3 col-form-label font-weight-bolder">City</label>
           <div class="col-sm-9">
-            Unmarried
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label font-weight-bolder">Location</label>
-          <div class="col-sm-9">
-            <p class="mb-0 text-muted">4289 Calvin Street</p>
-            <p class="mb-0 text-muted">Baltimore, near MD Tower Maryland,</p>
-            <p class="mb-0 text-muted">Maryland (21201)</p>
+            {{userProfile.city}}
           </div>
         </div>
       </div>
