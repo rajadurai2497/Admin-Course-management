@@ -4,7 +4,5 @@ export interface PurchasedCourseDetails {
     totalchapters:string,
     completedchapters:string,
     pendingchapters:string
-
-
 }
   

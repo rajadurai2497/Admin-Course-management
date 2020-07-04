@@ -17,10 +17,9 @@ export class CourseManagementComponent implements OnInit {
   isShowDetails = false;
   allCourse: AllCourse[] = [];
   dataSource = new MatTableDataSource<AllCourse>();
-
-
   displayedColumns: string[];
 
+  currentCourse: AllCourse;
 
   constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService) { }
 
@@ -29,7 +28,8 @@ export class CourseManagementComponent implements OnInit {
     this.getAllCourselist();
   }
 
-  gotodetails() {
+  gotodetails(course) {
+    this.currentCourse=course;
     this.isShowDetails = true;
   }
   addCourse() {
@@ -53,8 +53,6 @@ export class CourseManagementComponent implements OnInit {
       }
     });
   }
-
 }
-
 
 
