@@ -4,10 +4,6 @@ import { CourseManagementService } from 'src/app/services/course-management.serv
 import { AllCourse } from 'src/app/models/course-management.model';
 import { MatTableDataSource } from '@angular/material';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-add-course-management',
@@ -30,7 +26,7 @@ export class AddCourseManagementComponent implements OnInit {
 
 
   constructor(public dialogRef: MatDialogRef<AddCourseManagementComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private readonly _courseManagementService: CourseManagementService) { }
+     private readonly _courseManagementService: CourseManagementService) { }
 
   ngOnInit(): void {
     this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'description', 'provideWhat'];

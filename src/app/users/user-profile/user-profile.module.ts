@@ -6,9 +6,11 @@ import { UserProfileComponent } from './user-profile.component';
 import {NgbCarouselModule, NgbDropdownModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {LightboxModule} from 'ngx-lightbox';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
+import { EditUserprofileComponent } from './edit-userprofile/edit-userprofile.component';
+import { EditChapterComponent } from 'src/app/dashboard/dash-analytics/course-management/edit-chapter/edit-chapter.component';
 
 @NgModule({
-  declarations: [UserProfileComponent],
+  declarations: [UserProfileComponent, EditUserprofileComponent],
   imports: [
     CommonModule,
     UserProfileRoutingModule,
@@ -17,6 +19,7 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
     NgbTooltipModule,
     NgbCarouselModule,
     LightboxModule
-  ]
+  ],
+  entryComponents: [EditUserprofileComponent]
 })
 export class UserProfileModule { }
