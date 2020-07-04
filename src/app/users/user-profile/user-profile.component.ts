@@ -1,64 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {IAlbum, IEvent, Lightbox, LIGHTBOX_EVENT, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
-import {Subscription} from 'rxjs';
+import { UserProfile } from 'src/app/models/user-profile.model';
+import { UserProfileService } from 'src/app/services/user-profile.service';
+
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  styleUrls: ['./user-profile.component.scss'],
+  providers: [UserProfileService]
 })
 export class UserProfileComponent implements OnInit {
-  public activeTab: string;
 
-  public editProfile: boolean;
-  public editProfileIcon: string;
+  userProfile: UserProfile;
+  constructor(private readonly _userProfileService: UserProfileService) { }
 
-  public editContact: boolean;
-  public editContactIcon: string;
-
-  public editOtherInfo: boolean;
-  public editOtherInfoIcon: string;
-
-  public albums: Array<IAlbum>;
-  private subscription: Subscription;
-
-  constructor(private lightbox: Lightbox, private lightboxEvent: LightboxEvent, private lighboxConfig: LightboxConfig) {
-    this.activeTab = 'home';
-
-    this.editProfile = false;
-    this.editProfileIcon = 'icon-edit';
-
-    this.editContact = false;
-    this.editContactIcon = 'icon-edit';
-
-    this.editOtherInfo = false;
-    this.editOtherInfoIcon = 'icon-edit';
-
-    this.albums = [];
-    for (let i = 1; i <= 6; i++) {
-      const album = {
-        src: 'assets/images/light-box/l' + i + '.jpg',
-        caption: 'Image ' + i + ' caption here',
-        thumb: 'assets/images/light-box/sl' + i + '.jpg'
-      };
-
-      this.albums.push(album);
-    }
-    lighboxConfig.fadeDuration = 1;
+  ngOnInit(): void {
+    this.getUserProfile();
   }
 
-  ngOnInit() {
+  public getUserProfile(): void {
+    this._userProfileService.getUserProfile().then((data) => {
+      if (data && data.result) {
+        this.userProfile = data.saveResult;
+        console.log(this.userProfile)
+      }
+    });
   }
-
-  open(index: number): void {
-    this.subscription = this.lightboxEvent.lightboxEvent$.subscribe((event: IEvent) => this._onReceivedEvent(event));
-    this.lightbox.open(this.albums, index, { wrapAround: true, showImageNumberLabel: true });
-  }
-
-  private _onReceivedEvent(event: IEvent): void {
-    if (event.id === LIGHTBOX_EVENT.CLOSE) {
-      this.subscription.unsubscribe();
-    }
-  }
-
 }

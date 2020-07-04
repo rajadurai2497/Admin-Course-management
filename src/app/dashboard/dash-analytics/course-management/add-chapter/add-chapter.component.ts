@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { browser } from 'protractor';
+import { AllCourse } from 'src/app/models/course-management.model';
 
 @Component({
   selector: 'app-add-chapter',
@@ -8,9 +9,10 @@ import { browser } from 'protractor';
 })
 export class AddChapterComponent implements OnInit {
   topicList: any[] = [];
-
+  @Input() course:AllCourse;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
+  courseName: string;
   constructor() { }
 
   ngOnInit() {
