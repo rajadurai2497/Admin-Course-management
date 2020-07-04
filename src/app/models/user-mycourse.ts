@@ -1,9 +1,10 @@
 export interface PurchasedCourseDetails {
-
-    coursename:string,
+    courseMasterId: string,
+    courseName: string,
     totalchapters:string,
     completedchapters:string,
     pendingchapters:string
 
-  }
+
+}
   
