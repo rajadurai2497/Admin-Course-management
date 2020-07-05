@@ -14,20 +14,31 @@ export interface AddCourse {
     weprovide: string;
     price: number;
 }
-export interface AddChapter {
+export class AddChapter {
     courseMasterId: string;
-    chapterEntityObj: ChapterEntityOb;
-    slideEntityOb: SlideEntityOb[];
+    chapterEntityObj: ChapterEntity;
+    slideEntityOb: SlideEntity[] = [];
+    constructor() {
+
+    }
 }
 
-export interface SlideEntityOb {
+export class SlideEntity {
     slideId: string;
     chapterId: string;
     slideName: string;
     videoUrl: string;
+    description: string;
+    constructor() {
+
+    }
 }
-export interface ChapterEntityOb {
+
+export class ChapterEntity {
     chapterId: string;
     courseMasterId: string;
     chapterName: string;
+    constructor() {
+
+    }
 }
