@@ -24,7 +24,7 @@ export class CourseManagementComponent implements OnInit {
   constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'leanresnumber', 'actions'];
+    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'leanresnumber', 'actions','delete'];
     this.getAllCourselist();
   }
 

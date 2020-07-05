@@ -16,7 +16,7 @@
 
           <div class="form-group">
             <label>Order No</label>
-            <input type="text" class="form-control" id="cname" [(ngModel)]="courseName" placeholder="Chapter name">
+            <input type="text" class="form-control" id="cname" placeholder="Order number">
           </div>
 
           <div class="form-group m-t-30">
@@ -56,7 +56,7 @@
             </button>
           </div>
           <div class="m-b-30">
-            <button mat-button cdkFocusInitial class="btn btn-primary float-left">Create</button>
+            <button mat-button cdkFocusInitial class="btn btn-primary float-left" (click)="addChapter()">Create</button>
             <button mat-button class="btn btn-primary float-right" (click)="isDetailsExit.emit(true)">Cancel</button>
           </div>
         </div>
