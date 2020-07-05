@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-mycourse-view',
   templateUrl: './mycourse-view.component.html',
-  styleUrls: ['./mycourse-view.component.scss']
+  styleUrls: ['./mycourse-view.component.scss'],
 })
 export class MycourseViewComponent implements OnInit {
 
@@ -13,19 +13,19 @@ export class MycourseViewComponent implements OnInit {
 
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor() { }
+  @Input() courseTopicList: any;
+  videoUrl: any = '';
+  description: any = '';
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-
-  public setSlide(item): void {
-    console.log(item);
-
-    // this.videoUrl : [item.videoURl];
-
-
+  public onSlideClick(item: any): void {
+    if (item.videoUrl != null && item.slideDescription != null) {
+      this.videoUrl = item.videoUrl;
+      this.description = item.slideDescription;
+    } else {
+      (this.videoUrl = ''), (this.description = '');
+    }
   }
 }
-
-

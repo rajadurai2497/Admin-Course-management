@@ -15,7 +15,7 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-chapter-view',
   templateUrl: './chapter-view.component.html',
-  styleUrls: ['./chapter-view.component.scss']
+  styleUrls: ['./chapter-view.component.scss'],
 })
 export class ChapterViewComponent implements OnInit {
   isShowChapter = false;
@@ -23,11 +23,10 @@ export class ChapterViewComponent implements OnInit {
 
   @Input() courseChapterList: any[];
 
-
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  displayedColumns: string[] = ['position', 'chaptername', 'action']
+  displayedColumns: string[] = ['position', 'chaptername', 'action'];
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
@@ -42,10 +41,10 @@ export class ChapterViewComponent implements OnInit {
   //       this.dataSource.data.forEach(row => this.selection.select(row));
   // }
   gotodetails(ChapterId) {
-    this._userMycourseService.getSlideByChapter(ChapterId).then(data => {
+    this._userMycourseService.getSlideByChapter(ChapterId).then((data) => {
       this.courseTopicList = data;
       console.log(data);
-    })
+    });
     this.isShowChapter = true;
   }
   // checkboxLabel(row?: PeriodicElement): string {
@@ -54,10 +53,9 @@ export class ChapterViewComponent implements OnInit {
   //   }
   //   return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   // }
-  constructor(private readonly _userMycourseService: UserMycourseService) { }
+  constructor(private readonly _userMycourseService: UserMycourseService) {}
 
   ngOnInit() {
     // this.getCourseChapterList(courseMasterId);
   }
-
 }
