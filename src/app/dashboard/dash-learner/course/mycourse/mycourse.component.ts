@@ -21,19 +21,19 @@ export class MycourseComponent implements OnInit {
   isShowDetails=false;
   courseChapterList: any[] = [];
   
-  constructor(private readonly _userMycourseService: UserMycourseService,) {}
+  constructor(private readonly _userMycourseService: UserMycourseService) {}
 
   ngOnInit(): void {
 
-    // this.displayedColumns = ['courseName'];
-    this.displayedColumns = ['courseName', 'totalchapters', 'completedchapters', 'pendingchapters'];
+    // this.displayedColumns = ['courseName'];pendingChapter: 4, completedChapter: 0, courseMasterId: 1, courseName:
+    this.displayedColumns = ['courseName', 'totalChapter', 'completedChapter', 'pendingChapter'];
     this.getPurchasedCourseList();
   }
 
   public getPurchasedCourseList(): void {
     this._userMycourseService.getPurchasedCourseList().then((data) => {
       if(data && data.result){
-        this.userMycourse = data.allPurchasedCourse;
+        this.userMycourse = data.chapterCounter;
         console.log(data);
         // console.log(userMycourse);
         this.dataSource=new MatTableDataSource<PurchasedCourseDetails>(this.userMycourse);

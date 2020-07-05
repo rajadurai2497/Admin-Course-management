@@ -13,11 +13,12 @@ export class UserMycourseService extends ApiService {
   }
 
   getPurchasedCourseList(): Promise<any>{
-    const currentUser=JSON.parse(localStorage.getItem('currentUser'));
+    // const currentUser=JSON.parse(localStorage.getItem('currentUser'));
     // currentUser.useId
-    const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/getPurchasedCourseForUsers?userId=${currentUser.userId}`;
-    // const apiUrl=ROUTE_CONFIG.BaseUrl+'/v1/Course/GetPurchasedCourseForUsers?userId:currentUser.useId';
-    // console.log(apiUrl)
+    // const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/getPurchasedCourseForUsers?userId=${currentUser.userId}`;
+    const apiUrl=ROUTE_CONFIG.BaseUrl+'/v1/Course/GetChapterCounterByUserId';
+
+    console.log(apiUrl)
     return this.doGet(apiUrl,true);
   }
 
@@ -29,4 +30,11 @@ export class UserMycourseService extends ApiService {
     console.log(apiUrl)
     return this.doGet(apiUrl,true);
   }
+
+  getSlideByChapter(ChapterId): Promise<any>{
+    const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/GetCourseSlideByChapterId?ChapterId=${ChapterId}`;
+    console.log(apiUrl)
+    return this.doGet(apiUrl,true);
+  }
+  
 }

@@ -10,7 +10,7 @@
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
 
-<app-chapter-view *ngIf="isShowDetails"[courseChapterList]="courseChapterList" (isDetailsExit)="isShowDetails=false">
+<app-chapter-view *ngIf="isShowDetails" [courseChapterList]="courseChapterList" (isDetailsExit)="isShowDetails=false">
 
 </app-chapter-view>
 

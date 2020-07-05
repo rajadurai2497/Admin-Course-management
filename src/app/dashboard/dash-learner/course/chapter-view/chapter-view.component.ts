@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { UserMycourseService } from 'src/app/services/user-mycourse.service';
+
 import { SelectionModel } from '@angular/cdk/collections';
 
 
@@ -8,10 +10,10 @@ export interface PeriodicElement {
   position: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, chaptername: 'OOPs Concept'},
-  {position: 2, chaptername: 'OOPs Introduction'}
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {position: 1, chaptername: 'OOPs Concept'},
+//   {position: 2, chaptername: 'OOPs Introduction'}
+// ];
 
 @Component({
   selector: 'app-chapter-view',
@@ -20,6 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ChapterViewComponent implements OnInit {
   isShowChapter=false;
+  courseTopicList: any[] = [];
 
   @Input() courseChapterList: any[];
   
@@ -42,7 +45,11 @@ export class ChapterViewComponent implements OnInit {
   //       this.selection.clear() :
   //       this.dataSource.data.forEach(row => this.selection.select(row));
   // }
-  gotodetails(){
+  gotodetails(ChapterId){
+    this._userMycourseService.getSlideByChapter(ChapterId).then(data =>{
+      this.courseTopicList =data;
+      console.log( data);
+    })
     this.isShowChapter=true;
   }
   // checkboxLabel(row?: PeriodicElement): string {
@@ -51,7 +58,7 @@ export class ChapterViewComponent implements OnInit {
   //   }
   //   return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   // }
-  constructor() { }
+  constructor(private readonly _userMycourseService: UserMycourseService) { }
 
   ngOnInit() {
     // this.getCourseChapterList(courseMasterId);
