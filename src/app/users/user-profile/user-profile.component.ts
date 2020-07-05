@@ -25,7 +25,14 @@ export class UserProfileComponent implements OnInit {
     let dialogRef = this.dialog.open(EditUserprofileComponent, {
       height: '470px',
       width: '500px',
+      data:JSON.parse(JSON.stringify(this.userProfile))
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+      this.userProfile = result;
+      }
+    });
+
   }
   public getUserProfile(): void {
     this._userProfileService.getUserProfile().then((data) => {
