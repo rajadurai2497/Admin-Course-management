@@ -12,16 +12,16 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 
 export class MycourseComponent implements OnInit {
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator; 
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   displayedColumns: string[];
-  public userMycourse: PurchasedCourseDetails[]=[];
+  public userMycourse: PurchasedCourseDetails[] = [];
   dataSource = new MatTableDataSource<PurchasedCourseDetails>();
 
-  isShowDetails=false;
+  isShowDetails = false;
   courseChapterList: any[] = [];
-  
-  constructor(private readonly _userMycourseService: UserMycourseService) {}
+
+  constructor(private readonly _userMycourseService: UserMycourseService) { }
 
   ngOnInit(): void {
 
@@ -32,23 +32,23 @@ export class MycourseComponent implements OnInit {
 
   public getPurchasedCourseList(): void {
     this._userMycourseService.getPurchasedCourseList().then((data) => {
-      if(data && data.result){
+      if (data && data.result) {
         this.userMycourse = data.chapterCounter;
         console.log(data);
         // console.log(userMycourse);
-        this.dataSource=new MatTableDataSource<PurchasedCourseDetails>(this.userMycourse);
+        this.dataSource = new MatTableDataSource<PurchasedCourseDetails>(this.userMycourse);
         // this.dataSource.paginator = this.paginator;
       }
     });
   }
 
-  gotodetails(courseMasterId){
+  gotodetails(courseMasterId) {
     this._userMycourseService.getCourseChapterList(courseMasterId).then(data => {
-    this.courseChapterList = data;
-    console.log(data);
+      this.courseChapterList = data;
+      console.log(data);
     });
     console.log(courseMasterId);
-    this.isShowDetails=true;
+    this.isShowDetails = true;
 
   }
 }
