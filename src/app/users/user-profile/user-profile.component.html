@@ -1,11 +1,8 @@
 <div class="row user-profile-div" *ngIf="userProfile">
   <div class="col-sm-12">
-    <app-card>
-      <!-- <div class="app-card-header">
-      <div class="cover-img-block text-center">
-        <img src="assets/images/widget/slider5.jpg" alt="" class="img-fluid">
-      </div>
-    </div> -->
+    <button mat-button (click)="editProfile()">
+      <mat-icon>edit</mat-icon>
+  </button>
       <div class="user-about-block text-center">
         <div class="row align-items-end">
           <div class="col"></div>
@@ -55,6 +52,5 @@
           </div>
         </div>
       </div>
-    </app-card>
   </div>
 </div>
