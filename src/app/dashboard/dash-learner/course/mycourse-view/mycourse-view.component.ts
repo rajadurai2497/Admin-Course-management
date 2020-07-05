@@ -7,8 +7,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class MycourseViewComponent implements OnInit {
 
-  @Input() courseTopicList: any[];
-  videoUrl: '';
+  // @Input() courseTopicList: any[];
+  // videoUrl: '';
 
 
   @Output()

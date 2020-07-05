@@ -1,21 +1,15 @@
 <div class="row">
   <div class="col-xl-8 col-md-6">
     <div class="card">
-      <iframe
-        [src]="videoUrl"
-        width="640"
-        height="480"
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-      ></iframe>
+      <iframe [src]="videoUrl" width="640" height="480" frameborder="0" allow="autoplay; fullscreen"
+        allowfullscreen></iframe>
     </div>
   </div>
 
   <div class="col-xl-4 col-md-6 d-lg-inline d-none">
     <div class="card latest-update-card">
       <div class="card-header">
-        <h5>Course Details</h5>
+        <h5>Chapter List</h5>
       </div>
       <div class="card-body">
         <div class="latest-update-box">
@@ -42,12 +36,12 @@
         {{ description }}
       </p>
     </div>
-    <iframe src="https://docs.google.com/" style="width: 100px; height: 100px;" frameborder="0"></iframe>
+    <!-- <iframe src="https://docs.google.com/" style="width: 100px; height: 100px;" frameborder="0"></iframe>
     <iframe
       src="https://docs.google.com/"
       style="width: 100px; height: 100px; margin-left: 20px;"
       frameborder="0"
-    ></iframe>
+    ></iframe> -->
     <div>
       <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-left">Back</button>
       <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-right">Next</button>
@@ -55,39 +49,5 @@
   </div>
 </div>
 
-<div class="col-xl-4 m-t-30 col-md-6 d-lg-none">
-  <div class="card latest-update-card">
-    <div class="card-header">
-      <h5>Course Details</h5>
-    </div>
-    <div class="card-body">
-      <div class="latest-update-box">
-        <div class="row p-t-20 p-b-20">
-          <div class="col-auto text-right update-meta">
-            <i class="b-primary update-icon ring"></i>
-          </div>
-          <div class="col p-l-5">
-            <a href="javascript:;">
-              <h6 class="m-0">Devlopment & Update</h6>
-            </a>
-            <p class="m-b-0">Lorem ipsum dolor sit amet, <a href="javascript:;" class="text-c-blue"> More</a></p>
-          </div>
-        </div>
 
-        <div class="row p-b-0">
-          <div class="col-auto text-right update-meta">
-            <i class="b-primary update-icon ring"></i>
-          </div>
-          <div class="col p-l-5">
-            <a href="javascript:;">
-              <h6 class="m-0">Showcases</h6>
-            </a>
-            <p class="m-b-0">Lorem dolor sit amet, <a href="javascript:;" class="text-c-blue"> More</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- </perfect-scrollbar> -->
-  </div>
-</div>
 <div></div>
