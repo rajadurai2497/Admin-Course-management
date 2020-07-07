@@ -19,6 +19,6 @@ export class ForgetPasswordService extends ApiService {
 
   getPasswordChange(password): Promise<any> {
     const apiUrl = ROUTE_CONFIG. BaseUrl + `/Token/ChangePassword?oldPassword=`+password.oldPassword+`&newPassword=`+password.newPassword;
-    return this.doGet(apiUrl, true);
+    return this.doPost(apiUrl,password, true);
   }
 }

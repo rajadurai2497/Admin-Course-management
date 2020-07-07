@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material';
 import { CourseManagementService } from 'src/app/services/course-management.service';
-import { AllCourse } from 'src/app/models/course-management.model';
+import { AllCourse, ChapterEntity } from 'src/app/models/course-management.model';
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
 
 
@@ -22,16 +22,18 @@ export class PreviewCourseComponent implements OnInit {
   @Input() course: AllCourse;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
+  allChapter: ChapterEntity[];
+  displayedColumns: string[];
 
   isViewDetails = false;
   isChapterDetails = false;
   isEditTopic = false
+  dataSource = new MatTableDataSource<ChapterEntity>();
 
 
-
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['id', 'chaptername'];
-  expandedElement: PeriodicElement | null;
+  // dataSource = ELEMENT_DATA;
+  // columnsToDisplay = ['id', 'chaptername'];
+  expandedElement: ChapterEntity | null;
 
 
   gotodetails() {
@@ -47,32 +49,45 @@ export class PreviewCourseComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.course)
+    this.displayedColumns = ['chapterId', 'chapterName'];
     this.getChaptersList()
 
   }
 
   getChaptersList() {
     this._courseManagementService.getCourseChapters(this.course.courseMasterId).then(data => {
+      if (data && data.result) {
+
+      }
       console.log(data)
     })
   }
+  
+    public getCourseChapters(): void {
+      this._courseManagementService.getCourseChapters(this.course.courseMasterId).then((data) => {
+        if (data && data.result) {
+          this.allChapter = data.allChapter;
+          this.dataSource = new MatTableDataSource<ChapterEntity>(this.allChapter);
+        }
+      });
+    }
 
 }
 
-export interface PeriodicElement {
-  id: number
-  chaptername: string
-}
+// export interface PeriodicElement {
+//   id: number
+//   chaptername: string
+// }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    id: 1,
-    chaptername: "Oops concept"
-  }, {
-    id: 2,
-    chaptername: "digital Marketting"
-  }
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     id: 1,
+//     chaptername: "Oops concept"
+//   }, {
+//     id: 2,
+//     chaptername: "digital Marketting"
+//   }
+// ];
 
 
 

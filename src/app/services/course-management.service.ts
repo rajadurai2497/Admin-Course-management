@@ -35,7 +35,7 @@ export class CourseManagementService extends ApiService {
     return this.doGet(apiUrl, true);
   }
   getCourseChapters(slideId): Promise<any> {
-    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetCourseChapterByCourseId?CourseMasterId=`+slideId;
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/GetCourseGetChapterGetSlide?CourseMasterId=`+slideId;
     return this.doGet(apiUrl, true);
   }
 }

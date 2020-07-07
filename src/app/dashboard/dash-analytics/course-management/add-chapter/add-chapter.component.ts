@@ -15,6 +15,7 @@ export class AddChapterComponent implements OnInit {
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   chapter: AddChapter = new AddChapter();
   constructor(private readonly _courseManagementService: CourseManagementService) { }
+  
 
   ngOnInit() {
     this.chapter.chapterEntityObj = new ChapterEntity();
