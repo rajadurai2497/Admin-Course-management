@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CourseManagementService } from 'src/app/services/course-management.service';
-import { AllCourse } from 'src/app/models/course-management.model';
+import { AllCourse, AddCourse } from 'src/app/models/course-management.model';
 import { MatTableDataSource } from '@angular/material';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,13 +13,54 @@ import { MatTableDataSource } from '@angular/material';
   providers: [CourseManagementService]
 })
 
+// export class AddCourseManagementComponent implements OnInit {
+
+//   course: FormGroup;
+//   basicContent: string;
+//   courseName: string;
+//   abtCourse: string;
+//   weprovide: string;
+//   price: number;
+
+//   displayedColumns: string[];
+//   addCourses: AllCourse[] = [];
+//   dataSource = new MatTableDataSource<AllCourse>();
+
+
+//   constructor(public dialogRef: MatDialogRef<AddCourseManagementComponent>,
+//      private readonly _courseManagementService: CourseManagementService) { }
+
+//   ngOnInit(): void {
+//     this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'description', 'provideWhat'];
+//     this.addCourse();
+//   }
+
+//   public addCourse(): void {
+//     const course = {
+//       courseMasterId: 0,
+//       courseName: this.courseName,
+//       courseAmount: this.price,
+//       description: this.abtCourse,
+//       provideWhat: this.weprovide
+//     }
+//     this._courseManagementService.addCourse(course).then((data) => {
+//       if (data && data.result) {
+//         this.dialogRef.close(true);
+//         alert('Course added successfully...!')
+//       }
+//     });
+//   }
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
+
+// }
+
+
 export class AddCourseManagementComponent implements OnInit {
 
-  basicContent: string;
-  courseName: string;
-  abtCourse: string;
-  weprovide: string;
-  price: number;
+  adCourse: AddCourse= new AddCourse;
+  courseForm: FormGroup;
 
   displayedColumns: string[];
   addCourses: AllCourse[] = [];
@@ -26,20 +68,45 @@ export class AddCourseManagementComponent implements OnInit {
 
 
   constructor(public dialogRef: MatDialogRef<AddCourseManagementComponent>,
-     private readonly _courseManagementService: CourseManagementService) { }
+    private readonly _courseManagementService: CourseManagementService) { }
 
   ngOnInit(): void {
+    this.courseForm = new FormGroup({
+      basicContent: new FormControl(this.adCourse.basicContent, [
+        Validators.required,
+      ]),
+      courseName: new FormControl(this.adCourse.courseName, [
+        Validators.required,
+      ]),
+      abtCourse: new FormControl(this.adCourse.abtCourse, [
+        Validators.required,]),
+      weprovide: new FormControl(this.adCourse.weprovide, [
+        Validators.required,
+      ]),
+      price: new FormControl(this.adCourse.price, [
+        Validators.required,
+      ]),
+    });
     this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'description', 'provideWhat'];
-    this.addCourse();
+    // this.addCourse();
   }
+
+  get basicContent() { return this.courseForm.get('tbasicContent'); }
+  get courseName() { return this.courseForm.get('courseName'); }
+  get weprovide() { return this.courseForm.get('weprovide'); }
+  get price() { return this.courseForm.get('price'); }
+  get abtCourse() { return this.courseForm.get('abtCourse'); }
+
+
+
 
   public addCourse(): void {
     const course = {
       courseMasterId: 0,
-      courseName: this.courseName,
-      courseAmount: this.price,
-      description: this.abtCourse,
-      provideWhat: this.weprovide
+      courseName: this.adCourse.courseName,
+      courseAmount: this.adCourse.price,
+      description: this.adCourse.abtCourse,
+      provideWhat: this.adCourse.weprovide
     }
     this._courseManagementService.addCourse(course).then((data) => {
       if (data && data.result) {

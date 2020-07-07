@@ -7,17 +7,18 @@ export interface AllCourse {
     learnersNumber: string;
 }
 
-export interface AddCourse {
+export class AddCourse {
     basicContent: string;
     courseName: string;
     abtCourse: string;
     weprovide: string;
     price: number;
+    constructor() {}
 }
 export class AddChapter {
     courseMasterId: string;
     chapterEntityObj: ChapterEntity;
-    slideEntityOb: SlideEntity[] = [];
+    slideEntityObj: SlideEntity[] = [];
     constructor() {
 
     }
@@ -28,7 +29,9 @@ export class SlideEntity {
     chapterId: string;
     slideName: string;
     videoUrl: string;
-    description: string;
+    slideDescription: string;
+    orderNo:number;
+    fileAddFlag:string
     constructor() {
 
     }
@@ -38,7 +41,13 @@ export class ChapterEntity {
     chapterId: string;
     courseMasterId: string;
     chapterName: string;
+    orderNo:number;
+    markCompleted:boolean;
     constructor() {
 
     }
 }
+
+
+
+      

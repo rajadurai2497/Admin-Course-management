@@ -3,6 +3,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { MatTableDataSource } from '@angular/material';
 import { CourseManagementService } from 'src/app/services/course-management.service';
 import { AllCourse } from 'src/app/models/course-management.model';
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
+
 
 @Component({
   selector: 'app-preview-course',
@@ -10,57 +12,65 @@ import { AllCourse } from 'src/app/models/course-management.model';
   styleUrls: ['./preview-course.component.scss'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
 })
 export class PreviewCourseComponent implements OnInit {
-  @Input() course:AllCourse;
+  @Input() course: AllCourse;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  isViewDetails=false;
-  isChapterDetails=false;
-  isEditTopic=false
+  isViewDetails = false;
+  isChapterDetails = false;
+  isEditTopic = false
+
 
 
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['id','chaptername'];
+  columnsToDisplay = ['id', 'chaptername'];
   expandedElement: PeriodicElement | null;
 
 
-  gotodetails(){
-    this.isViewDetails=true;
+  gotodetails() {
+    this.isViewDetails = true;
   }
 
-  gotochapter(){
-    this.isChapterDetails=true;
+  gotochapter() {
+    this.isChapterDetails = true;
   }
 
-  
-  constructor() { }
+
+  constructor(private readonly _courseManagementService: CourseManagementService) { }
 
   ngOnInit() {
     console.log(this.course)
-    
+    this.getChaptersList()
+
   }
-  
+
+  getChaptersList() {
+    this._courseManagementService.getCourseChapters(this.course.courseMasterId).then(data => {
+      console.log(data)
+    })
+  }
+
 }
 
 export interface PeriodicElement {
-  id:number
+  id: number
   chaptername: string
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 1,
-    chaptername:"Oops concept"
+    chaptername: "Oops concept"
   }, {
     id: 2,
-    chaptername:"digital Marketting"
+    chaptername: "digital Marketting"
   }
 ];
 

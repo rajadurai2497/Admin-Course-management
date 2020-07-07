@@ -11,43 +11,50 @@
 
           <div class="form-group">
             <label>Chapter Name</label>
-            <input type="text" class="form-control" id="cname" [(ngModel)]="chapter.chapterEntityObj.chapterName"
+            <input type="text" class="form-control"  [(ngModel)]="chapter.chapterEntityObj.chapterName"
               placeholder="Chapter name">
           </div>
 
           <div class="form-group">
             <label>Order No</label>
-            <input type="text" class="form-control" id="cname" placeholder="Order number">
+            <input type="number" class="form-control" placeholder="Order number"  [(ngModel)]="chapter.chapterEntityObj.orderNo">
           </div>
 
           <div class="form-group m-t-30">
             <label class="form-label">Topics</label>
-            <ng-container *ngFor="let slide of chapter.slideEntityOb">
+            <ng-container *ngFor="let slide of chapter.slideEntityObj">
               <mat-card>
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <label>Topic Name</label>
                     <input type="text" class="form-control" placeholder="Topic Name" name="topicName"
-                      [(ngModel)]="slide.name">
+                      [(ngModel)]="slide.slideName">
                   </div>
+
+                  <div class="col-md-6 form-group">
+                    <label>Order No</label>
+                    <input type="number" class="form-control" placeholder="Order No" name="orderNo"
+                      [(ngModel)]="slide.orderNo">
+                  </div>
+
                   <div class="col-md-6 form-group">
                     <label>URL link</label>
                     <input type="text" class="form-control" placeholder="URL link" name="topicLink"
-                      [(ngModel)]="slide.link">
+                      [(ngModel)]="slide.videoURL">
                   </div>
 
                   <div class="col-md-12 form-group">
                     <label>Topic Description</label>
-                    <app-tinymce #tinymce='tinymce' name="topicDesc" [(ngModel)]="slide.description"></app-tinymce>
+                    <app-tinymce #tinymce='tinymce' name="topicDesc" [(ngModel)]="slide.slideDescription"></app-tinymce>
                   </div>
 
-                  <div class="col-md-12 form-group">
+                  <!-- <div class="col-md-12 form-group">
                     <label>Add Files</label>
                     <div ng-app="MyApp" ng-controller="AppCtrl" [(ngModel)]='topic.browse' layout-margin layout-padding>
                       <input class="ng-hide" id="input-file-id" multiple type="file" />
                       <label for="input-file-id" class="md-button md-raised md-primary"></label>
                     </div>
-                  </div>
+                  </div> -->
 
                 </div>
               </mat-card>

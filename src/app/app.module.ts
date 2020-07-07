@@ -28,6 +28,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/loading.service';
+import { ChangePasswordComponent } from './users/user-profile/change-password/change-password.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { LoadingService } from './services/loading.service';
     ChatUserListComponent,
     FriendComponent,
     ToggleFullScreenDirective,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -61,12 +63,14 @@ import { LoadingService } from './services/loading.service';
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
+    
   ],
   providers: [
     NavigationItem,
     MatDatepickerModule,
     MatNativeDateModule,
     LoadingService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ChangePasswordComponent]
 })
 export class AppModule { }

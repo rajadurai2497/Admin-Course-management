@@ -20,5 +20,5 @@ export class UserProfileService extends ApiService{
     const apiUrl = ROUTE_CONFIG.BaseUrl + `/Token/RegisterUser`;
     return this.doPost(apiUrl,userprofile, true);
   }
-  
+
 }

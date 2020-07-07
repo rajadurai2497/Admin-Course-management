@@ -8,9 +8,10 @@ import {LightboxModule} from 'ngx-lightbox';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { EditUserprofileComponent } from './edit-userprofile/edit-userprofile.component';
 import { EditChapterComponent } from 'src/app/dashboard/dash-analytics/course-management/edit-chapter/edit-chapter.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
-  declarations: [UserProfileComponent, EditUserprofileComponent],
+  declarations: [UserProfileComponent, EditUserprofileComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     UserProfileRoutingModule,

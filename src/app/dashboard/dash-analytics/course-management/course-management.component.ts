@@ -18,18 +18,18 @@ export class CourseManagementComponent implements OnInit {
   allCourse: AllCourse[] = [];
   dataSource = new MatTableDataSource<AllCourse>();
   displayedColumns: string[];
-
+  courseMasterId: string;
   currentCourse: AllCourse;
 
   constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'leanresnumber', 'actions','delete'];
+    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'leanresnumber', 'actions', 'delete'];
     this.getAllCourselist();
   }
 
   gotodetails(course) {
-    this.currentCourse=course;
+    this.currentCourse = course;
     this.isShowDetails = true;
   }
   addCourse() {
@@ -50,6 +50,20 @@ export class CourseManagementComponent implements OnInit {
         this.allCourse = data.allCourse;
         this.dataSource = new MatTableDataSource<AllCourse>(this.allCourse);
         this.dataSource.paginator = this.paginator;
+      }
+    });
+  }
+
+
+  deleteCourse(course): void {
+    if(confirm('Are you sure you want to delete this course?'))
+    this._courselistService.deleteCourse(course.courseMasterId).then((data) => {
+      if (data && data.result) {
+        this.getAllCourselist();
+        alert("Course deleted Successfully.....")
+      }
+      else{
+        alert("Unable to delete Course")
       }
     });
   }
