@@ -1,45 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { PurchasedCourseDetails } from 'src/app/models/user-mycourse';
+import { UserMycourseService } from 'src/app/services/user-mycourse.service';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-mycourse',
   templateUrl: './mycourse.component.html',
-  styleUrls: ['./mycourse.component.scss']
+  styleUrls: ['./mycourse.component.scss'],
 })
 export class MycourseComponent implements OnInit {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-      
-  isShowDetails=false;
-  constructor() { }
+  displayedColumns: string[];
+  public userMycourse: PurchasedCourseDetails[] = [];
+  dataSource = new MatTableDataSource<PurchasedCourseDetails>();
 
-  displayedColumns: string[] = ['coursename', 'totalchapters', 'completedchapters', 'pendingchapters'];
-  dataSource = ELEMENT_DATA;
+  isShowDetails = false;
+  courseChapterList: any[] = [];
 
+  constructor(private readonly _userMycourseService: UserMycourseService) {}
 
-  ngOnInit() {
-    
+  ngOnInit(): void {
+    // this.displayedColumns = ['courseName'];pendingChapter: 4, completedChapter: 0, courseMasterId: 1, courseName:
+    this.displayedColumns = ['courseName', 'totalChapter', 'completedChapter', 'pendingChapter'];
+    this.getPurchasedCourseList();
   }
 
-
-  gotodetails(){
-    this.isShowDetails=true;
+  public getPurchasedCourseList(): void {
+    this._userMycourseService.getPurchasedCourseList().then((data) => {
+      if (data && data.result) {
+        this.userMycourse = data.chapterCounter;
+        console.log(data);
+        // console.log(userMycourse);
+        this.dataSource = new MatTableDataSource<PurchasedCourseDetails>(this.userMycourse);
+        // this.dataSource.paginator = this.paginator;
+      }
+    });
   }
 
+  gotodetails(courseMasterId) {
+    this._userMycourseService.getCourseChapterList(courseMasterId).then((data) => {
+      this.courseChapterList = data;
+      console.log(data);
+    });
+    console.log(courseMasterId);
+    this.isShowDetails = true;
+  }
 }
-
-
-export interface PeriodicElement {
-  coursename: string;
-  totalchapters: string;
-  completedchapters: string;
-  pendingchapters: string;
-}
-
-// <th>Course Name</th>
-// <th>Total Chapters</th>
-// <th>Completed Chapters</th>
-// <th>Pending Chapters</th>
-
-const ELEMENT_DATA: PeriodicElement[] = [
-
-  {coursename:'oops',totalchapters:'12',completedchapters:'21',pendingchapters:'21'},
-];
