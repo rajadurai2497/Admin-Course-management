@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { EditChapterComponent } from '../edit-chapter/edit-chapter.component';
 import { CourseManagementService } from 'src/app/services/course-management.service';
 import { ChapterEntity, SlideEntity } from 'src/app/models/course-management.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -18,7 +19,7 @@ export class ChapterDetailComponent implements OnInit {
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   dialogRef: any;
 
-  constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService) { }
+  constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService,private sanitizer: DomSanitizer) { }
 
   edittopic(slide) {
     this.isEditTopic = true;
@@ -61,5 +62,8 @@ export class ChapterDetailComponent implements OnInit {
           alert("Unable to delete Topic")
         }
       });
+  }
+  videoUrl(url){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
   }
 }
