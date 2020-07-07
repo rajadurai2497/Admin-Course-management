@@ -3,7 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { MatTableDataSource } from '@angular/material';
 import { CourseManagementService } from 'src/app/services/course-management.service';
 import { AllCourse, ChapterEntity } from 'src/app/models/course-management.model';
-import { CloseScrollStrategy } from '@angular/cdk/overlay';
+
 
 
 @Component({
@@ -24,6 +24,7 @@ export class PreviewCourseComponent implements OnInit {
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   allChapter: ChapterEntity[];
   displayedColumns: string[];
+  
 
   isViewDetails = false;
   isChapterDetails = false;
@@ -50,7 +51,7 @@ export class PreviewCourseComponent implements OnInit {
   ngOnInit() {
     console.log(this.course)
     this.displayedColumns = ['chapterId', 'chapterName'];
-    this.getChaptersList()
+    this.getCourseChapters()
 
   }
 
@@ -66,28 +67,14 @@ export class PreviewCourseComponent implements OnInit {
     public getCourseChapters(): void {
       this._courseManagementService.getCourseChapters(this.course.courseMasterId).then((data) => {
         if (data && data.result) {
-          this.allChapter = data.allChapter;
+          this.allChapter = data.chapterListByCourse;
           this.dataSource = new MatTableDataSource<ChapterEntity>(this.allChapter);
+          console.log('my msg',this.dataSource)
         }
       });
     }
 
 }
-
-// export interface PeriodicElement {
-//   id: number
-//   chaptername: string
-// }
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     id: 1,
-//     chaptername: "Oops concept"
-//   }, {
-//     id: 2,
-//     chaptername: "digital Marketting"
-//   }
-// ];
 
 
 
