@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material';
 import { CourseManagementService } from 'src/app/services/course-management.service';
-import { AllCourse, ChapterEntity } from 'src/app/models/course-management.model';
+import { AllCourse, ChapterEntity, SlideEntity } from 'src/app/models/course-management.model';
 
 
 
@@ -24,7 +24,6 @@ export class PreviewCourseComponent implements OnInit {
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   allChapter: ChapterEntity[];
   displayedColumns: string[];
-  
 
   isViewDetails = false;
   isChapterDetails = false;
@@ -52,7 +51,6 @@ export class PreviewCourseComponent implements OnInit {
     console.log(this.course)
     this.displayedColumns = ['chapterId', 'chapterName'];
     this.getCourseChapters()
-
   }
 
   getChaptersList() {
@@ -63,16 +61,25 @@ export class PreviewCourseComponent implements OnInit {
       console.log(data)
     })
   }
-  
-    public getCourseChapters(): void {
-      this._courseManagementService.getCourseChapters(this.course.courseMasterId).then((data) => {
-        if (data && data.result) {
-          this.allChapter = data.chapterListByCourse;
-          this.dataSource = new MatTableDataSource<ChapterEntity>(this.allChapter);
-          console.log('my msg',this.dataSource)
-        }
-      });
-    }
+
+
+  public getCourseChapters(): void {
+    this._courseManagementService.getCourseChapters(this.course.courseMasterId).then((data) => {
+      if (data && data.result) {
+        this.allChapter.forEach(chapter => {
+          chapter.slides = [];
+          data.slideListByChapter.forEach(slide => {
+            if (slide.chapterId == chapter.chapterId) {
+              chapter.slides.push(slide);
+            }
+          });
+        });
+        this.allChapter = data.chapterListByCourse;
+        this.dataSource = new MatTableDataSource<ChapterEntity>(this.allChapter);
+        console.log('my msg', this.dataSource)
+      }
+    });
+  }
 
 }
 
