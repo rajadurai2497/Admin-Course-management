@@ -66,6 +66,7 @@ export class PreviewCourseComponent implements OnInit {
   public getCourseChapters(): void {
     this._courseManagementService.getCourseChapters(this.course.courseMasterId).then((data) => {
       if (data && data.result) {
+        this.allChapter = data.chapterListByCourse;
         this.allChapter.forEach(chapter => {
           chapter.slides = [];
           data.slideListByChapter.forEach(slide => {
@@ -74,7 +75,6 @@ export class PreviewCourseComponent implements OnInit {
             }
           });
         });
-        this.allChapter = data.chapterListByCourse;
         this.dataSource = new MatTableDataSource<ChapterEntity>(this.allChapter);
         console.log('my msg', this.dataSource)
       }
