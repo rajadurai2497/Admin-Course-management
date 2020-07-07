@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { ChangePasswordComponent } from './user-profile/change-password/change-password.component';
+import { SharedModule } from '../theme/shared/shared.module';
 
 @NgModule({
   declarations: [ChangePasswordComponent],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    SharedModule
   ],
   entryComponents: [ChangePasswordComponent]
 })

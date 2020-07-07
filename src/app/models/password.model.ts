@@ -5,7 +5,7 @@ export interface ForgetPassword {
 export class ChangePassword {
     oldPassword: string;
     newPassword: string;
-    cofirmPassword: string;
+    confirmPassword: string;
     constructor(){}
 }
 

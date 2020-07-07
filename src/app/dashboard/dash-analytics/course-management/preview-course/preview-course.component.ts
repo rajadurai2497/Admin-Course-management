@@ -27,9 +27,9 @@ export class PreviewCourseComponent implements OnInit {
 
   isViewDetails = false;
   isChapterDetails = false;
-  isEditTopic = false
+  isEditTopic = false;
   dataSource = new MatTableDataSource<ChapterEntity>();
-
+  currentChapter: ChapterEntity;
 
   // dataSource = ELEMENT_DATA;
   // columnsToDisplay = ['id', 'chaptername'];
@@ -40,8 +40,9 @@ export class PreviewCourseComponent implements OnInit {
     this.isViewDetails = true;
   }
 
-  gotochapter() {
+  gotochapter(chapter) {
     this.isChapterDetails = true;
+    this.currentChapter = chapter;
   }
 
 

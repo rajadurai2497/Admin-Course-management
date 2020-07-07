@@ -22,15 +22,15 @@ export class ChangePasswordComponent implements OnInit {
         Validators.required]),
       newPassword: new FormControl(this.password.newPassword, [
         Validators.required]),
-      cofirmPassword: new FormControl(this.password.cofirmPassword, [
+      confirmPassword: new FormControl(this.password.confirmPassword, [
         Validators.required])
     });
   }
   get oldPassword() { return this.changePasswordForm.get('oldPassword'); }
   get newPassword() { return this.changePasswordForm.get('newPassword'); }
-  get cofirmPassword() { return this.changePasswordForm.get('cofirmPassword'); }
+  get confirmPassword() { return this.changePasswordForm.get('cofirmPassword'); }
 
-  getPasswordChange(password){
+  getPasswordChange(){
     this._forgetPasswordService.getPasswordChange(this.password).then((data) => {
       if (data && data.result) {
         this.dialogRef.close(true);

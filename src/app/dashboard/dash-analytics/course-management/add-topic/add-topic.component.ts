@@ -19,7 +19,8 @@ export class AddTopicComponent implements OnInit {
       name: "",
       link: "",
       description: "",
-      browse: ""
+      browse: "",
+      orderno: "",
     }
     this.topicsList.push(topicMap);
   }
