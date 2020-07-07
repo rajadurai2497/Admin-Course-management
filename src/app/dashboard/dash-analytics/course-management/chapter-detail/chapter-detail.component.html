@@ -10,8 +10,8 @@
         <h4>Chapter Name: OOps Concept</h4>
     </div>
     <div class=" btn-allignment">
-        <button mat-button>
-            <mat-icon>delete</mat-icon>
+        <button mat-button (click)="deleteChapter(chapter)">
+            <mat-icon >delete</mat-icon>
         </button>
         <button mat-button (click)="editChapter()">
             <mat-icon>edit</mat-icon>
@@ -21,7 +21,7 @@
 
 <mat-card class="col-lg-12 ">
     <div class=" btn-frm btn-shadow">
-        <button mat-button>
+        <button mat-button (click)="deleteTopic(topic)">
             <mat-icon>delete</mat-icon>
         </button>
         <button mat-button (click)="edittopic()">

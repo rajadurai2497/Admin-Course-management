@@ -20,8 +20,14 @@ export class ApiService {
     if (isShowLoading) {
       this._loadingService.displayLoader(true);
     }
-    let headers = new HttpHeaders();
-    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    if(this.currentUser && this.currentUser.access_token){
+      headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    }
+
+    
     const requestOptions = {
       headers: headers,
     };
@@ -40,8 +46,12 @@ export class ApiService {
     if (isShowLoading) {
       this._loadingService.displayLoader(true);
     }
-    let headers = new HttpHeaders();
-    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    if(this.currentUser && this.currentUser.access_token){
+      headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    }
     const requestOptions = {
       headers: headers,
     };
@@ -64,7 +74,9 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    if(this.currentUser && this.currentUser.access_token){
+      headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    }
     const requestOptions = {
       headers: headers,
     };
@@ -89,7 +101,10 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+
+    if(this.currentUser && this.currentUser.access_token){
+      headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    }
     const requestOptions = {
       headers: headers,
     };
@@ -116,7 +131,9 @@ export class ApiService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    if(this.currentUser && this.currentUser.access_token){
+      headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    }
 
     const requestOptions = {
       headers: headers,

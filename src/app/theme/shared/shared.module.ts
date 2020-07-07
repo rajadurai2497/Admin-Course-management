@@ -109,6 +109,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ApexChartService,
     ToastService,
     LoadingService
-  ]
+  ],
+  
 })
 export class SharedModule { }
