@@ -20,10 +20,30 @@
       </td>
     </ng-container> -->
 
+    <!-- <ng-container matColumnDef="completed">
+      <th mat-header-cell *matHeaderCellDef> Completed. </th>
+      <td mat-cell *matCellDef="let element;">
+        < <mat-checkbox (change)="yourfunc($event)"> 
+        <mat-checkbox checked="false" (checked)="updateAllComplete(element.chapterId)">
+        </mat-checkbox>
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="markCompleted">
+      <th mat-header-cell *matHeaderCellDef> Completed </th>
+      <td mat-cell *matCellDef="let element;">
+        <!-- <mat-checkbox (change)="yourfunc($event)"> -->
+        <mat-checkbox [checked]="element.markCompleted" (change)="updateAllComplete(element.chapterId)">
+          
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.chapterName}} </td>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
     </ng-container>
 
     <!-- Name Column -->
@@ -40,11 +60,11 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
     </tr>
   </table>
 
 </div>
-  <app-mycourse-view *ngIf="isShowChapter" [courseTopicList]="courseTopicList" (isDetailsExit)="isShowChapter=false">
+<app-mycourse-view *ngIf="isShowChapter" [courseTopicList]="courseTopicList" (isDetailsExit)="isShowChapter=false">
 
 </app-mycourse-view>

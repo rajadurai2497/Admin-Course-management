@@ -1,5 +1,6 @@
 <div *ngIf="!isShowDetails">
   <table mat-table [dataSource]="dataSource" >
+
     <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
       <th mat-header-cell *matHeaderCellDef > {{column}} </th>
       <td mat-cell  *matCellDef="let element" (click)="gotodetails(element.courseMasterId)" > {{element[column]}} </td>

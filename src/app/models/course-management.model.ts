@@ -4,17 +4,50 @@ export interface AllCourse {
     courseAmount: string;
     description: string;
     provideWhat: string;
-    learnersNumber: string
+    learnersNumber: string;
 }
 
-export interface AddCourse {
+export class AddCourse {
     basicContent: string;
     courseName: string;
     abtCourse: string;
-    weprovide:string;
+    weprovide: string;
     price: number;
+    constructor() {}
+}
+export class AddChapter {
+    courseMasterId: string;
+    chapterEntityObj: ChapterEntity;
+    slideEntityObj: SlideEntity[] = [];
+    constructor() {
+
+    }
+}
+
+export class SlideEntity {
+    slideId: string;
+    chapterId: string;
+    slideName: string;
+    videoUrl: string;
+    slideDescription: string;
+    orderNo:number;
+    fileAddFlag:string
+    constructor() {
+
+    }
+}
+
+export class ChapterEntity {
+    chapterId: string;
+    courseMasterId: string;
+    chapterName: string;
+    orderNo:number;
+    markCompleted:boolean;
+    constructor() {
+
+    }
 }
 
 
 
-
+      

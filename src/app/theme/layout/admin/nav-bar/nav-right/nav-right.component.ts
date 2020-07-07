@@ -3,6 +3,8 @@ import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {GradientConfig} from '../../../../../app-config';
 import { AuthenticationService } from 'src/app/theme/shared/service/authentication.service';
+import { MatDialog } from '@angular/material';
+import { ChangePasswordComponent } from 'src/app/users/user-profile/change-password/change-password.component';
 
 @Component({
   selector: 'app-nav-right',
@@ -36,7 +38,7 @@ export class NavRightComponent implements OnInit, DoCheck {
   public friendId: boolean;
   public gradientConfig: any;
 
-  constructor(private authenticationService:AuthenticationService) {
+  constructor(private authenticationService:AuthenticationService,private dialog: MatDialog) {
     this.visibleUserList = false;
     this.chatMessage = false;
     this.gradientConfig = GradientConfig.config;
@@ -58,5 +60,17 @@ export class NavRightComponent implements OnInit, DoCheck {
   }
   logout(){
     this.authenticationService.logout();
+  }
+  changePassword(){
+    let dialogRef = this.dialog.open(ChangePasswordComponent, {
+      height: '300px',
+      width: '500px',
+    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     this.getAllCourselist();
+    //   }
+    // });
+
   }
 }

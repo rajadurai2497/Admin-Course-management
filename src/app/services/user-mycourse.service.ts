@@ -36,5 +36,11 @@ export class UserMycourseService extends ApiService {
     console.log(apiUrl)
     return this.doGet(apiUrl,true);
   }
+
+  completedChapterCheckbox(ChapterId): Promise<any>{
+    const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/CompleteChapterByChapterId?ChapterId=${ChapterId}`;
+    console.log(apiUrl)
+    return this.doGet(apiUrl,true);
+  }
   
 }

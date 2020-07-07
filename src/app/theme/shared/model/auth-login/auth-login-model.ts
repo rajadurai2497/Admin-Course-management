@@ -3,4 +3,6 @@ export class AuthLoginModel {
   username: string;
   password: string;
 //   token?: string;
+alterEgo: any;
+get(arg0: string){}
 }

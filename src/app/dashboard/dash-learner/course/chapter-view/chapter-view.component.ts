@@ -4,14 +4,6 @@ import { UserMycourseService } from 'src/app/services/user-mycourse.service';
 
 import { SelectionModel } from '@angular/cdk/collections';
 
-export interface PeriodicElement {
-  chaptername: string;
-  position: number;
-}
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, chaptername: 'OOPs Concept'},
-//   {position: 2, chaptername: 'OOPs Introduction'}
-// ];
 @Component({
   selector: 'app-chapter-view',
   templateUrl: './chapter-view.component.html',
@@ -26,9 +18,9 @@ export class ChapterViewComponent implements OnInit {
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  displayedColumns: string[] = ['position', 'chaptername', 'action'];
+  displayedColumns: string[] = ['markCompleted','position', 'chaptername', 'action'];
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  // selection = new SelectionModel<PeriodicElement>(true, []);
 
   // isAllSelected() {
   //   const numSelected = this.selection.selected.length;
@@ -47,6 +39,18 @@ export class ChapterViewComponent implements OnInit {
     });
     this.isShowChapter = true;
   }
+
+  updateAllComplete(chapterId){
+    this._userMycourseService.completedChapterCheckbox(chapterId)
+    console.log(chapterId)
+  }
+
+//   yourfunc(e) {
+//     console.log(e)
+//     if(e.target.checked){        
+//     }
+//  }
+
   // checkboxLabel(row?: PeriodicElement): string {
   //   if (!row) {
   //     return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
