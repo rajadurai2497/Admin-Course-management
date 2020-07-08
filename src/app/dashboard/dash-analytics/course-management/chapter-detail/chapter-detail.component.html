@@ -43,10 +43,10 @@
 </mat-card>
 </div>
 
-<app-edit-topic *ngIf="isEditTopic" (isDetailsExit)="isEditTopic=false">
+<app-edit-topic *ngIf="isEditTopic" [chapter]="chapter" [topic]="topic" (isDetailsExit)="isEditTopic=false">
 
 </app-edit-topic>
 
-<app-add-topic *ngIf="isAddTopic" (isDetailsExit)="isAddTopic=false">
+<app-add-topic *ngIf="isAddTopic" [chapter]="chapter" (isDetailsExit)="isAddTopic=false">
 
 </app-add-topic>
