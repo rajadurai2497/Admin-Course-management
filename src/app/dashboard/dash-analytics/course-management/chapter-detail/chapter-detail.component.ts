@@ -23,15 +23,17 @@ export class ChapterDetailComponent implements OnInit {
 
   edittopic(slide) {
     this.isEditTopic = true;
+    this.topic=slide;
   }
   editChapter() {
     let dialogRef = this.dialog.open(EditChapterComponent, {
       height: '300px',
       width: '500px',
+      data :this.chapter
     });
   }
 
-  addtopic() {
+  addtopic(slide) {
     this.isAddTopic = true;
   }
 
