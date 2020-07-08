@@ -1,15 +1,26 @@
+     
 <div class="row">
+ 
   <div class="col-xl-8 col-md-6">
+
     <div class="card">
       <!-- {{videoUrl}} -->
-      <iframe [src]="url" width="640" height="480" frameborder="0" allow="autoplay; fullscreen"
-        allowfullscreen></iframe>
+      <!-- <iframe [src]="url" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen"
+        allowfullscreen></iframe> -->
       <!-- <iframe ng:src="{{videoUrl}}" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe  [src]="url" class="embed-responsive-item"  frameborder="0" allow="autoplay; fullscreen"
+        allowfullscreen></iframe>
+      </div>
 
+    </div>
+    <div>
+      <h6> Chapter Name: {{ slideName }}</h6>
+      <button mat-button (click)="nextVideo()" class="btn btn-primary float-right">Play Next</button>
     </div>
   </div>
 
-  <div class="col-xl-4 col-md-6 d-lg-inline d-none">
+  <div class="col-xl-4 col-md-6 d-lg-inline">
     <div class="card latest-update-card">
       <div class="card-header">
         <h5>Chapter List</h5>
@@ -40,16 +51,15 @@
         {{ description }}
       </p>
     </div>
+    <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-left">Back</button>
+
     <!-- <iframe src="https://docs.google.com/" style="width: 100px; height: 100px;" frameborder="0"></iframe>
     <iframe
       src="https://docs.google.com/"
       style="width: 100px; height: 100px; margin-left: 20px;"
       frameborder="0"
     ></iframe> -->
-    <div>
-      <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-left">Back</button>
-      <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-right">Next</button>
-    </div>
+
   </div>
 </div>
 

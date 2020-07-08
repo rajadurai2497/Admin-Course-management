@@ -21,7 +21,6 @@ export class MycourseComponent implements OnInit {
   constructor(private readonly _userMycourseService: UserMycourseService) {}
 
   ngOnInit(): void {
-    // this.displayedColumns = ['courseName'];pendingChapter: 4, completedChapter: 0, courseMasterId: 1, courseName:
     this.displayedColumns = ['courseName', 'totalChapter', 'completedChapter', 'pendingChapter'];
     this.getPurchasedCourseList();
   }
@@ -31,9 +30,7 @@ export class MycourseComponent implements OnInit {
       if (data && data.result) {
         this.userMycourse = data.chapterCounter;
         console.log(data);
-        // console.log(userMycourse);
         this.dataSource = new MatTableDataSource<PurchasedCourseDetails>(this.userMycourse);
-        // this.dataSource.paginator = this.paginator;
       }
     });
   }

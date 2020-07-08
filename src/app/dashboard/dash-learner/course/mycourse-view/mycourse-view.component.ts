@@ -7,43 +7,50 @@ import { DomSanitizer, SafeResourceUrl, } from '@angular/platform-browser';
   styleUrls: ['./mycourse-view.component.scss'],
 })
 export class MycourseViewComponent implements OnInit {
-
-  // @Input() courseTopicList: any[];
-  // videoUrl: '';
-
   url: SafeResourceUrl;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() courseTopicList: any;
-  videoUrl: any = 'purchasedSlideList.array(0).videoUrl';
-  description:any='purchasedSlideList.array(0).description';
+  videoUrl: any = '';
+  description: any = '';
+  slideName: any = '';
+  count: number = 1;
 
-
-  // videoUrl: any = '';
-  // description: any = '';
   constructor(public sanitizer: DomSanitizer) { }
-
   ngOnInit() {
-    // for(var i=0;i<this.courseTopicList.length;i++ ){
-    //   this.courseTopicList[i].isChecked=false;
-    //             console.log(this.courseTopicList[i].isChecked)
+  }
 
-    // }git pull origin master
+  ngOnChanges() {
+    var i = 0;
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[i].videoUrl);
+    this.description = this.courseTopicList.purchasedSlideList[i].description;
+    this.slideName = this.courseTopicList.purchasedSlideList[i].slideName;
+  }
+
+  public nextVideo(): void {
+    let i = this.count++;
+    console.log("i-", i)
+    var j = (this.courseTopicList.purchasedSlideList.length);
+    console.log("len", this.courseTopicList.purchasedSlideList)
+    if (i < j) {
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[i].videoUrl);
+      this.description = this.courseTopicList.purchasedSlideList[i].description;
+      this.slideName = this.courseTopicList.purchasedSlideList[i].slideName;
+      console.log(this.slideName)
+    }
+
+  }
 
 
 
-    // this.description=this.courseTopicList.purchasedSlideList.array(0).description;
-    // console.log(this.description);
-    // this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList.array(0).videoUrl);
-    // console.log( this.url);
-    // this.description =this.courseTopicList.purchasedSlideList.array(0).description
-   }
+
 
   public onSlideClick(item: any): void {
     this.videoUrl = item.videoUrl;
     this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoUrl);
     console.log(this.videoUrl)
     this.description = item.slideDescription;
+    this.slideName = item.slideName
     // if (item.videoUrl != null && item.slideDescription != null) {
     //   this.videoUrl = item.videoUrl;
     //   console.log(this.videoUrl)
