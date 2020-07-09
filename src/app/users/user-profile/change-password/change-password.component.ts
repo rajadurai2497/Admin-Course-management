@@ -31,6 +31,7 @@ export class ChangePasswordComponent implements OnInit {
   get confirmPassword() { return this.changePasswordForm.get('cofirmPassword'); }
 
   getPasswordChange(){
+    if(this.validateForgetPassword()){
     this._forgetPasswordService.getPasswordChange(this.password).then((data) => {
       if (data && data.result) {
         this.dialogRef.close(true);
@@ -41,7 +42,22 @@ export class ChangePasswordComponent implements OnInit {
       }
   });
 }
-  
+}
+validateForgetPassword() {
+  if (!this.password.oldPassword) {
+    alert('Enter old password ');
+    return false;
+  }
+  if (!this.password.newPassword) {
+    alert('Enter new password ');
+    return false;
+  }
+  if (!this.password.confirmPassword) {
+    alert('Enter re-enter password ');
+    return false;
+  }
+  return true;
+}
   onNoClick(): void {
     this.dialogRef.close();
   }

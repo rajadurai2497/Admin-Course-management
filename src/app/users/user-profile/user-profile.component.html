@@ -1,49 +1,62 @@
 <div class="row user-profile-div" *ngIf="userProfile">
   <div class="col-sm-12">
-    <button mat-button (click)="editProfile()">
-      <mat-icon>edit</mat-icon>
-    </button>
     <div class="card">
-    <div class="user-about-block text-center">
-      <div class="row align-items-end">
-        <div class="col"></div>
-        <div class="col">
-          <div class="position-relative d-inline-block">
-            <img class="img-radius img-fluid wid-50 m-t-20" src="assets/images/user/userimg.png" alt="User image">
-          </div>
-        </div>
-        <div class="col"></div>
+      <div class="col-50">
+        <button mat-button (click)="editProfile()">
+          <mat-icon>edit</mat-icon>
+        </button>
       </div>
-    </div>
-    <div class="text-center">
-      <h5 class="mb-1 mt-3 ">{{userProfile.userName}}</h5>
-    </div>
-    <hr class="wid-80 b-wid-3 my-4 hr-m">
-    
+      <div class="user-about-block text-center">
+        <div class="row align-items-end">
+          <div class="col"></div>
+          <div class="col">
+            <div class="position-relative d-inline-block">
+              <img class="img-radius img-fluid wid-50 m-t-20" src="assets/images/user/userimg.png" alt="User image">
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+      <div class="text-center">
+        <h5 class="mb-1 mt-3 ">{{userProfile.userName}}</h5>
+      </div>
+      <hr class="wid-80 b-wid-3 my-4 hr-m">
+
+      <div class="card-profile">
+
       <div class="form-group">
-          <label class=" font-weight-bolder">Name</label>
-          <div class="">
+        <div class="row ">
+          <div class="col-md-5  font-weight-bolder">Name</div>
+          <div class="col-md-7">
             {{userProfile.name}}
           </div>
+        </div>
       </div>
-        <div class="form-group ">
-          <label class=" font-weight-bolder">Email</label>
-          <div class="">
+      <div class="form-group ">
+        <div class="row ">
+          <div class="col-md-5  font-weight-bolder">Email</div>
+          <div class="col-md-7 ">
             {{userProfile.emailId}}
           </div>
         </div>
-        <div class="form-group">
-          <label class=" font-weight-bolder">Phone Number</label>
-          <div class="">
+      </div>
+      <div class="form-group">
+        <div class="row ">
+          <div class="col-md-5  font-weight-bolder">Phone Number</div>
+          <div class="col-md-7 ">
             {{userProfile.phoneNumber}}
           </div>
         </div>
-        <div class="form-group ">
-          <label class=" font-weight-bolder">City</label>
-          <div class="">
+      </div>
+      <div class="form-group ">
+        <div class="row">
+          <div class=" col-md-5  font-weight-bolder">City</div>
+          <div class="col-md-7 ">
             {{userProfile.city}}
           </div>
         </div>
+      </div>
+    </div>
       <p class="frame"></p>
     </div>
   </div>

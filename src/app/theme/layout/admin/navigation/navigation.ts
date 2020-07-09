@@ -30,6 +30,7 @@ const NavAdmin=[
           title: 'Dashboard',
           type: 'item',
           icon: 'feather icon-home',
+          classes: 'nav-item',
           url: '/dashboard/admin'
         },
         {
@@ -37,6 +38,7 @@ const NavAdmin=[
           title: 'Course management',
           type: 'item',
           icon: 'feather icon-book',
+          classes: 'nav-item',
           url: '/dashboard/admin/course-management'
         },
         {
@@ -44,6 +46,7 @@ const NavAdmin=[
           title: 'Purchase management',
           type: 'item',
           icon: 'feather icon-shopping-cart',
+          classes: 'nav-item',
           url: '/dashboard/admin/purchase-management'
         },
         {
@@ -51,6 +54,7 @@ const NavAdmin=[
           title: 'User management',
           type: 'item',
           icon: 'feather icon-user',
+          classes: 'nav-item',
           url: '/dashboard/admin/user-management'
         },
         {
@@ -58,6 +62,7 @@ const NavAdmin=[
           title: 'Community User',
           type: 'item',
           icon: 'feather icon-users',
+          classes: 'nav-item',
           url: '/dashboard/admin/community-user'
         }
 ]
@@ -85,7 +90,6 @@ const NavLearner=[
 @Injectable()
 export class NavigationItem {
   public get() {
-    // return NavAdmin;
     return NavLearner;
   }
   public getAdmin() {

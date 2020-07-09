@@ -4,11 +4,11 @@
       <div class="col-sm-10 auth-content w-auto">
         <img src="assets/images/loogo.png" alt="" class="imgfluid" />
         <h1 class="text-black my-4">Welcome Back!</h1>
-        <h5 class="text-black font-size-20 text-align">
+        <h6 class="text-black  text-align">
           Lurecap welcomes you to our share market trading training classes. We have best trainers who are highly
           qualified and experienced and have relevant industry exposure in their fields of expertise, capable of solving
-          all your practical queries
-        </h5>
+          all your practical queries.
+        </h6>
       </div>
     </div>
     <div class="auth-side-form">
@@ -22,9 +22,9 @@
           <input type="text" class="form-control" placeholder="Enter Your Email" name="username" #username="ngModel"
             required [(ngModel)]="loginform.username" />
         </div>
-        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alerts m-b-20">
           <div *ngIf="username.errors.required">
-            username is required.
+            Email is required*
           </div>
         </div>
         <div class="input-group mb-4">
@@ -34,9 +34,9 @@
           <input type="password" class="form-control" placeholder="Password" name="password" required
             [pattern]="passwordpattern" [(ngModel)]="loginform.password" #password="ngModel" />
         </div>
-        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alerts m-b-20">
           <div *ngIf="password.errors.required">
-            Password is required.
+            Password is required*
           </div>
         </div>
         <!-- <div class="form-group text-left mt-2">

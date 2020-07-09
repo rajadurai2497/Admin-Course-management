@@ -47,7 +47,7 @@ export class AuthenticationService {
             this.currentUserSubject.next(user);
             return user;
           } else {
-            alert('login failed');
+            alert(user.error);
           }
         }),
       );
