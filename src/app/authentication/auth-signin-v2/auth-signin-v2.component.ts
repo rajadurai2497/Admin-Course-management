@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/theme/shared/service/authenticati
 import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AuthLoginModel } from 'src/app/theme/shared/model/auth-login/auth-login-model';
+import { ValidationService } from 'src/app/services/validation.service';
 
 @Component({
   selector: 'app-auth-signin-v2',
@@ -18,9 +19,9 @@ export class AuthSigninV2Component implements OnInit {
   // password: string;
   isBusy: boolean;
   isInvalidCredentials: boolean;
-  passwordpattern:'((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})';
+  passwordpattern: '((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})';
 
-  constructor(private authenticationService: AuthenticationService, private readonly _router: Router) {
+  constructor(private authenticationService: AuthenticationService,private readonly _validation: ValidationService, private readonly _router: Router) {
     // this.userName = '';
     // this.password = '';
   }
@@ -39,18 +40,19 @@ export class AuthSigninV2Component implements OnInit {
       alterEgo: new FormControl(this.loginform.alterEgo),
     });
   }
-  get username() { return this.loginForm.get('username');} 
+  get username() { return this.loginForm.get('username'); }
   get password() { return this.loginForm.get('password'); }
 
 
   public login(): void {
+    if(this.validateLogin()){
     if (this.loginform.username !== '' && this.loginform.password !== '') {
       this.authenticationService.login(this.loginform.username, this.loginform.password).subscribe((data) => {
         if (data && data.isAuthorize) {
-          if(data.roles=='Admin'){
+          if (data.roles == 'Admin') {
             this._router.navigate(['/dashboard/admin']);
           }
-          else{
+          else {
             this._router.navigate(['/dashboard/learner/mycourse']);
           }
 
@@ -58,6 +60,15 @@ export class AuthSigninV2Component implements OnInit {
       });
     }
   }
+  }
+  validateLogin() {
+    if (!this.loginform.username && !this.loginform.password) {
+      alert('Field Empty');
+      return false;
+    }
+    return true;
+  }
+
 }
 
 

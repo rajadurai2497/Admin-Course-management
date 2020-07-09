@@ -63,14 +63,8 @@ export class NavRightComponent implements OnInit, DoCheck {
   }
   changePassword(){
     let dialogRef = this.dialog.open(ChangePasswordComponent, {
-      height: '300px',
-      width: '500px',
+      height: '400px',
+      width: '400px',
     });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.getAllCourselist();
-    //   }
-    // });
-
   }
 }
