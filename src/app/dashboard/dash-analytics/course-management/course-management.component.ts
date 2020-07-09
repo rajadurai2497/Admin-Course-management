@@ -49,6 +49,7 @@ export class CourseManagementComponent implements OnInit {
       if (data && data.result) {
         this.allCourse = data.allCourse;
         this.dataSource = new MatTableDataSource<AllCourse>(this.allCourse);
+        console.log('Add',this.dataSource)
         this.dataSource.paginator = this.paginator;
       }
     });

@@ -42,5 +42,16 @@ export class UserMycourseService extends ApiService {
     console.log(apiUrl)
     return this.doGet(apiUrl,true);
   }
+
+
+  getAttachmentSlide(slideAttachmentId): Promise<any>{
+    // const currentUser=JSON.parse(localStorage.getItem('currentUser'));
+    // currentUser.useId
+    const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/GetSlideAttachmentBySlideId?SlideId=${slideAttachmentId}`;
+    // const apiUrl=ROUTE_CONFIG.BaseUrl+'/v1/Course/GetChapterCounterByUserId';
+
+    console.log(apiUrl)
+    return this.doGet(apiUrl,true);
+  }
   
 }

@@ -43,6 +43,7 @@ export class ChapterEntity {
     chapterName: string;
     orderNo:number;
     markCompleted:boolean;
+    slides: SlideEntity[];
     constructor() {
 
     }

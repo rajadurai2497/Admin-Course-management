@@ -13,56 +13,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   providers: [CourseManagementService]
 })
 
-// export class AddCourseManagementComponent implements OnInit {
-
-//   course: FormGroup;
-//   basicContent: string;
-//   courseName: string;
-//   abtCourse: string;
-//   weprovide: string;
-//   price: number;
-
-//   displayedColumns: string[];
-//   addCourses: AllCourse[] = [];
-//   dataSource = new MatTableDataSource<AllCourse>();
-
-
-//   constructor(public dialogRef: MatDialogRef<AddCourseManagementComponent>,
-//      private readonly _courseManagementService: CourseManagementService) { }
-
-//   ngOnInit(): void {
-//     this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'description', 'provideWhat'];
-//     this.addCourse();
-//   }
-
-//   public addCourse(): void {
-//     const course = {
-//       courseMasterId: 0,
-//       courseName: this.courseName,
-//       courseAmount: this.price,
-//       description: this.abtCourse,
-//       provideWhat: this.weprovide
-//     }
-//     this._courseManagementService.addCourse(course).then((data) => {
-//       if (data && data.result) {
-//         this.dialogRef.close(true);
-//         alert('Course added successfully...!')
-//       }
-//     });
-//   }
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-
-// }
-
-
 export class AddCourseManagementComponent implements OnInit {
 
-  adCourse: AddCourse= new AddCourse;
+  adCourse: AddCourse = new AddCourse;
   courseForm: FormGroup;
 
-  displayedColumns: string[];
   addCourses: AllCourse[] = [];
   dataSource = new MatTableDataSource<AllCourse>();
 
@@ -87,8 +42,6 @@ export class AddCourseManagementComponent implements OnInit {
         Validators.required,
       ]),
     });
-    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'description', 'provideWhat'];
-    // this.addCourse();
   }
 
   get basicContent() { return this.courseForm.get('tbasicContent'); }

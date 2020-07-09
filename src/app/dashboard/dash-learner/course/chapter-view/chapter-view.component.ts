@@ -19,7 +19,7 @@ export class ChapterViewComponent implements OnInit {
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   displayedColumns: string[] = ['markCompleted','position', 'chaptername', 'action'];
-
+  
   gotodetails(ChapterId) {
     this._userMycourseService.getSlideByChapter(ChapterId).then((data) => {
       this.courseTopicList = data;
@@ -36,6 +36,6 @@ export class ChapterViewComponent implements OnInit {
   constructor(private readonly _userMycourseService: UserMycourseService) {}
 
   ngOnInit() {
-    // this.getCourseChapterList(courseMasterId);
+   
   }
 }

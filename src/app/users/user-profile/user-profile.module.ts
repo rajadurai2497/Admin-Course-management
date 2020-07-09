@@ -11,7 +11,7 @@ import { EditChapterComponent } from 'src/app/dashboard/dash-analytics/course-ma
 import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
-  declarations: [UserProfileComponent, EditUserprofileComponent, ChangePasswordComponent],
+  declarations: [UserProfileComponent, EditUserprofileComponent],
   imports: [
     CommonModule,
     UserProfileRoutingModule,

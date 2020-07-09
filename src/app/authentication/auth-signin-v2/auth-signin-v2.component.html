@@ -53,19 +53,13 @@
             Password is required.
           </div>
         </div>
-        <div class="form-group text-left mt-2">
-          <div class="checkbox checkbox-primary d-inline">
-            <input type="checkbox" name="checkbox-p-1" id="checkbox-p-1" checked="" />
-            <label for="checkbox-p-1" class="cr">Save credentials</label>
-          </div>
-        </div> 
+
         <button class="btn btn-block btn-primary mb-0" (click)="login()">Signin</button>
         <div class="text-center">
           <div class="my-4"></div>
-          <p class="mb-6 text-muted">
+          <!-- <p class="mb-6 text-muted"> -->
             <a [routerLink]="['/auth/reset-password']" class="f-w-400">Forgot Password?</a>
-          </p>
-          <!-- <p class="mb-5 text-muted"><a class="f-w-400">Don’t have an account?</a></p> -->
+          <!-- </p> -->
         </div>
       </div>
     </div>

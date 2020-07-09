@@ -2,8 +2,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material';
 import { CourseManagementService } from 'src/app/services/course-management.service';
-import { AllCourse } from 'src/app/models/course-management.model';
-import { CloseScrollStrategy } from '@angular/cdk/overlay';
+import { AllCourse, ChapterEntity, SlideEntity } from 'src/app/models/course-management.model';
+
 
 
 @Component({
@@ -22,24 +22,27 @@ export class PreviewCourseComponent implements OnInit {
   @Input() course: AllCourse;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
+  allChapter: ChapterEntity[];
+  displayedColumns: string[];
 
   isViewDetails = false;
   isChapterDetails = false;
-  isEditTopic = false
+  isEditTopic = false;
+  dataSource = new MatTableDataSource<ChapterEntity>();
+  currentChapter: ChapterEntity;
 
-
-
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['id', 'chaptername'];
-  expandedElement: PeriodicElement | null;
+  // dataSource = ELEMENT_DATA;
+  // columnsToDisplay = ['id', 'chaptername'];
+  expandedElement: ChapterEntity | null;
 
 
   gotodetails() {
     this.isViewDetails = true;
   }
 
-  gotochapter() {
+  gotochapter(chapter) {
     this.isChapterDetails = true;
+    this.currentChapter = chapter;
   }
 
 
@@ -47,32 +50,39 @@ export class PreviewCourseComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.course)
-    this.getChaptersList()
-
+    this.displayedColumns = ['chapterId', 'chapterName'];
+    this.getCourseChapters()
   }
 
   getChaptersList() {
     this._courseManagementService.getCourseChapters(this.course.courseMasterId).then(data => {
+      if (data && data.result) {
+
+      }
       console.log(data)
     })
   }
 
-}
 
-export interface PeriodicElement {
-  id: number
-  chaptername: string
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    id: 1,
-    chaptername: "Oops concept"
-  }, {
-    id: 2,
-    chaptername: "digital Marketting"
+  public getCourseChapters(): void {
+    this._courseManagementService.getCourseChapters(this.course.courseMasterId).then((data) => {
+      if (data && data.result) {
+        this.allChapter = data.chapterListByCourse;
+        this.allChapter.forEach(chapter => {
+          chapter.slides = [];
+          data.slideListByChapter.forEach(slide => {
+            if (slide.chapterId == chapter.chapterId) {
+              chapter.slides.push(slide);
+            }
+          });
+        });
+        this.dataSource = new MatTableDataSource<ChapterEntity>(this.allChapter);
+        console.log('my msg', this.dataSource)
+      }
+    });
   }
-];
+
+}
 
 
 

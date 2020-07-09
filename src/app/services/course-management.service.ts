@@ -26,16 +26,25 @@ export class CourseManagementService extends ApiService {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/DeleteCourse?CourseMasterId=`+courseMasterId;
     return this.doGet(apiUrl, true);
   }
-  deleteChapter(courseMasterId): Promise<any> {
-    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/DeleteChapter?CourseMasterId=`+courseMasterId;
+  deleteChapter(chapterId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/DeleteChapter?ChapterId=`+chapterId;
     return this.doGet(apiUrl, true);
   }
-  deleteTopic(chapterId): Promise<any> {
-    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/DeleteSlide?CourseMasterId=`+chapterId;
+  deleteTopic(slideId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/DeleteSlide?SlideId=`+slideId;
     return this.doGet(apiUrl, true);
   }
   getCourseChapters(slideId): Promise<any> {
-    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetCourseChapterByCourseId?CourseMasterId=`+slideId;
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/GetCourseGetChapterGetSlide?CourseMasterId=`+slideId;
     return this.doGet(apiUrl, true);
   }
+  updateChapter(chapter): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/CreateNewChapterAndSlide`;
+    return this.doPost(apiUrl,chapter, true);
+  }
+  updateTopic(topic): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/CreateNewChapterAndSlide`;
+    return this.doPost(apiUrl,topic, true);
+  }
+
 }

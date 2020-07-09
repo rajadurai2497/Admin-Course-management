@@ -1,7 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { EditChapterComponent } from '../edit-chapter/edit-chapter.component';
 import { CourseManagementService } from 'src/app/services/course-management.service';
+import { ChapterEntity, SlideEntity } from 'src/app/models/course-management.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -9,55 +11,59 @@ import { CourseManagementService } from 'src/app/services/course-management.serv
   styleUrls: ['./chapter-detail.component.scss']
 })
 export class ChapterDetailComponent implements OnInit {
-  isEditTopic=false;
-  isAddTopic=false;
+  @Input() chapter: ChapterEntity;
+  topic : SlideEntity;
+  isEditTopic = false;
+  isAddTopic = false;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   dialogRef: any;
-  
-  constructor(private dialog:MatDialog,private readonly _courselistService: CourseManagementService) { }
-  
-  edittopic(){
-    this.isEditTopic=true;
+
+  constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService,private sanitizer: DomSanitizer) { }
+
+  edittopic(slide) {
+    this.isEditTopic = true;
   }
-  editChapter(){
+  editChapter() {
     let dialogRef = this.dialog.open(EditChapterComponent, {
       height: '300px',
       width: '500px',
     });
   }
-  
-  addtopic(){
-    this.isAddTopic=true;
+
+  addtopic() {
+    this.isAddTopic = true;
   }
 
   ngOnInit() {
   }
 
-  deleteChapter(chapter): void {
-    if(confirm('Are you sure you want to delete this course?'))
-    this._courselistService.deleteCourse(chapter.courseMasterId).then((data) => {
-      if (data && data.result) {
-        // this.getAllCourselist();
-        alert("Chapter deleted Successfully.....")
-      }
-      else{
-        alert("Unable to delete Chapter")
-      }
-    });
+  deleteChapter(): void {
+    if (confirm('Are you sure you want to delete this chapter?'))
+      this._courselistService.deleteChapter(this.chapter.chapterId).then((data) => {
+        if (data && data.result) {
+          alert("Chapter deleted Successfully.....")
+          this.isDetailsExit.emit(true)
+        }
+        else {
+          alert("Unable to delete Chapter")
+        }
+      });
   }
 
   deleteTopic(topic): void {
-    if(confirm('Are you sure you want to delete this course?'))
-    this._courselistService.deleteCourse(topic.courseMasterId).then((data) => {
-      if (data && data.result) {
-        // this.getAllCourselist();
-        alert("Topic deleted Successfully.....")
-      }
-      else{
-        alert("Unable to delete Topic")
-      }
-    });
+    if (confirm('Are you sure you want to delete this topic?'))
+      this._courselistService.deleteTopic(topic.slideId).then((data) => {
+        if (data && data.result) {
+          // this.getAllCourselist();
+          alert("Topic deleted Successfully.....")
+        }
+        else {
+          alert("Unable to delete Topic")
+        }
+      });
   }
-
+  videoUrl(url){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
+  }
 }
