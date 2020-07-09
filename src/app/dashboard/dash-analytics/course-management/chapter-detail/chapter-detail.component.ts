@@ -4,6 +4,7 @@ import { EditChapterComponent } from '../edit-chapter/edit-chapter.component';
 import { CourseManagementService } from 'src/app/services/course-management.service';
 import { ChapterEntity, SlideEntity } from 'src/app/models/course-management.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AddAttachmentComponent } from '../add-attachment/add-attachment.component';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -19,7 +20,9 @@ export class ChapterDetailComponent implements OnInit {
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   dialogRef: any;
 
-  constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService,private sanitizer: DomSanitizer) { }
+  constructor(private dialog: MatDialog, 
+    private readonly _courselistService: CourseManagementService,
+    private sanitizer: DomSanitizer) { }
 
   edittopic(slide) {
     this.isEditTopic = true;
@@ -36,6 +39,12 @@ export class ChapterDetailComponent implements OnInit {
   addtopic(slide) {
     this.isAddTopic = true;
   }
+  addAttachment(){
+  let dialogRef = this.dialog.open(AddAttachmentComponent, {
+    height: '500px',
+    width: '500px',
+  });
+}
 
   ngOnInit() {
   }

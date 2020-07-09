@@ -4,6 +4,7 @@ import { CourseManagementService } from 'src/app/services/course-management.serv
 import { AllCourse, AddCourse } from 'src/app/models/course-management.model';
 import { MatTableDataSource } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ValidationService } from 'src/app/services/validation.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class AddCourseManagementComponent implements OnInit {
 
 
   constructor(public dialogRef: MatDialogRef<AddCourseManagementComponent>,
-    private readonly _courseManagementService: CourseManagementService) { }
+    private readonly _courseManagementService: CourseManagementService,
+    private readonly _validation: ValidationService) { }
 
   ngOnInit(): void {
     this.courseForm = new FormGroup({
@@ -61,15 +63,45 @@ export class AddCourseManagementComponent implements OnInit {
       description: this.adCourse.abtCourse,
       provideWhat: this.adCourse.weprovide
     }
+    if(this.validationaddCourse()){
     this._courseManagementService.addCourse(course).then((data) => {
       if (data && data.result) {
         this.dialogRef.close(true);
         alert('Course added successfully...!')
       }
+      else{
+        alert('Unable to add Course')
+      }
     });
+  }
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
+  validationaddCourse() {
+    if (!this._validation.isAlphaNumeric(this.adCourse.price)) {
+      alert('accept number only');
+      return false;
+    }
+    if (!this.adCourse.courseName) {
+      alert('Course Name field empty');
+      return false;
+    }
+    if (!this.adCourse.abtCourse) {
+      alert('About Course field empty');
+      return false;
+    }
+    if (!this.adCourse.weprovide) {
+      alert('What We Provide field empty');
+      return false;
+    }
+    if (!this.adCourse.price) {
+      alert('price field empty');
+      return false;
+    }
+   
+    return true;
+  }
+
 
 }

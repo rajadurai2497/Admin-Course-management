@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { MatTableDataSource } from '@angular/material';
 import { CourseManagementService } from 'src/app/services/course-management.service';
 import { AllCourse, ChapterEntity, SlideEntity } from 'src/app/models/course-management.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 
@@ -46,10 +47,10 @@ export class PreviewCourseComponent implements OnInit {
   }
 
 
-  constructor(private readonly _courseManagementService: CourseManagementService) { }
+  constructor(private readonly _courseManagementService: CourseManagementService,
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    console.log(this.course)
     this.displayedColumns = ['chapterId', 'chapterName'];
     this.getCourseChapters()
   }
@@ -77,9 +78,11 @@ export class PreviewCourseComponent implements OnInit {
           });
         });
         this.dataSource = new MatTableDataSource<ChapterEntity>(this.allChapter);
-        console.log('my msg', this.dataSource)
       }
     });
+  }
+  textValue(text){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(text)
   }
 
 }
