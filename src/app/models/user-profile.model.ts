@@ -7,6 +7,7 @@ export interface UserProfile {
     emailId: string;
     phoneNumber: string;
     city: string;
+    
   }
   
 

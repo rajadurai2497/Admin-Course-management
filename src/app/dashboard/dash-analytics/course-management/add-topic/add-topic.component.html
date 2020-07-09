@@ -1,30 +1,34 @@
 <div class="form-group m-t-30">
     <label class="form-label">Topics</label>
-    <ng-container *ngFor="let topic of topicsList">
+    <ng-container *ngFor="let slide of chapterMap.slideEntityObj">
       <mat-card>
         <div class="row">
           <div class="col-md-6 form-group">
             <label>Topic Name</label>
-            <input type="text" class="form-control" placeholder="Topic Name" [(ngModel)]="topic.name">
-          </div>
-          <div class="col-md-6 form-group">
-            <label>URL link</label>
-            <input type="text" class="form-control" placeholder="URL link" [(ngModel)]="topic.link">
+            <input type="text" class="form-control" placeholder="Topic Name" name="topicName"
+              [(ngModel)]="slide.slideName">
           </div>
 
           <div class="col-md-6 form-group">
             <label>Order No</label>
-            <input type="text" class="form-control" placeholder="Order No" [(ngModel)]="topic.orderno">
+            <input type="number" class="form-control" placeholder="Order No" name="orderNo"
+              [(ngModel)]="slide.orderNo">
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label>URL link</label>
+            <input type="text" class="form-control" placeholder="URL link" name="topicLink"
+              [(ngModel)]="slide.videoURL">
           </div>
 
           <div class="col-md-12 form-group">
             <label>Topic Description</label>
-            <app-tinymce [(ngModel)]='topic.description' #tinymce='tinymce'></app-tinymce>
+            <app-tinymce #tinymce='tinymce' name="topicDesc" [(ngModel)]="slide.slideDescription"></app-tinymce>
           </div>
 
           <div class="col-md-12 form-group">
             <label>Add Files</label>
-            <div ng-app="MyApp" ng-controller="AppCtrl" [(ngModel)]='topic.browse' layout-margin layout-padding>
+            <div ng-app="MyApp" ng-controller="AppCtrl" layout-margin layout-padding>
               <input class="ng-hide" id="input-file-id" multiple type="file" />
               <label for="input-file-id" class="md-button md-raised md-primary"></label>
             </div>
@@ -41,6 +45,6 @@
   </div>
 
   <div class="m-t-30">
-    <button mat-button class="btn btn-primary float-left">Save</button>
+    <button mat-button class="btn btn-primary float-left"(click)="updateChapter()" >Save</button>
     <button mat-button class="btn btn-primary float-right" (click)="isDetailsExit.emit(true)">Cancel</button>
   </div> 
