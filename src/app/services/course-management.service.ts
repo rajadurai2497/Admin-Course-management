@@ -54,5 +54,8 @@ export class CourseManagementService extends ApiService {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/CreateNewChapterAndSlide`;
     return this.doPost(apiUrl, topic, true);
   }
-
+  getChapterDetails(chapterId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetCourseSlideByChapterId?ChapterId=`+chapterId;
+    return this.doGet(apiUrl, true);
+  }
 }

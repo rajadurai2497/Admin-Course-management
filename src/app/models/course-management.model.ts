@@ -5,11 +5,11 @@ export class AllCourse {
     description: string;
     provideWhat: string;
     learnersNumber: string;
-    constructor(){}
+    constructor() { }
 }
 
 export class AddCourse {
-    courseMasterId:string;
+    courseMasterId: string;
     basicContent: string;
     courseName: string;
     abtCourse: string;
@@ -33,7 +33,9 @@ export class SlideEntity {
     videoUrl: string;
     slideDescription: string;
     orderNo: number;
-    fileAddFlag: string
+    fileAddFlag: string;
+    // slideAttachments?: SlideAttachement[];
+    slideAttachments?: SlideAttachement;
     constructor() {
 
     }
@@ -74,8 +76,16 @@ export class ChapterEntity {
 //     }
 // }
 
+export class SlideAttachement {
+    chapterSlideAttachementExactName: string;
+    chapterSlideAttachementFilePath: string;
+    chapterSlideAttachementFileType: string;
+    chapterSlideAttachementId: number;
+    chapterSlideAttachementImageName: string;
+    chapterSlideAttachementName: string;
+    slideId: number;
+    virtualPath: string;
+    constructor() {
 
-
-  
-
-
+    }
+}

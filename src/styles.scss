@@ -7,3 +7,19 @@
 mat-card {
   width: 100%;
 }
+table.mat-table {
+  thead {
+    background-color: #cecece;
+    th.mat-header-cell {
+      text-transform: capitalize;
+      font-weight: 600;
+      color: #000;
+    }
+  }
+  tbody {
+    tr:nth-child(even) {
+      background: #ebebeb;
+    }
+  }
+}
+

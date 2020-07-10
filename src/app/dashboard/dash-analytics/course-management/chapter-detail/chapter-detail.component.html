@@ -42,6 +42,17 @@
             <div>URL Link: {{slide.videoUrl}}</div>
             <div>Description:<br><div [innerHTML]="slide.slideDescription"></div></div>
         </div>
+        <!-- <ng-container *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
+            <p>Attachements:</p>
+            <div *ngFor="let attachment of slide.slideAttachments">
+                {{attachment.chapterSlideAttachementExactName}}
+            </div>
+        </ng-container> -->
+
+        <ng-container *ngIf="slide.slideAttachments">
+            <p>Attachements:</p>
+            <p>{{slide.slideAttachments.chapterSlideAttachementExactName}}</p>
+        </ng-container>
     </div>
 </mat-card>
 </div>
