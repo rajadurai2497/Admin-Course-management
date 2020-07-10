@@ -92,7 +92,7 @@ export class ChapterDetailComponent implements OnInit {
       });
   }
   getChapterDetails() {
-    this._courselistService.getChapterDetails(this.chapter.chapterId).then((data) => {
+    this._courselistService.getCourseChapters(this.chapter.courseMasterId,this.chapter.chapterId).then((data) => {
       if (data && data.result) {
           console.log(data)
       }
