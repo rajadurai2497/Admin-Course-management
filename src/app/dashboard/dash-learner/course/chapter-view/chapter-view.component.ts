@@ -23,7 +23,7 @@ export class ChapterViewComponent implements OnInit {
   gotodetails(ChapterId) {
     this._userMycourseService.getSlideByChapter(ChapterId).then((data) => {
       this.courseTopicList = data;
-      console.log(data);
+      // console.log(data);
     });
     this.isShowChapter = true;
   }
@@ -32,7 +32,6 @@ export class ChapterViewComponent implements OnInit {
     this._userMycourseService.completedChapterCheckbox(chapterId)
     console.log(chapterId)
   }
-
 
   constructor(private readonly _userMycourseService: UserMycourseService) {}
 
