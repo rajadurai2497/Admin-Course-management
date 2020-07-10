@@ -8,6 +8,7 @@ export interface AllCourse {
 }
 
 export class AddCourse {
+    courseMasterId:string;
     basicContent: string;
     courseName: string;
     abtCourse: string;

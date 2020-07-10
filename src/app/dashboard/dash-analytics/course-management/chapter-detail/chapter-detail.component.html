@@ -21,7 +21,7 @@
 
 <mat-card class="col-lg-12 " *ngFor="let slide of chapter.slides">
     <div class=" btn-frm btn-shadow">
-        <button mat-button title="add attachement" (click)="addAttachment()">
+        <button mat-button title="add attachement" (click)="addAttachment(slide)">
             <mat-icon>attach_file</mat-icon>
         </button>
         <button mat-button title="Delete" (click)="deleteTopic(slide)">

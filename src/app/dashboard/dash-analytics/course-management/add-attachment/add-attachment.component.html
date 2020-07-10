@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-md-2">
                             <button class="float-right" mat-button (click)="deleteFile(file)">
-                                <mat-icon>delete</mat-icon>
+                                <mat-icon>close</mat-icon>
                             </button>
                         </div>
                     </div>
@@ -24,4 +24,8 @@
             </div>
         </div>
     </mat-card>
+    <div mat-dialog-actions class="float-right">
+        <button mat-raised-button [mat-dialog-close]="true" color="warn" cdkFocusInitial>Cancel</button>
+        <button mat-raised-button color="primary" (click)="addAttachment()">Upload</button>
+    </div>
 </div>

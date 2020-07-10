@@ -13,6 +13,7 @@ import { EditTopicComponent } from './edit-topic/edit-topic.component';
 import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
 import { AddAttachmentComponent } from './add-attachment/add-attachment.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 @NgModule({
   declarations: [
     AddCourseManagementComponent,
@@ -23,13 +24,14 @@ import { AddAttachmentComponent } from './add-attachment/add-attachment.componen
     EditTopicComponent,
     EditChapterComponent,
     AddTopicComponent,
-    AddAttachmentComponent],
+    AddAttachmentComponent,
+    EditCourseComponent],
   imports: [
     CommonModule,
     SharedModule,
     CourseManagementRoutingModule,
     TinymceModule
   ],
-  entryComponents: [AddCourseManagementComponent,EditChapterComponent,AddAttachmentComponent]
+  entryComponents: [AddCourseManagementComponent,EditChapterComponent,AddAttachmentComponent,EditCourseComponent]
 })
 export class CourseManagementModule { }

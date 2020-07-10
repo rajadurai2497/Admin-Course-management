@@ -39,10 +39,11 @@ export class ChapterDetailComponent implements OnInit {
   addtopic(slide) {
     this.isAddTopic = true;
   }
-  addAttachment(){
+  addAttachment(slide){
   let dialogRef = this.dialog.open(AddAttachmentComponent, {
     height: '500px',
     width: '500px',
+    data:slide
   });
 }
 
