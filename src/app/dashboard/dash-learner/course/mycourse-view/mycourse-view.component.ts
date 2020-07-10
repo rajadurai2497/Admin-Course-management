@@ -13,9 +13,11 @@ export class MycourseViewComponent implements OnInit {
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() courseTopicList: any;
+  slideAttachmentdata:any[]=[];
   videoUrl: any = '';
   description: any = '';
   slideName: any = '';
+  slideAttachment:any='';
   count: number = 1;
 
   constructor(private readonly _userMycourseService: UserMycourseService,public sanitizer: DomSanitizer) { }
@@ -28,8 +30,9 @@ export class MycourseViewComponent implements OnInit {
     this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[i].videoUrl);
     this.description = this.courseTopicList.purchasedSlideList[i].description;
     this.slideName = this.courseTopicList.purchasedSlideList[i].slideName;
+    this.slideAttachment= this.courseTopicList.purchasedSlideList[i].virtualPath;
     console.log("slide id",this.courseTopicList.purchasedSlideList[i].slideId);
-    this.getAttachmentSlide(this.courseTopicList.purchasedSlideList[i].slideId);
+    // this.getAttachmentSlide(this.courseTopicList.purchasedSlideList[i].slideId);
   }
 
   public nextVideo(): void {
@@ -41,8 +44,8 @@ export class MycourseViewComponent implements OnInit {
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[i].videoUrl);
       this.description = this.courseTopicList.purchasedSlideList[i].description;
       this.slideName = this.courseTopicList.purchasedSlideList[i].slideName;
-      this.getAttachmentSlide(this.courseTopicList.purchasedSlideList[i].slideId);
-  
+      this.slideAttachment= this.courseTopicList.purchasedSlideList[i].virtualPath;
+      // this.getAttachmentSlide(this.courseTopicList.purchasedSlideList[i].slideId);
       console.log(this.slideName)
     }
   }
@@ -53,7 +56,8 @@ export class MycourseViewComponent implements OnInit {
     console.log(this.videoUrl)
     this.description = item.slideDescription;
     this.slideName = item.slideName;
-    this.getAttachmentSlide(item.slideId);
+    this.slideAttachment=item.virtualPath
+    // this.getAttachmentSlide(item.slideId);
     // if (item.videoUrl != null && item.slideDescription != null) {
     //   this.videoUrl = item.videoUrl;
     //   console.log(this.videoUrl)
@@ -63,14 +67,11 @@ export class MycourseViewComponent implements OnInit {
     // }
   }
 
-  getAttachmentSlide(slideAttachmentId):void{
-    console.log(slideAttachmentId)
-    this._userMycourseService.getAttachmentSlide(slideAttachmentId).then((data) => {
-      // this.courseChapterList = data;
-      console.log(data);
-    });
-
-  }
-
-
+  // getAttachmentSlide(slideAttachmentId):void{
+  //   console.log(slideAttachmentId)
+  //   this._userMycourseService.getAttachmentSlide(slideAttachmentId).then((data) => {
+  //     // this.slideAttachmentdata = data;
+  //     console.log(data);
+  //   });
+  // }
 }

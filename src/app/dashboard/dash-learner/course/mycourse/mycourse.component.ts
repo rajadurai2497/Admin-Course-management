@@ -18,7 +18,7 @@ export class MycourseComponent implements OnInit {
   isShowDetails = false;
   courseChapterList: any[] = [];
 
-  constructor(private readonly _userMycourseService: UserMycourseService) {}
+  constructor(private readonly _userMycourseService: UserMycourseService) { }
 
   ngOnInit(): void {
     this.displayedColumns = ['courseName', 'totalChapter', 'completedChapter', 'pendingChapter'];
