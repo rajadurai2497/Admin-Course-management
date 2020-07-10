@@ -13,8 +13,13 @@ export class FileUploadService extends ApiService {
     super(injector);
   }
 
+  // fileUpload(FormData, slide): Promise<any> {
+  //   const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/UploadMaterialFilesForSlide?SlideId=` + slide.slideId;
+  //   return this.doFormPost(apiUrl, FormData, true);
+  // }
+
   fileUpload(FormData, slide): Promise<any> {
-    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/UploadMaterialFilesForSlide?SlideId=` + slide.slideId;
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/CreateNewSlideAttachementsImage?SlideId=` + slide.slideId;
     return this.doFormPost(apiUrl, FormData, true);
   }
 }

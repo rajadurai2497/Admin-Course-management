@@ -51,7 +51,7 @@
   <ng-container matColumnDef="edit">
     <th mat-header-cell  *matHeaderCellDef > </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-button (click)="editCourse()">
+      <button mat-button (click)="editCourse(element)">
         <mat-icon>edit</mat-icon>
     </button>
     </td>

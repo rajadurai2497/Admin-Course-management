@@ -34,10 +34,16 @@ export class CourseManagementComponent implements OnInit {
     this.currentCourse = course;
     this.isShowDetails = true;
   }
-  editCourse(){
+  editCourse(course){
     let dialogRef = this.dialog.open(EditCourseComponent, {
       height: '500px',
       width: '800px',
+      data:course
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAllCourselist();
+      }
     });
   }
   addCourse() {

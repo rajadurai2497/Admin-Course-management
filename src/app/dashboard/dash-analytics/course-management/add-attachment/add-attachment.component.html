@@ -9,7 +9,8 @@
                 <h5 class="panel-title">Files</h5>
             </div>
             <div class="panel-body">
-                <div class=" " *ngFor="let file of fileList">
+            <mat-card class="mt-crd">
+                <div *ngFor="let file of fileList">
                     <div class="row">
                         <div class="col-md-10">
                             {{file.fileName}}
@@ -21,6 +22,7 @@
                         </div>
                     </div>
                 </div>
+            </mat-card>
             </div>
         </div>
     </mat-card>
