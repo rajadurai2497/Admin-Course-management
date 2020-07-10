@@ -36,6 +36,11 @@ export class ChapterDetailComponent implements OnInit {
       width: '500px',
       data: this.chapter
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getChapterDetails();
+      }
+    });
   }
 
   addtopic(slide) {
@@ -48,7 +53,9 @@ export class ChapterDetailComponent implements OnInit {
       data: slide
     });
     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
         this.getChapterDetails();
+      }
     });
   }
 
@@ -85,6 +92,7 @@ export class ChapterDetailComponent implements OnInit {
         if (data && data.result) {
           // this.getAllCourselist();
           alert("Topic deleted Successfully.....")
+          this.getChapterDetails();
         }
         else {
           alert("Unable to delete Topic")
@@ -92,13 +100,21 @@ export class ChapterDetailComponent implements OnInit {
       });
   }
   getChapterDetails() {
-    this._courselistService.getChapterDetails(this.chapter.chapterId).then((data) => {
+    this._courselistService.getCourseChapters(this.chapter.courseMasterId, this.chapter.chapterId).then((data) => {
       if (data && data.result) {
-          console.log(data)
+        data.chapterListByCourse.forEach(chapter => {
+          if (chapter.chapterId == this.chapter.chapterId) {
+            this.chapter = chapter;
+            this.chapter.slides = [];
+            data.slideListByChapter.forEach(slide => {
+              if (slide.chapterId = this.chapter.chapterId) {
+                this.chapter.slides.push(slide);
+              }
+            });
+          }
+        });
       }
-
     });
-
   }
   videoUrl(url) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url)

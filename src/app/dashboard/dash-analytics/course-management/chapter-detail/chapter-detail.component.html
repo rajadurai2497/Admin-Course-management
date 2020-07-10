@@ -1,66 +1,69 @@
 <div *ngIf="!isEditTopic && !isAddTopic">
-<div class="m-b-20">
-    <button mat-raised-button (click)="addtopic()" class="btn btn-primary">
-        <mat-icon>add</mat-icon> Add Topic
-      </button>
-<button mat-button class="btn btn-primary float-right" (click)="isDetailsExit.emit(true)">Back</button>  
-</div>
-<mat-card class="col-lg-12">
-    <div class="col-lg-9">
-        <h4>Chapter Name: {{chapter.chapterName}}</h4>
-    </div>
-    <div class=" btn-allignment">
-        <button mat-button (click)="deleteChapter()">
-            <mat-icon >delete</mat-icon>
+    <div class="m-b-20">
+        <button mat-raised-button (click)="addtopic()" class="btn btn-primary">
+            <mat-icon>add</mat-icon> Add Topic
         </button>
-        <button mat-button (click)="editChapter()">
-            <mat-icon>edit</mat-icon>
-        </button>
+        <button mat-button class="btn btn-primary float-right" (click)="isDetailsExit.emit(true)">Back</button>
     </div>
-</mat-card>
+    <mat-card class="col-lg-12">
+        <div class="col-lg-9">
+            <h4>Chapter Name: {{chapter.chapterName}}</h4>
+        </div>
+        <div class=" btn-allignment">
+            <button mat-button (click)="deleteChapter()">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-button (click)="editChapter()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+    </mat-card>
 
-<mat-card class="col-lg-12 " *ngFor="let slide of chapter.slides">
-    <div class=" btn-frm btn-shadow">
-        <button mat-button title="add attachement" (click)="addAttachment(slide)">
-            <mat-icon>attach_file</mat-icon>
-        </button>
-        <button mat-button title="Delete" (click)="deleteTopic(slide)">
-            <mat-icon>delete</mat-icon>
-        </button>
-        <button mat-button title="Edit" (click)="edittopic(slide)">
-            <mat-icon>edit</mat-icon>
-        </button>
-    </div>
-    <div class="row">
-        <div class="col-lg-8">
-            <iframe [src]="videoUrl(slide.videoUrl)" width="540" height="400" frameborder="0"
-                allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <mat-card class="col-lg-12 " *ngFor="let slide of chapter.slides">
+        <div class=" btn-frm btn-shadow">
+            <button mat-button title="add attachement" (click)="addAttachment(slide)">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+            <button mat-button title="Delete" (click)="deleteTopic(slide)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-button title="Edit" (click)="edittopic(slide)">
+                <mat-icon>edit</mat-icon>
+            </button>
         </div>
-        <div class="col-lg-4 m-t-40">
-            <!-- <div>Chapter Name: {{chapter.chapterName}}</div> -->
-            <div>Topic Name : {{slide.slideName}}</div>
-            <div>URL Link: {{slide.videoUrl}}</div>
-            <div>Description:<br><div [innerHTML]="slide.slideDescription"></div></div>
-        </div>
-        <!-- <ng-container *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
+        <div class="row">
+            <div class="col-lg-8">
+                <iframe [src]="videoUrl(slide.videoUrl)" width="540" height="400" frameborder="0"
+                    allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="col-lg-4 m-t-40">
+                <!-- <div>Chapter Name: {{chapter.chapterName}}</div> -->
+                <div>Topic Name : {{slide.slideName}}</div>
+                <div>URL Link: {{slide.videoUrl}}</div>
+                <div>Description:<br>
+                    <div [innerHTML]="slide.slideDescription"></div>
+                </div>
+            </div>
+            <!-- <ng-container *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
             <p>Attachements:</p>
             <div *ngFor="let attachment of slide.slideAttachments">
                 {{attachment.chapterSlideAttachementExactName}}
             </div>
         </ng-container> -->
 
-        <ng-container *ngIf="slide.slideAttachments">
-            <p>Attachements:</p>
-            <p>{{slide.slideAttachments.chapterSlideAttachementExactName}}</p>
-        </ng-container>
-    </div>
-</mat-card>
+            <ng-container *ngIf="slide.slideAttachments">
+                <p>Attachements:</p>
+                <p>{{slide.slideAttachments.chapterSlideAttachementExactName}}</p>
+            </ng-container>
+        </div>
+    </mat-card>
 </div>
 
-<app-edit-topic *ngIf="isEditTopic" [chapter]="chapter" [topic]="topic" (isDetailsExit)="isEditTopic=false">
+<app-edit-topic *ngIf="isEditTopic" [chapter]="chapter" [topic]="topic"
+    (isDetailsExit)="isEditTopic=false;getChapterDetails();">
 
 </app-edit-topic>
 
-<app-add-topic *ngIf="isAddTopic" [chapter]="chapter" (isDetailsExit)="isAddTopic=false">
+<app-add-topic *ngIf="isAddTopic" [chapter]="chapter" (isDetailsExit)="isAddTopic=false;getChapterDetails();">
 
 </app-add-topic>
