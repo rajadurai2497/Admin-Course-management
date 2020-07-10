@@ -5,6 +5,7 @@ import { CourseManagementService } from 'src/app/services/course-management.serv
 import { ChapterEntity, SlideEntity } from 'src/app/models/course-management.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AddAttachmentComponent } from '../add-attachment/add-attachment.component';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -22,6 +23,7 @@ export class ChapterDetailComponent implements OnInit {
 
   constructor(private dialog: MatDialog, 
     private readonly _courselistService: CourseManagementService,
+    private readonly _fileUploadService: FileUploadService,
     private sanitizer: DomSanitizer) { }
 
   edittopic(slide) {
@@ -48,6 +50,17 @@ export class ChapterDetailComponent implements OnInit {
 }
 
   ngOnInit() {
+    this.chapter.slides.forEach(slide=>{
+      this.fileShow(slide)
+    });
+  }
+  fileShow(slide):void{
+    this._fileUploadService.fileShow(slide.slidId).then((data)=> {
+      console.log(data)
+      if (data && data.result) {
+        this.isDetailsExit.emit(true)
+      }
+    });
   }
 
   deleteChapter(): void {
