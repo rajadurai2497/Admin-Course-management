@@ -1,47 +1,44 @@
 <table mat-table [dataSource]="dataSource" class="full-width">
-  <!-- ID Column -->
+
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>#</th>
-    <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
   </ng-container>
 
-  <!-- User Name -->
+
   <ng-container matColumnDef="userName">
     <th mat-header-cell *matHeaderCellDef>User Name</th>
     <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
   </ng-container>
 
-  <!-- Password -->
   <ng-container matColumnDef="password">
     <th mat-header-cell *matHeaderCellDef>Password</th>
     <td mat-cell *matCellDef="let element">{{ element.passWord }}</td>
   </ng-container>
 
-  <!-- Name-->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
     <td mat-cell *matCellDef="let element">{{ element.name }}</td>
   </ng-container>
 
-  <!-- Email Id-->
+ 
   <ng-container matColumnDef="emailId">
     <th mat-header-cell *matHeaderCellDef>Email</th>
     <td mat-cell *matCellDef="let element">{{ element.emailId }}</td>
   </ng-container>
 
-  <!-- Phone-->
+  
   <ng-container matColumnDef="phone">
     <th mat-header-cell *matHeaderCellDef>Phone Number</th>
     <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
   </ng-container>
 
-  <!-- City-->
   <ng-container matColumnDef="city">
     <th mat-header-cell *matHeaderCellDef>City</th>
     <td mat-cell *matCellDef="let element">{{ element.city }}</td>
   </ng-container>
 
-  <!--Action-->
+ 
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>
       <section class="actions-wrapper"></section>
@@ -55,8 +52,43 @@
     </td>
   </ng-container>
 
-  <!--Action-->
+ 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+<!-- <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="row">
+          <div class="col-lg-10">
+            <ng-container *ngFor="let slide of element.slides;let i=index;">
+              <div>
+                {{i+1}}. {{slide.slideName}}
+              </div>
+            </ng-container>
+          </div>
+          <div class="col-lg-2">
+            <button class="col-lg-6 btn-shadow" mat-button (click)="gotochapter(element)">
+              <mat-icon>remove_red_eye</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table> -->

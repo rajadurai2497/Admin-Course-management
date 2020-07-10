@@ -1,13 +1,15 @@
-export interface AllCourse {
+export class AllCourse {
     courseMasterId: string;
     courseName: string;
     courseAmount: string;
     description: string;
     provideWhat: string;
     learnersNumber: string;
+    constructor(){}
 }
 
 export class AddCourse {
+    courseMasterId:string;
     basicContent: string;
     courseName: string;
     abtCourse: string;

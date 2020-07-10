@@ -1,0 +1,33 @@
+<div>
+    <h5 class="modal-title"><i class="feather icon-file-plus mr-1"></i>Add Attachment</h5>
+    <mat-card>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label class="btn btn-sm btn-dark float-right" for="addfilesinput">Choose files</label>
+                <input type="file" name="files" id="addfilesinput" #fileInput class="hidden" (change)="addFile($event)"
+                    multiple />
+                <h5 class="panel-title">Files</h5>
+            </div>
+            <div class="panel-body">
+            <mat-card class="mt-crd">
+                <div *ngFor="let file of fileList">
+                    <div class="row">
+                        <div class="col-md-10">
+                            {{file.fileName}}
+                        </div>
+                        <div class="col-md-2">
+                            <button class="float-right" mat-button (click)="deleteFile(file)">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            </div>
+        </div>
+    </mat-card>
+    <div mat-dialog-actions class="float-right">
+        <button mat-raised-button [mat-dialog-close]="true" color="warn" cdkFocusInitial>Cancel</button>
+        <button mat-raised-button color="primary" (click)="addAttachment()">Upload</button>
+    </div>
+</div>

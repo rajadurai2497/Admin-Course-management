@@ -23,11 +23,11 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-    if(this.currentUser && this.currentUser.access_token){
+    if (this.currentUser && this.currentUser.access_token) {
       headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     }
 
-    
+
     const requestOptions = {
       headers: headers,
     };
@@ -49,7 +49,7 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-    if(this.currentUser && this.currentUser.access_token){
+    if (this.currentUser && this.currentUser.access_token) {
       headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     }
     const requestOptions = {
@@ -74,7 +74,7 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    if(this.currentUser && this.currentUser.access_token){
+    if (this.currentUser && this.currentUser.access_token) {
       headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     }
     const requestOptions = {
@@ -102,7 +102,7 @@ export class ApiService {
       'Content-Type': 'application/json'
     });
 
-    if(this.currentUser && this.currentUser.access_token){
+    if (this.currentUser && this.currentUser.access_token) {
       headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     }
     const requestOptions = {
@@ -131,10 +131,36 @@ export class ApiService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    if(this.currentUser && this.currentUser.access_token){
+    if (this.currentUser && this.currentUser.access_token) {
       headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
     }
 
+    const requestOptions = {
+      headers: headers,
+    };
+    return this._http.post(url, body, requestOptions)
+      .toPromise()
+      .then(res => {
+        if (isShowLoading) {
+          this._loadingService.displayLoader(false);
+        }
+        return res;
+      })
+      .catch((e) => {
+        if (isShowLoading) {
+          this._loadingService.displayLoader(false);
+        }
+      });
+  }
+  doFormPost(url: string, body: any, isShowLoading?: boolean): Promise<any> {
+    if (isShowLoading) {
+      this._loadingService.displayLoader(true);
+    }
+    let headers = new HttpHeaders({
+    });
+    if (this.currentUser && this.currentUser.access_token) {
+      headers = headers.append('Authorization', "bearer " + this.currentUser.access_token);
+    }
     const requestOptions = {
       headers: headers,
     };
