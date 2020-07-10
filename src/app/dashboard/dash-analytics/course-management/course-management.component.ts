@@ -4,6 +4,8 @@ import { AddCourseManagementComponent } from './add-course-management/add-course
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { CourseManagementService } from 'src/app/services/course-management.service';
 import { AllCourse } from 'src/app/models/course-management.model';
+import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 
 
 @Component({
@@ -24,13 +26,25 @@ export class CourseManagementComponent implements OnInit {
   constructor(private dialog: MatDialog, private readonly _courselistService: CourseManagementService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'leanresnumber', 'actions', 'delete'];
+    this.displayedColumns = ['courseMasterId', 'courseName', 'courseAmount', 'leanresnumber', 'actions', 'delete','edit'];
     this.getAllCourselist();
   }
 
   gotodetails(course) {
     this.currentCourse = course;
     this.isShowDetails = true;
+  }
+  editCourse(course){
+    let dialogRef = this.dialog.open(EditCourseComponent, {
+      height: '500px',
+      width: '800px',
+      data:course
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAllCourselist();
+      }
+    });
   }
   addCourse() {
     let dialogRef = this.dialog.open(AddCourseManagementComponent, {
@@ -49,7 +63,6 @@ export class CourseManagementComponent implements OnInit {
       if (data && data.result) {
         this.allCourse = data.allCourse;
         this.dataSource = new MatTableDataSource<AllCourse>(this.allCourse);
-        console.log('Add',this.dataSource)
         this.dataSource.paginator = this.paginator;
       }
     });

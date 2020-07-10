@@ -3,179 +3,78 @@
   <div class="col-md-6 col-xl-3">
     <app-card [hidHeader]="true" cardClass="bg-c-blue order-card">
       <h6 class="text-center text-white">Active Learners</h6>
-      <h2 class="text-center text-white"><span>486</span></h2>
+      <h2 class="text-center text-white"><span>{{count.activeLearners}}</span></h2>
     </app-card>
   </div>
   <div class="col-md-6 col-xl-3">
     <app-card [hidHeader]="true" cardClass="bg-c-green order-card">
       <h6 class="text-center text-white">Total Learners</h6>
-      <h2 class="text-center text-white"><span>1641</span></h2>
+      <h2 class="text-center text-white"><span>{{count.completedLearners}}</span></h2>
     </app-card>
   </div>
   <div class="col-md-6 col-xl-3">
     <app-card [hidHeader]="true" cardClass="bg-c-yellow order-card">
       <h6 class="text-center text-white">Completed</h6>
-      <h2 class="text-center text-white"><span>42,562</span></h2>
+      <h2 class="text-center text-white"><span>{{count.totalCourse}}</span></h2>
     </app-card>
   </div>
   <div class="col-md-6 col-xl-3">
     <app-card [hidHeader]="true" cardClass="bg-c-red order-card">
       <h6 class="text-center text-white">Total Course</h6>
-      <h2 class="text-center text-white">9,562</h2>
+      <h2 class="text-center text-white">{{count.totalLearners}}</h2>
     </app-card>
   </div>
-  <div class="col-sm-12">
-      <div class="table-responsive">
-        <table datatable class="table table-striped table-bordered nowrap table-hover">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011/04/25</td>
-            <td>$320,800</td>
-          </tr>
-          <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>63</td>
-            <td>2011/07/25</td>
-            <td>$170,750</td>
-          </tr>
-          <tr>
-            <td>Ashton Cox</td>
-            <td>Junior Technical Author</td>
-            <td>San Francisco</td>
-            <td>66</td>
-            <td>2009/01/12</td>
-            <td>$86,000</td>
-          </tr>
-          <tr>
-            <td>Cedric Kelly</td>
-            <td>Senior Javascript Developer</td>
-            <td>Edinburgh</td>
-            <td>22</td>
-            <td>2012/03/29</td>
-            <td>$433,060</td>
-          </tr>
-          <tr>
-            <td>Airi Satou</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>33</td>
-            <td>2008/11/28</td>
-            <td>$162,700</td>
-          </tr>
-          <tr>
-            <td>Brielle Williamson</td>
-            <td>Integration Specialist</td>
-            <td>New York</td>
-            <td>61</td>
-            <td>2012/12/02</td>
-            <td>$372,000</td>
-          </tr>
-          <tr>
-            <td>Herrod Chandler</td>
-            <td>Sales Assistant</td>
-            <td>San Francisco</td>
-            <td>59</td>
-            <td>2012/08/06</td>
-            <td>$137,500</td>
-          </tr>
-          <tr>
-            <td>Rhona Davidson</td>
-            <td>Integration Specialist</td>
-            <td>Tokyo</td>
-            <td>55</td>
-            <td>2010/10/14</td>
-            <td>$327,900</td>
-          </tr>
-          <tr>
-            <td>Colleen Hurst</td>
-            <td>Javascript Developer</td>
-            <td>San Francisco</td>
-            <td>39</td>
-            <td>2009/09/15</td>
-            <td>$205,500</td>
-          </tr>
-          <tr>
-            <td>Sonya Frost</td>
-            <td>Software Engineer</td>
-            <td>Edinburgh</td>
-            <td>23</td>
-            <td>2008/12/13</td>
-            <td>$103,600</td>
-          </tr>
-          <tr>
-            <td>Jena Gaines</td>
-            <td>Office Manager</td>
-            <td>London</td>
-            <td>30</td>
-            <td>2008/12/19</td>
-            <td>$90,560</td>
-          </tr>
-          <tr>
-            <td>Quinn Flynn</td>
-            <td>Support Lead</td>
-            <td>Edinburgh</td>
-            <td>22</td>
-            <td>2013/03/03</td>
-            <td>$342,000</td>
-          </tr>
-          <tr>
-            <td>Charde Marshall</td>
-            <td>Regional Director</td>
-            <td>San Francisco</td>
-            <td>36</td>
-            <td>2008/10/16</td>
-            <td>$470,600</td>
-          </tr>
-          <tr>
-            <td>Haley Kennedy</td>
-            <td>Senior Marketing Designer</td>
-            <td>London</td>
-            <td>43</td>
-            <td>2012/12/18</td>
-            <td>$313,500</td>
-          </tr>
-          <tr>
-            <td>Tatyana Fitzpatrick</td>
-            <td>Regional Director</td>
-            <td>London</td>
-            <td>19</td>
-            <td>2010/03/17</td>
-            <td>$385,750</td>
-          </tr>
-          <tr>
-            <td>Michael Silva</td>
-            <td>Marketing Designer</td>
-            <td>London</td>
-            <td>66</td>
-            <td>2012/11/27</td>
-            <td>$198,500</td>
-          </tr>
-          <tr>
-            <td>Paul Byrd</td>
-            <td>Chief Financial Officer (CFO)</td>
-            <td>New York</td>
-            <td>64</td>
-            <td>2010/06/09</td>
-            <td>$725,000</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+</div>
+  <div>
+    <table mat-table [dataSource]="dataSource" class="full-width">
+      <!-- ID Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>User Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- User Name -->
+      <ng-container matColumnDef="emailId">
+        <th mat-header-cell *matHeaderCellDef>Email Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.emailId }}</td>
+      </ng-container>
+
+      <!-- Password -->
+      <ng-container matColumnDef="courseName">
+        <th mat-header-cell *matHeaderCellDef>Course Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.courseName }}</td>
+      </ng-container>
+
+      <!-- Name-->
+      <ng-container matColumnDef="paymentDate">
+        <th mat-header-cell *matHeaderCellDef>Payment Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.paymentDate }}</td>
+      </ng-container>
+
+      <!-- Email Id-->
+      <ng-container matColumnDef="courseAmount">
+        <th mat-header-cell *matHeaderCellDef>Course Amount</th>
+        <td mat-cell *matCellDef="let element">{{ element.courseAmount }}</td>
+      </ng-container>
+
+    
+      <!--Action-->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>
+          <section class="actions-wrapper"></section>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <section class="actions-wrapper">
+            <button mat-button color="primary" disableRipple>
+              <mat-icon>edit_outline</mat-icon>
+            </button>
+          </section>
+        </td>
+      </ng-container>
+
+      <!--Action-->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
-  

@@ -23,25 +23,7 @@ export class EditTopicComponent implements OnInit {
     console.log(this.topic)
   }
 
-  // public updateTopic(): void {
-  //   this.topicMap.courseMasterId=this.chapter.courseMasterId;
-  //   this.topicMap.chapterEntityObj=new ChapterEntity()
-  //   this.topicMap.slideEntityObj[0]=new SlideEntity()
-  //   this.topicMap.slideEntityObj[0].chapterId=this.chapter.chapterId;
-  //   this.topicMap.slideEntityObj[0].slideId=this.topic.slideId;
-  //   this.topicMap.slideEntityObj[0].slideName=this.topic.slideName;
-  //   this.topicMap.slideEntityObj[0].videoUrl=this.topic.videoUrl;
-  //   this.topicMap.slideEntityObj[0].slideDescription=this.topic.slideDescription;
-  //   this._courselistService.updateTopic(this.topicMap).then((data) => {
-  //     if (data && data.result) {
-  //       alert('Chapter name updated successfully...!')
-  //     }
-  //     else {
-  //       alert('Unable to Update Chapter')
-  //     }
-  //   });
-  // }
-  
+
 
   public updateChapter(): void {
     this.chapterMap.courseMasterId=this.chapter.courseMasterId;

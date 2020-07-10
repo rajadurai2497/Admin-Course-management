@@ -39,7 +39,7 @@
 
                   <div class="col-md-6 form-group">
                     <label>URL link</label>
-                    <input type="text" class="form-control" placeholder="URL link" name="topicLink"
+                    <input type="text" required class="form-control" placeholder="URL link" name="topicLink"
                       [(ngModel)]="slide.videoURL">
                   </div>
 
@@ -50,8 +50,8 @@
 
                   <!-- <div class="col-md-12 form-group">
                     <label>Add Files</label>
-                    <div ng-app="MyApp" ng-controller="AppCtrl" [(ngModel)]='topic.browse' layout-margin layout-padding>
-                      <input class="ng-hide" id="input-file-id" multiple type="file" />
+                    <div ng-app="MyApp" ng-controller="AppCtrl"  layout-margin layout-padding>
+                      <input class="ng-hide" id="input-file-id" name="files"  (change)="handleFileInput($event)" multiple type="file" />
                       <label for="input-file-id" class="md-button md-raised md-primary"></label>
                     </div>
                   </div> -->
