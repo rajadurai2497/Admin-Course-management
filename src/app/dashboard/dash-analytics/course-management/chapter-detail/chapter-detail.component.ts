@@ -14,51 +14,54 @@ import { FileUploadService } from 'src/app/services/file-upload.service';
 })
 export class ChapterDetailComponent implements OnInit {
   @Input() chapter: ChapterEntity;
-  topic : SlideEntity;
+  topic: SlideEntity;
   isEditTopic = false;
   isAddTopic = false;
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   dialogRef: any;
 
-  constructor(private dialog: MatDialog, 
+  constructor(private dialog: MatDialog,
     private readonly _courselistService: CourseManagementService,
     private readonly _fileUploadService: FileUploadService,
     private sanitizer: DomSanitizer) { }
 
   edittopic(slide) {
     this.isEditTopic = true;
-    this.topic=slide;
+    this.topic = slide;
   }
   editChapter() {
     let dialogRef = this.dialog.open(EditChapterComponent, {
       height: '300px',
       width: '500px',
-      data :this.chapter
+      data: this.chapter
     });
   }
 
   addtopic(slide) {
     this.isAddTopic = true;
   }
-  addAttachment(slide){
-  let dialogRef = this.dialog.open(AddAttachmentComponent, {
-    height: '500px',
-    width: '500px',
-    data:slide
-  });
-}
+  addAttachment(slide) {
+    let dialogRef = this.dialog.open(AddAttachmentComponent, {
+      height: '500px',
+      width: '500px',
+      data: slide
+    });
+    dialogRef.afterClosed().subscribe(result => {
+        this.getChapterDetails();
+    });
+  }
 
   ngOnInit() {
-    this.chapter.slides.forEach(slide=>{
+    this.chapter.slides.forEach(slide => {
       this.fileShow(slide)
     });
   }
-  fileShow(slide):void{
-    this._fileUploadService.fileShow(slide.slidId).then((data)=> {
-      console.log(data)
+  fileShow(slide: SlideEntity): void {
+    // slide.slideAttachments = [];
+    this._fileUploadService.fileShow(slide).then((data) => {
       if (data && data.result) {
-        this.isDetailsExit.emit(true)
+        slide.slideAttachments = data.slideAttachments;
       }
     });
   }
@@ -88,7 +91,16 @@ export class ChapterDetailComponent implements OnInit {
         }
       });
   }
-  videoUrl(url){
+  getChapterDetails() {
+    this._courselistService.getChapterDetails(this.chapter.chapterId).then((data) => {
+      if (data && data.result) {
+          console.log(data)
+      }
+
+    });
+
+  }
+  videoUrl(url) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url)
   }
 }

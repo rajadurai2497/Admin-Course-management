@@ -51,7 +51,7 @@ export class PreviewCourseComponent implements OnInit {
     private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.displayedColumns = ['chapterId', 'chapterName'];
+    this.displayedColumns = ['chapterId', 'chapterName','actions'];
     this.getCourseChapters()
   }
 
