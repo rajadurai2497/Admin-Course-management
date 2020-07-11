@@ -17,15 +17,16 @@
 
     </div>
     <div>
-      <h6> Chapter Name: {{ slideName }}</h6>
-      <button mat-button (click)="nextVideo()" class="btn btn-primary float-right">Play Next</button>
+      <h6> Topic Name: {{ slideName }}</h6>
+      <button mat-button (click)="backVideo()" class="btn btn-primary float-left">Previous</button>
+      <button mat-button (click)="nextVideo()" class="btn btn-primary float-right">Next</button>
     </div>
   </div>
 
   <div class="col-xl-4 col-md-6 d-lg-inline"  style="padding-top: 20px;">
     <div class="card latest-update-card">
       <div class="card-header">
-        <h5>Chapter List</h5>
+        <h5>Topic List</h5>
       </div>
       <div class="card-body">
         <div class="latest-update-box">
@@ -47,7 +48,7 @@
   </div>
   <div class="col-sm-8">
     <div class="card-body">
-      <h2>Description</h2>
+      <h5>Description</h5>
       <p>
         <!-- {{videoUrl}} -->
         {{ description }}
@@ -55,7 +56,7 @@
     </div>
     <div class="card-body">
 
-      <h2>SlideAttachment</h2>
+      <h5>SlideAttachment</h5>
       <p>
         
        <a href="{{slideAttachment}}">click here to download</a>

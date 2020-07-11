@@ -39,21 +39,29 @@ export class MycourseViewComponent implements OnInit {
     let i = this.count++;
     console.log("i-", i)
     var j = (this.courseTopicList.purchasedSlideList.length);
-    console.log("len", this.courseTopicList.purchasedSlideList)
     if (i < j) {
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[i].videoUrl);
       this.description = this.courseTopicList.purchasedSlideList[i].description;
       this.slideName = this.courseTopicList.purchasedSlideList[i].slideName;
       this.slideAttachment= this.courseTopicList.purchasedSlideList[i].virtualPath;
-      // this.getAttachmentSlide(this.courseTopicList.purchasedSlideList[i].slideId);
-      console.log(this.slideName)
+    }
+  }
+
+  public backVideo(): void {
+    let i = this.count--;
+    var j = (this.courseTopicList.purchasedSlideList.length);
+    console.log('hello',this.courseTopicList)
+    if (i < j) {
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[i].videoUrl);
+      this.description = this.courseTopicList.purchasedSlideList[i].description;
+      this.slideName = this.courseTopicList.purchasedSlideList[i].slideName;
+      this.slideAttachment= this.courseTopicList.purchasedSlideList[i].virtualPath;
     }
   }
 
   public onSlideClick(item: any): void {
     this.videoUrl = item.videoUrl;
     this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoUrl);
-    console.log(this.videoUrl)
     this.description = item.slideDescription;
     this.slideName = item.slideName;
     this.slideAttachment=item.virtualPath

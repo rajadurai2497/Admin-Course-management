@@ -1,5 +1,7 @@
 <div *ngIf="!isShowChapter">
-  <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-left">Back</button>
+  <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-left back-b">Back</button>
+
+<div>
   <table mat-table [dataSource]="courseChapterList.purchasedChapterList" class="mat-elevation-z8">
 
     
@@ -35,7 +37,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
     </tr>
   </table>
-
+</div>
 </div>
 <app-mycourse-view *ngIf="isShowChapter" [courseTopicList]="courseTopicList" (isDetailsExit)="isShowChapter=false">
 
