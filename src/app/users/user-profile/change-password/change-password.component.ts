@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ChangePassword } from 'src/app/models/password.model';
 import { ForgetPasswordService } from 'src/app/services/forget-password.service';
 
@@ -13,26 +13,36 @@ export class ChangePasswordComponent implements OnInit {
 
   password =new ChangePassword()
   changePasswordForm: FormGroup;
-  
-  constructor(public dialogRef: MatDialogRef<ChangePasswordComponent>,private readonly _forgetPasswordService: ForgetPasswordService) { }
+  submitted = false;
+
+  constructor(public dialogRef: MatDialogRef<ChangePasswordComponent>,
+    private readonly _forgetPasswordService: ForgetPasswordService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.changePasswordForm = new FormGroup({
-      oldPassword: new FormControl(this.password.oldPassword, [
-        Validators.required]),
-      newPassword: new FormControl(this.password.newPassword, [
-        Validators.required]),
-      confirmPassword: new FormControl(this.password.confirmPassword, [
-        Validators.required])
-    });
+
+    this.changePasswordForm = this.formBuilder.group({
+      oldPassword: ['', [Validators.required]],
+      newPassword: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required]
+  }, {
+      validator: ConfirmedValidator('newPassword', 'confirmPassword')
+  });
   }
-  get oldPassword() { return this.changePasswordForm.get('oldPassword'); }
-  get newPassword() { return this.changePasswordForm.get('newPassword'); }
-  get confirmPassword() { return this.changePasswordForm.get('cofirmPassword'); }
+  get f() { return this.changePasswordForm.controls; }
+
+  
+  
+  onSubmit() {
+    this.submitted = true;
+    if (this.changePasswordForm.invalid) {
+        return;
+    }
+  }
 
   getPasswordChange(){
-    if(this.validateForgetPassword()){
-    this._forgetPasswordService.getPasswordChange(this.password).then((data) => {
+    if(this.changePasswordForm.valid){
+    this._forgetPasswordService.getPasswordChange(this.changePasswordForm.value).then((data) => {
       if (data && data.result) {
         this.dialogRef.close(true);
         alert('Password Change successfully...!')
@@ -62,4 +72,18 @@ validateForgetPassword() {
     this.dialogRef.close();
   }
 
+}
+export function ConfirmedValidator(controlName: string, matchingControlName: string){
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+          return;
+      }
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
+  }
 }
