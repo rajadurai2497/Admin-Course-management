@@ -4,6 +4,7 @@
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+
 mat-card {
   width: 100%;
 }
@@ -30,6 +31,14 @@ table.mat-table {
 }
 .pcoded-navbar.navbar-collapsed:hover span.pcoded-mtext {
   display: contents;
+}
+@media only screen and (max-width: 991px) {
+  app-navigation{
+      z-index: 1040;
+  }
+  .navbar-collapsed span.pcoded-mtext {
+    display: contents;
+  }
 }
 
 .mat-checkbox {
@@ -62,6 +71,16 @@ table.mat-table {
   color:$primary !important;
 }
 
-.ring.active {
-  background-color: $primary !important;
+.active {
+  .ring {
+    background-color: $primary !important;
+  }
+  .slide-text {
+    color: $primary !important;
+    cursor: default !important;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
 }

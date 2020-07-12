@@ -80,7 +80,7 @@ const NavLearner=[
   title: 'Contact Us',
   type: 'item',
   icon: 'feather icon-phone-call',
-  url: 'https://codedthemes-2.gitbook.io/gradient-able-angular/',
+  url: 'http://lurecap.com/contact-us.php',
   target: true,
   external: true
 },

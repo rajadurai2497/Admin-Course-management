@@ -48,7 +48,6 @@ export class AuthSigninV2Component implements OnInit {
 
   public login(): void {
     if (this.loginForm.valid) {
-      // if (this.loginform.username !== '' && this.loginform.password !== '') {
         this.authenticationService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value).subscribe((data) => {
           if (data && data.isAuthorize) {
             if (data.roles == 'Admin') {

@@ -20,7 +20,7 @@ export class MycourseViewComponent implements OnInit {
   slideName: any = '';
   slideAttachment: any = '';
   currentIndex = 0;
-  slideId: number=0;
+  slideId: number = 0;
   constructor(private readonly _userMycourseService: UserMycourseService, public sanitizer: DomSanitizer) { }
   ngOnInit() {
     this.setCurrentSlide();
@@ -44,9 +44,18 @@ export class MycourseViewComponent implements OnInit {
     }
   }
 
-  onSlideClick(item) {
-    window.open(item,'_blank')
-
+  onSlideClick(slide) {
+    if (slide.slideId == this.slideId) {
+      return;
+    } else {
+      this.currentIndex = this.courseTopicList.purchasedSlideList.indexOf(slide);
+      if (slide && slide.videoUrl)
+        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[this.currentIndex].videoUrl);
+      this.description = slide.description;
+      this.slideName = slide.slideName;
+      this.slideAttachment = slide.virtualPath;
+      this.slideId = slide.slideId;
+    }
   }
 
 }
