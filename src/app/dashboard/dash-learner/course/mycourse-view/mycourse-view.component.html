@@ -1,76 +1,53 @@
-    
 <div class="row">
   <div class="col-xl-12">
-  <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-left">Back</button>
-</div>
+    <button mat-button (click)="isDetailsExit.emit(true)" class="btn btn-primary float-left">Back</button>
+  </div>
   <div class="col-xl-8 col-md-6" style="padding-top: 20px;">
 
     <div class="card">
-      <!-- {{videoUrl}} -->
-      <!-- <iframe [src]="url" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen"
-        allowfullscreen></iframe> -->
-      <!-- <iframe ng:src="{{videoUrl}}" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
       <div class="embed-responsive embed-responsive-16by9">
-        <iframe  [src]="url" class="embed-responsive-item"  frameborder="0" allow="autoplay; fullscreen"
-        allowfullscreen></iframe>
+        <iframe [src]="url" class="embed-responsive-item" frameborder="0" allow="autoplay; fullscreen"
+          allowfullscreen></iframe>
       </div>
 
     </div>
     <div>
-      <h6> Chapter Name: {{ slideName }}</h6>
-      <button mat-button (click)="nextVideo()" class="btn btn-primary float-right">Play Next</button>
+      <button mat-button [disabled]="currentIndex==0" (click)="currentIndex=currentIndex-1;setCurrentSlide()"
+        class="btn btn-primary float-left">Previous</button>
+      <button mat-button (click)="currentIndex=currentIndex+1;setCurrentSlide()" class="btn btn-primary float-right">
+        <ng-container *ngIf="(currentIndex+1)==this.courseTopicList.purchasedSlideList.length">Finish</ng-container>
+        <ng-container *ngIf="(currentIndex+1)!=this.courseTopicList.purchasedSlideList.length">Next</ng-container>
+      </button>
     </div>
   </div>
 
-  <div class="col-xl-4 col-md-6 d-lg-inline"  style="padding-top: 20px;">
+  <div class="col-xl-4 col-md-6 d-lg-inline p-t-20">
     <div class="card latest-update-card">
       <div class="card-header">
-        <h5>Chapter List</h5>
+        <h5 class="primary">{{chapter.chapterName}}</h5>
+        <p class="m-t-10">Topics</p>
       </div>
       <div class="card-body">
         <div class="latest-update-box">
-          <div class="row p-t-20 p-b-20" *ngFor="let item of courseTopicList.purchasedSlideList">
+          <div class="row p-t-20 p-b-20" *ngFor="let item of courseTopicList.purchasedSlideList"
+            [class.active]="item.slideId==slideId">
             <div class="col-auto text-right update-meta">
               <i class="b-primary update-icon ring"></i>
             </div>
-            <div class="col p-l-5" (click)="onSlideClick(item)">
-              <a href="javascript:;">
-                <h6 class="m-0">{{ item.slideName }}</h6>
-              </a>
-              <!-- <p class="m-b-0">Lorem ipsum dolor sit amet, <a href="javascript:;" class="text-c-blue"> More</a></p> -->
+            <div class="col p-l-5">
+              <h6 class="m-0 slide-text" (click)="onSlideClick(item)">{{item.slideName}}</h6>
             </div>
           </div>
         </div>
       </div>
-      <!-- </perfect-scrollbar> -->
     </div>
   </div>
-  <div class="col-sm-8">
-    <div class="card-body">
-      <h2>Description</h2>
-      <p>
-        <!-- {{videoUrl}} -->
-        {{ description }}
-      </p>
-    </div>
-    <div class="card-body">
-
-      <h2>SlideAttachment</h2>
-      <p>
-        
-       <a href="{{slideAttachment}}">click here to download</a>
-      </p>
-    </div>
-    
-    <!-- <iframe src="https://docs.google.com/" style="width: 100px; height: 100px;" frameborder="0"></iframe>
-    <iframe
-      src="https://docs.google.com/"
-      style="width: 100px; height: 100px; margin-left: 20px;"
-      frameborder="0"
-    ></iframe> -->
-
-  </div>
+  <mat-card class="m-t-20 slide-details">
+    <p class="slide-desc">Description</p>
+    <div [innerHTML]="description"></div>
+    <p class="slide-attach">Slide Attachments</p>
+    <p>
+      <a (click)="onSlideClick(slideAttachment)" href="{{slideAttachment}}">click here to download</a>
+    </p>
+  </mat-card>
 </div>
-
-
-<div></div>

@@ -4,12 +4,13 @@
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+
 mat-card {
   width: 100%;
 }
 table.mat-table {
   thead {
-    background-color: #cecece;
+    background-color: #33cacf80;
     th.mat-header-cell {
       text-transform: capitalize;
       font-weight: 600;
@@ -18,8 +19,68 @@ table.mat-table {
   }
   tbody {
     tr:nth-child(even) {
-      background: #ebebeb;
+      background: #c3ebe6;
     }
+  }
+  .mat-icon{
+    font-size: 15px;
+  }
+}
+.navbar-collapsed span.pcoded-mtext {
+  display: none;
+}
+.pcoded-navbar.navbar-collapsed:hover span.pcoded-mtext {
+  display: contents;
+}
+@media only screen and (max-width: 991px) {
+  app-navigation{
+      z-index: 1040;
+  }
+  .navbar-collapsed span.pcoded-mtext {
+    display: contents;
   }
 }
 
+.mat-checkbox {
+  .mat-checkbox-frame {
+    border-color: #33cacfe0 !important;
+  }
+}
+.mat-checkbox-checked {
+  .mat-checkbox-background {
+    background-color: #33cacfe0 !important;
+  }
+}
+
+.mat-snack-bar-container {
+  simple-snack-bar {
+    span {
+      font-size: 14px !important;
+      font-weight: 600;
+      color:  #1b2e8c!important;
+    }
+  }
+  background-color:  #33cacfe0 !important;
+  .mat-simple-snackbar-action .mat-button-wrapper {
+    color: red !important;
+    font-size: 12px !important;
+  }
+}
+
+.primary{
+  color:$primary !important;
+}
+
+.active {
+  .ring {
+    background-color: $primary !important;
+  }
+  .slide-text {
+    color: $primary !important;
+    cursor: default !important;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}

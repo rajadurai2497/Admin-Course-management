@@ -33,11 +33,11 @@ export class AuthGuardGuard implements CanActivate, CanLoad {
   canLoad(route: Route, segments: UrlSegment[]) {
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser) {
-      console.log('in AuthGuard currentuser is available');
+      // console.log('in AuthGuard currentuser is available');
       // logged in so return true
       return true;
     } else {
-      console.log('in AuthGuard currentuser is not available');
+      // console.log('in AuthGuard currentuser is not available');
       // not logged in so redirect to login page with the return url
       this.router.navigate(['/auth/signin']);
       return false;

@@ -11,31 +11,35 @@ import { SelectionModel } from '@angular/cdk/collections';
 })
 export class ChapterViewComponent implements OnInit {
   isShowChapter = false;
-  courseTopicList: any[] = [];
+  courseTopicList: any;
+  currentChapter: any;
 
   @Input() courseChapterList: any[];
 
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  displayedColumns: string[] = ['markCompleted','position', 'chaptername', 'action'];
-  
-  gotodetails(ChapterId) {
-    this._userMycourseService.getSlideByChapter(ChapterId).then((data) => {
+  displayedColumns: string[] = ['markCompleted', 'position', 'chaptername', 'action'];
+
+  gotodetails(chapter) {
+    this._userMycourseService.getSlideByChapter(chapter.chapterId).then((data) => {
       this.courseTopicList = data;
-      // console.log(data);
+      if (this.courseTopicList && this.courseTopicList.purchasedSlideList.length > 0)
+      {
+        this.isShowChapter = true;
+        this.currentChapter=chapter
+      }  
     });
-    this.isShowChapter = true;
   }
 
-  updateAllComplete(chapterId){
+  updateAllComplete(chapterId) {
     this._userMycourseService.completedChapterCheckbox(chapterId)
     console.log(chapterId)
   }
 
-  constructor(private readonly _userMycourseService: UserMycourseService) {}
+  constructor(private readonly _userMycourseService: UserMycourseService) { }
 
   ngOnInit() {
-   
+
   }
 }
