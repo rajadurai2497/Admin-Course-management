@@ -13,40 +13,46 @@
     </div>
     <div class="auth-side-form">
       <div class="auth-content">
-        <img src="assets/images/loogo.png" alt="" class="img-fluid mb-4 d-block d-xl-none d-lg-none" />
-        <h3 class="mb-4 f-w-400">SignIn</h3>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="feather icon-mail"></i></span>
-          </div>
-          <input type="text" class="form-control" placeholder="Enter Your Email" name="username" #username="ngModel"
-            required [(ngModel)]="loginform.username" />
-        </div>
-        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alerts m-b-20">
-          <div *ngIf="username.errors.required">
-            Email is required*
-          </div>
-        </div>
-        <div class="input-group mb-4">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="feather icon-lock"></i></span>
-          </div>
-          <input type="password" class="form-control" placeholder="Password" name="password" required
-            [pattern]="passwordpattern" [(ngModel)]="loginform.password" #password="ngModel" />
-        </div>
-        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alerts m-b-20">
-          <div *ngIf="password.errors.required">
-            Password is required*
-          </div>
-        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <img src="assets/images/loogo.png" alt="" class="img-fluid mb-4 d-block d-xl-none d-lg-none" />
+          <h3 class="mb-4 f-w-400">SignIn</h3>
 
-        <button class="btn btn-block btn-primary mb-0" (click)="login()">Signin</button>
-        <div class="text-center">
-          <div class="my-4"></div>
-          <!-- <p class="mb-6 text-muted"> -->
-            <a [routerLink]="['/auth/reset-password']" class="f-w-400">Forgot Password?</a>
-          <!-- </p> -->
-        </div>
+
+          <div class="form-group col">
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="feather icon-mail"></i></span>
+              </div>
+              <input type="email" placeholder="Enter Your Email" formControlName="username" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback m-t-10">
+                <div *ngIf="f.username.errors.required">Email is required*</div>
+                <!-- <div *ngIf="f.username.errors.email">Email must be a valid email address*</div> -->
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group col">
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="feather icon-lock"></i></span>
+              </div>
+              <input type="password" placeholder="Password" formControlName="password" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback m-t-10">
+                <div *ngIf="f.password.errors.required">Password is required*</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col">
+            <button class="btn btn-block btn-primary mb-0" (click)="login()">Signin</button>
+            <div class="text-center">
+              <div class="my-4"></div>
+              <a [routerLink]="['/auth/reset-password']" class="f-w-400">Forgot Password?</a>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

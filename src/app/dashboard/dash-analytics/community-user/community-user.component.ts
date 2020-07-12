@@ -18,7 +18,7 @@ export class CommunityUserComponent implements OnInit {
   constructor(private readonly _communityUserService: CommunityUserService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['id', 'fullName', 'emailId', 'phoneNumber'];
+    this.displayedColumns = ['fullName', 'emailId', 'phoneNumber'];
     this.getAllCommunityUser();
   }
 

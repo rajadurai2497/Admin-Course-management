@@ -7,51 +7,35 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class UserMycourseService extends ApiService {
- 
+
   constructor(private readonly injector: Injector) {
     super(injector);
   }
 
-  getPurchasedCourseList(): Promise<any>{
-    // const currentUser=JSON.parse(localStorage.getItem('currentUser'));
-    // currentUser.useId
-    // const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/getPurchasedCourseForUsers?userId=${currentUser.userId}`;
-    const apiUrl=ROUTE_CONFIG.BaseUrl+'/v1/Course/GetChapterCounterByUserId';
-
-    console.log(apiUrl)
-    return this.doGet(apiUrl,true);
+  getPurchasedCourseList(): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + '/Course/GetChapterCounterByUserId';
+    return this.doGet(apiUrl, true);
   }
 
-  getCourseChapterList(courseMasterId): Promise<any>{
-    // const currentUser=JSON.parse(localStorage.getItem('currentUser'));
-    // currentUser.useId/api/v1/Course/GetCourseChapterByCourseId
-    const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/GetCourseChapterByCourseId?courseMasterId=${courseMasterId}`;
-    // const apiUrl=ROUTE_CONFIG.BaseUrl+'/v1/Course/GetPurchasedCourseForUsers?userId:currentUser.useId';
-    console.log(apiUrl)
-    return this.doGet(apiUrl,true);
+  getCourseChapterList(courseMasterId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetCourseChapterByCourseId?courseMasterId=` + courseMasterId;
+    return this.doGet(apiUrl, true);
   }
 
-  getSlideByChapter(ChapterId): Promise<any>{
-    const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/GetCourseSlideByChapterId?ChapterId=${ChapterId}`;
-    console.log(apiUrl)
-    return this.doGet(apiUrl,true);
+  getSlideByChapter(ChapterId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetCourseSlideByChapterId?ChapterId=` + ChapterId;
+    return this.doGet(apiUrl, true);
   }
 
-  completedChapterCheckbox(ChapterId): Promise<any>{
-    const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/CompleteChapterByChapterId?ChapterId=${ChapterId}`;
-    console.log(apiUrl)
-    return this.doGet(apiUrl,true);
+  completedChapterCheckbox(ChapterId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/CompleteChapterByChapterId?ChapterId=` + ChapterId;
+    return this.doGet(apiUrl, true);
   }
 
 
-  getAttachmentSlide(slideAttachmentId): Promise<any>{
-    // const currentUser=JSON.parse(localStorage.getItem('currentUser'));
-    // currentUser.useId
-    const apiUrl=`${ROUTE_CONFIG.BaseUrl}/v1/Course/GetSlideAttachmentBySlideId?SlideId=${slideAttachmentId}`;
-    // const apiUrl=ROUTE_CONFIG.BaseUrl+'/v1/Course/GetChapterCounterByUserId';
-
-    console.log(apiUrl)
-    return this.doGet(apiUrl,true);
+  getAttachmentSlide(SlideId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetSlideAttachmentBySlideId?SlideId=` + SlideId;
+    return this.doGet(apiUrl, true);
   }
-  
+
 }

@@ -45,10 +45,8 @@ export class AuthenticationService {
           if (user.isAuthorize) {
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
-            return user;
-          } else {
-            alert(user.error);
-          }
+          } 
+          return user;
         }),
       );
   }

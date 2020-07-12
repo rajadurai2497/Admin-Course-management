@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AuthLoginModel } from 'src/app/theme/shared/model/auth-login/auth-login-model';
 import { ValidationService } from 'src/app/services/validation.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-auth-signin-v2',
@@ -15,51 +16,59 @@ export class AuthSigninV2Component implements OnInit {
 
   public loginform = new AuthLoginModel();
   loginForm: FormGroup;
+  submitted = false;
+
   // userName: string;
   // password: string;
   isBusy: boolean;
   isInvalidCredentials: boolean;
-  passwordpattern: '((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})';
 
-  constructor(private authenticationService: AuthenticationService,private readonly _validation: ValidationService, private readonly _router: Router) {
+
+  constructor(private authenticationService: AuthenticationService, private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private readonly _validation: ValidationService, private readonly _router: Router) {
     // this.userName = '';
     // this.password = '';
   }
 
   ngOnInit() {
-    this.loginForm = new FormGroup({
-      username: new FormControl(this.loginform.username, [
-        Validators.required,
-        Validators.minLength(3),
-      ]),
-      password: new FormControl(this.loginform.password, [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.pattern(this.passwordpattern),
-      ]),
-      alterEgo: new FormControl(this.loginform.alterEgo),
+    this.loginForm = this.formBuilder.group({
+      // username: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
     });
   }
-  get username() { return this.loginForm.get('username'); }
-  get password() { return this.loginForm.get('password'); }
 
+  get f() { return this.loginForm.controls; }
 
-  public login(): void {
-    if(this.validateLogin()){
-    if (this.loginform.username !== '' && this.loginform.password !== '') {
-      this.authenticationService.login(this.loginform.username, this.loginform.password).subscribe((data) => {
-        if (data && data.isAuthorize) {
-          if (data.roles == 'Admin') {
-            this._router.navigate(['/dashboard/admin']);
-          }
-          else {
-            this._router.navigate(['/dashboard/learner/mycourse']);
-          }
-
-        }
-      });
+  onSubmit() {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
     }
   }
+
+  public login(): void {
+    if (this.loginForm.valid) {
+      // if (this.loginform.username !== '' && this.loginform.password !== '') {
+        this.authenticationService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value).subscribe((data) => {
+          if (data && data.isAuthorize) {
+            if (data.roles == 'Admin') {
+              this._router.navigate(['/dashboard/admin']);
+            }
+            else {
+              this._router.navigate(['/dashboard/learner/mycourse']);
+            }
+
+          }
+          else {
+            this._snackBar.open(data.error, 'Close', {
+              duration: 200000,
+              verticalPosition: 'top'
+            });
+          }
+        });
+      // }
+    }
+
   }
   validateLogin() {
     if (!this.loginform.username && !this.loginform.password) {

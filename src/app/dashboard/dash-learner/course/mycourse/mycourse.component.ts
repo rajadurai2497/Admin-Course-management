@@ -21,7 +21,7 @@ export class MycourseComponent implements OnInit {
   constructor(private readonly _userMycourseService: UserMycourseService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['courseName', 'totalChapter', 'completedChapter', 'pendingChapter'];
+    this.displayedColumns = ['courseMasterId', 'courseName', 'totalChapter', 'completedChapter', 'pendingChapter'];
     this.getPurchasedCourseList();
   }
 
@@ -38,9 +38,7 @@ export class MycourseComponent implements OnInit {
   gotodetails(courseMasterId) {
     this._userMycourseService.getCourseChapterList(courseMasterId).then((data) => {
       this.courseChapterList = data;
-      console.log(data);
     });
-    console.log(courseMasterId);
     this.isShowDetails = true;
   }
 }

@@ -9,7 +9,7 @@ mat-card {
 }
 table.mat-table {
   thead {
-    background-color: #cecece;
+    background-color: #33cacf80;
     th.mat-header-cell {
       text-transform: capitalize;
       font-weight: 600;
@@ -18,8 +18,28 @@ table.mat-table {
   }
   tbody {
     tr:nth-child(even) {
-      background: #ebebeb;
+      background: #c3ebe6;
     }
+  }
+  .mat-icon{
+    font-size: 15px;
+  }
+}
+.navbar-collapsed span.pcoded-mtext {
+  display: none;
+}
+.pcoded-navbar.navbar-collapsed:hover span.pcoded-mtext {
+  display: contents;
+}
+
+.mat-checkbox {
+  .mat-checkbox-frame {
+    border-color: #33cacfe0 !important;
+  }
+}
+.mat-checkbox-checked {
+  .mat-checkbox-background {
+    background-color: #33cacfe0 !important;
   }
 }
 
