@@ -29,25 +29,23 @@
   <div class="col-xl-4 col-md-6 d-lg-inline p-t-20">
     <div class="card latest-update-card">
       <div class="card-header">
-        <h4>{{courseChapterList.chapterName}}</h4>
-        <h5>Topics</h5>
+        <h5 class="primary">{{chapter.chapterName}}</h5>
+        <h5 class="m-t-20">Topics</h5>
       </div>
       <div class="card-body">
         <div class="latest-update-box">
           <div class="row p-t-20 p-b-20" *ngFor="let item of courseTopicList.purchasedSlideList">
             <div class="col-auto text-right update-meta">
-              <i class="b-primary update-icon ring"></i>
+              <i class="b-primary update-icon ring" [class.active]="item.slideId==slideId"></i>
             </div>
             <div class="col p-l-5" (click)="onSlideClick(item)">
               <a href="javascript:;">
                 <h6 class="m-0">{{item.slideName}}</h6>
               </a>
-              <!-- <p class="m-b-0">Lorem ipsum dolor sit amet, <a href="javascript:;" class="text-c-blue"> More</a></p> -->
             </div>
           </div>
         </div>
       </div>
-      <!-- </perfect-scrollbar> -->
     </div>
   </div>
   <div class="col-sm-8">

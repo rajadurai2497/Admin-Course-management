@@ -61,8 +61,9 @@ export class AuthSigninV2Component implements OnInit {
           }
           else {
             this._snackBar.open(data.error, 'Close', {
-              duration: 200000,
-              verticalPosition: 'top'
+              duration: 2000,
+              verticalPosition: 'top',
+              horizontalPosition: 'right'
             });
           }
         });

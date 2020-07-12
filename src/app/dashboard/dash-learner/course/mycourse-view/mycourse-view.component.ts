@@ -13,17 +13,18 @@ export class MycourseViewComponent implements OnInit {
   @Output()
   isDetailsExit: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() courseTopicList: any;
-  @Input() courseChapterList: any;
+  @Input() chapter: any;
   slideAttachmentdata: any[] = [];
   videoUrl: any = '';
   description: any = '';
   slideName: any = '';
   slideAttachment: any = '';
   currentIndex = 0;
+  slideId: number=0;
   constructor(private readonly _userMycourseService: UserMycourseService, public sanitizer: DomSanitizer) { }
   ngOnInit() {
     this.setCurrentSlide();
-    console.log(this.courseChapterList)
+    console.log(this.chapter)
   }
 
   ngOnChanges() {
@@ -39,6 +40,7 @@ export class MycourseViewComponent implements OnInit {
       this.description = this.courseTopicList.purchasedSlideList[this.currentIndex].description;
       this.slideName = this.courseTopicList.purchasedSlideList[this.currentIndex].slideName;
       this.slideAttachment = this.courseTopicList.purchasedSlideList[this.currentIndex].virtualPath;
+      this.slideId = this.courseTopicList.purchasedSlideList[this.currentIndex].slideId;
     }
   }
 

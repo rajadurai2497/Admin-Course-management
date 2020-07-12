@@ -43,3 +43,25 @@ table.mat-table {
   }
 }
 
+.mat-snack-bar-container {
+  simple-snack-bar {
+    span {
+      font-size: 14px !important;
+      font-weight: 600;
+      color:  #1b2e8c!important;
+    }
+  }
+  background-color:  #33cacfe0 !important;
+  .mat-simple-snackbar-action .mat-button-wrapper {
+    color: red !important;
+    font-size: 12px !important;
+  }
+}
+
+.primary{
+  color:$primary !important;
+}
+
+.ring.active {
+  background-color: $primary !important;
+}

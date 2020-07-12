@@ -28,7 +28,7 @@
 
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> </th>
-      <td mat-cell *matCellDef="let element"> <button mat-button (click)="gotodetails(element.chapterId)">
+      <td mat-cell *matCellDef="let element"> <button mat-button (click)="gotodetails(element)">
           <mat-icon>remove_red_eye</mat-icon>
         </button> </td>
     </ng-container>
@@ -39,6 +39,6 @@
   </table>
 </div>
 </div>
-<app-mycourse-view *ngIf="isShowChapter" [courseTopicList]="courseTopicList" (isDetailsExit)="isShowChapter=false">
+<app-mycourse-view *ngIf="isShowChapter" [courseTopicList]="courseTopicList" [chapter]="currentChapter" (isDetailsExit)="isShowChapter=false">
 
 </app-mycourse-view>
