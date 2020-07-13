@@ -13,6 +13,15 @@
                          required field*
                       </div>
                     </div>
+                    <div class="form-group">
+                      <label>Discount Amount</label>
+                      <input type="text" class="form-control" required name="dicountAmount" [(ngModel)]="adCourse.dicountAmount" placeholder="Discount Amount" #dicountAmount="ngModel">
+                    </div>
+                    <div *ngIf="dicountAmount.invalid && (dicountAmount.dirty || dicountAmount.touched)" class="alerts m-b-15">
+                      <div *ngIf="dicountAmount.errors.required">
+                         required field*
+                      </div>
+                    </div>
 
                     <div class="form-group">
                       <label>About Course</label>
