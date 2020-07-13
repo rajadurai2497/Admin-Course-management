@@ -22,7 +22,7 @@ export class AddAttachmentComponent implements OnInit {
   }
   addFile(input) {
     let files = input.target.files;
-    console.log(files)
+    // console.log(files)
     Array.prototype.forEach.call(files, file => {
       this.formData.append("file_" + this.index, file);
       this.formData.append("file_" + this.index, file.name);
@@ -31,7 +31,7 @@ export class AddAttachmentComponent implements OnInit {
         "index": this.index
       }
       this.fileList.push(docMap);
-      console.log(docMap)
+      // console.log(docMap)
       this.index++;
     });
     this.fileInput.nativeElement.value = "";

@@ -29,7 +29,6 @@ export class MycourseComponent implements OnInit {
     this._userMycourseService.getPurchasedCourseList().then((data) => {
       if (data && data.result) {
         this.userMycourse = data.chapterCounter;
-        console.log(data);
         this.dataSource = new MatTableDataSource<PurchasedCourseDetails>(this.userMycourse);
       }
     });

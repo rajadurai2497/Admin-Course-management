@@ -28,7 +28,6 @@ export class AddChapterComponent implements OnInit {
   public addChapter(): void {
     if (this.validateAddChapter()) {
       this.chapter.chapterEntityObj.courseMasterId = this.course.courseMasterId;
-      console.log(this.chapter)
       this._courseManagementService.addChapter(this.chapter).then((data) => {
         if (data && data.result) {
           alert('Chapter added successfully...!')

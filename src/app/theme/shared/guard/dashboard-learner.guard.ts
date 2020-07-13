@@ -6,16 +6,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DashboardLearnerGuard implements CanActivate {
-  constructor(private readonly _router: Router){}
+  constructor(private readonly _router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if(currentUser.roles=='Admin'){
+    if (!currentUser) {
+      this._router.navigate(['auth/signin']);
+      return false;
+    }
+    if (currentUser.roles == 'Admin') {
       this._router.navigate(['dashboard/admin']);
-     return false;
+      return false;
     }
     return true;
   }
-  
+
 }

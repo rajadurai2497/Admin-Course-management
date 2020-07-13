@@ -11,6 +11,10 @@ export class DashboardAdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+      this._router.navigate(['auth/signin']);
+      return false;
+    }
     if(currentUser.roles=='Learner'){
       this._router.navigate(['dashboard/learner/mycourse']);
      return false;
