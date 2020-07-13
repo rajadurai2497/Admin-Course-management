@@ -84,3 +84,15 @@ table.mat-table {
 .cursor-pointer {
   cursor: pointer !important;
 }
+
+.dropdown-menu {
+  a.dropdown-item:hover {
+    background-color: $primary !important;
+  }
+}
+
+span.pcoded-mtext {
+  position: absolute !important;
+  text-align: center;
+  padding-top: 15px;
+}
