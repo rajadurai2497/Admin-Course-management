@@ -7,6 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AddAttachmentComponent } from '../add-attachment/add-attachment.component';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { data } from 'jquery';
+import { ROUTE_CONFIG } from 'src/app/models/constant';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -130,6 +131,11 @@ export class ChapterDetailComponent implements OnInit {
           alert('unable to delete attachment')
         }
       });
-      }
+    }
   }
+  downloadAttach(attachment) {
+    // console.log(ROUTE_CONFIG.CourseManagementURL + attachment.chapterSlideAttachementFilePath + attachment.chapterSlideAttachementImageName)
+    window.open(attachment.virtualPath,"_blank")
+  }
+
 }
