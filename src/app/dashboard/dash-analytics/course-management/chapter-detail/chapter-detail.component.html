@@ -10,10 +10,10 @@
             <h4>Chapter Name: {{chapter.chapterName}}</h4>
         </div>
         <div class=" btn-allignment">
-            <button mat-button (click)="deleteChapter()">
+            <button title="Delete" mat-button (click)="deleteChapter()">
                 <mat-icon>delete</mat-icon>
             </button>
-            <button mat-button (click)="editChapter()">
+            <button title="Edit" mat-button (click)="editChapter()">
                 <mat-icon>edit</mat-icon>
             </button>
         </div>
@@ -44,6 +44,29 @@
                     <div [innerHTML]="slide.slideDescription"></div>
                 </div>
             </div>
+
+            <mat-card class="example-card">
+                <h4> Attachements</h4>
+                <div *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
+                    <div class="row" *ngFor="let attachment of slide.slideAttachments">
+                        <div class="col-md-9">
+                            <a>{{attachment.chapterSlideAttachementExactName}}</a>
+                        </div>
+                        <div class="col-md-1">
+                            <button (click)="deleteAttach(attachment)" title="Delete" mat-button>
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                            <div class="col-md-2">
+                            <button title="Download" mat-button>
+                                <mat-icon>cloud_download</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+
+
             <!-- <ng-container *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
             <p>Attachements:</p>
             <div *ngFor="let attachment of slide.slideAttachments">
@@ -51,10 +74,7 @@
             </div>
         </ng-container> -->
 
-            <ng-container *ngIf="slide.slideAttachments">
-                <p>Attachements:</p>
-                <p>{{slide.slideAttachments.chapterSlideAttachementExactName}}</p>
-            </ng-container>
+
         </div>
     </mat-card>
 </div>

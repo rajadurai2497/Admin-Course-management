@@ -4,6 +4,7 @@ export class AllCourse {
     courseAmount: string;
     description: string;
     provideWhat: string;
+    dicountAmount:number;
     learnersNumber: string;
     constructor() { }
 }
@@ -15,6 +16,7 @@ export class AddCourse {
     abtCourse: string;
     weprovide: string;
     price: number;
+    dicountAmount:number;
     constructor() { }
 }
 export class AddChapter {
@@ -34,8 +36,8 @@ export class SlideEntity {
     slideDescription: string;
     orderNo: number;
     fileAddFlag: string;
-    // slideAttachments?: SlideAttachement[];
-    slideAttachments?: SlideAttachement;
+    slideAttachments?: SlideAttachement[];
+    // slideAttachments?: SlideAttachement;
     constructor() {
 
     }

@@ -6,6 +6,7 @@ import { ChapterEntity, SlideEntity } from 'src/app/models/course-management.mod
 import { DomSanitizer } from '@angular/platform-browser';
 import { AddAttachmentComponent } from '../add-attachment/add-attachment.component';
 import { FileUploadService } from 'src/app/services/file-upload.service';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -72,7 +73,6 @@ export class ChapterDetailComponent implements OnInit {
       }
     });
   }
-
   deleteChapter(): void {
     if (confirm('Are you sure you want to delete this chapter?'))
       this._courselistService.deleteChapter(this.chapter.chapterId).then((data) => {
@@ -118,5 +118,18 @@ export class ChapterDetailComponent implements OnInit {
   }
   videoUrl(url) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url)
+  }
+  deleteAttach(attach) {
+    if (confirm('Are you sure you want to delete this topic?')) {
+      this._fileUploadService.deleteAttach(attach.chapterSlideAttachementId).then((data) => {
+        if (data && data.result) {
+          alert('Attachment Delete successfully')
+          this.getChapterDetails();
+        }
+        else {
+          alert('unable to delete attachment')
+        }
+      });
+      }
   }
 }

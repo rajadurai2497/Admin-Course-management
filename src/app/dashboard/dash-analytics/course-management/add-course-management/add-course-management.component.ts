@@ -26,7 +26,7 @@ export class AddCourseManagementComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<AddCourseManagementComponent>,
     private readonly _courseManagementService: CourseManagementService,
     private readonly _validation: ValidationService) { }
-
+    
   ngOnInit(): void {
     this.courseForm = new FormGroup({
       basicContent: new FormControl(this.adCourse.basicContent, [
@@ -40,6 +40,9 @@ export class AddCourseManagementComponent implements OnInit {
       weprovide: new FormControl(this.adCourse.weprovide, [
         Validators.required,
       ]),
+      dicountAmount: new FormControl(this.adCourse.weprovide, [
+        Validators.required,
+      ]),
       price: new FormControl(this.adCourse.price, [
         Validators.required,
       ]),
@@ -51,6 +54,7 @@ export class AddCourseManagementComponent implements OnInit {
   get weprovide() { return this.courseForm.get('weprovide'); }
   get price() { return this.courseForm.get('price'); }
   get abtCourse() { return this.courseForm.get('abtCourse'); }
+  get dicountAmount() { return this.courseForm.get('dicountAmount'); }
 
 
 
@@ -61,7 +65,9 @@ export class AddCourseManagementComponent implements OnInit {
       courseName: this.adCourse.courseName,
       courseAmount: this.adCourse.price,
       description: this.adCourse.abtCourse,
-      provideWhat: this.adCourse.weprovide
+      provideWhat: this.adCourse.weprovide,
+      dicountAmount: this.adCourse.dicountAmount
+
     }
     if(this.validationaddCourse()){
     this._courseManagementService.addCourse(course).then((data) => {
