@@ -26,6 +26,7 @@ export class EditCourseComponent implements OnInit {
     this.courseMap.provideWhat=this.data.provideWhat;
     this.courseMap.description=this.data.description;
     this.courseMap.courseAmount=this.data.courseAmount;
+    this.courseMap.dicountAmount=this.data.dicountAmount;
     this._courselistService.updateCourse(this.courseMap).then((data) => {
       if (data && data.result) {
         this.dialogRef.close(data.saveResult);
