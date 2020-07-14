@@ -22,4 +22,8 @@ export class FileUploadService extends ApiService {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/GetSlideAttachmentBySlideIdForAdmin?SlideId=` + slide.slideId;
     return this.doGet(apiUrl,true);
   }
+  deleteAttach(attachId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/DeleteSlideAttachment?ChapterSlideAttachementId=` +attachId;
+    return this.doGet(apiUrl, true);
+  }
 }

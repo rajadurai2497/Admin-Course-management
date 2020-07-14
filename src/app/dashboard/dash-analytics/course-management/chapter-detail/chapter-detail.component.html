@@ -49,15 +49,15 @@
                 <h4> Attachements</h4>
                 <div *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
                     <div class="row" *ngFor="let attachment of slide.slideAttachments">
-                        <div class="col-md-10">
-                            <a href="">{{attachment.chapterSlideAttachementExactName}}</a>
+                        <div class="col-md-9">
+                            <a>{{attachment.chapterSlideAttachementExactName}}</a>
                         </div>
                         <div class="col-md-1">
-                            <button title="Delete" mat-button>
+                            <button (click)="deleteAttach(attachment)" title="Delete" mat-button>
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                             <button title="Download" mat-button>
                                 <mat-icon>cloud_download</mat-icon>
                             </button>
