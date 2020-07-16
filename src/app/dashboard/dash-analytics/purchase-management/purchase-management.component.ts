@@ -23,7 +23,7 @@ export class PurchaseManagementComponent implements OnInit {
   constructor(private readonly _purchaseManagementService: PurchaseManagementService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'course', 'email', 'password', 'phoneNumber', 'paidAmount', 'paidOn'];
+    this.displayedColumns = ['paymentId','name','emailId','phoneNumber', 'courseAmount', 'paymentDate'];
     this.getAllPurchaseManagement();
   }
 

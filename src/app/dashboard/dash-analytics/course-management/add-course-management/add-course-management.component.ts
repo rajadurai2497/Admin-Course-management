@@ -56,9 +56,6 @@ export class AddCourseManagementComponent implements OnInit {
   get abtCourse() { return this.courseForm.get('abtCourse'); }
   get dicountAmount() { return this.courseForm.get('dicountAmount'); }
 
-
-
-
   public addCourse(): void {
     const course = {
       courseMasterId: 0,

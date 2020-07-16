@@ -6,6 +6,7 @@ import { CourseManagementService } from 'src/app/services/course-management.serv
 import { AllCourse } from 'src/app/models/course-management.model';
 import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { AddCountComponent } from './add-count/add-count.component';
 
 
 @Component({
@@ -79,6 +80,15 @@ export class CourseManagementComponent implements OnInit {
       else{
         alert("Unable to delete Course")
       }
+    });
+  }
+
+  addCount() {
+    let dialogRef = this.dialog.open(AddCountComponent, {
+      height: 'auto',
+      width: 'auto',
+      panelClass: 'mat-dialogue-no-padding',
+      data:this.allCourse
     });
   }
 }
