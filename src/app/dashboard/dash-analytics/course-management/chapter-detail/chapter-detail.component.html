@@ -44,37 +44,32 @@
                     <div [innerHTML]="slide.slideDescription"></div>
                 </div>
             </div>
-
-            <mat-card class="example-card">
-                <h4> Attachements</h4>
-                <div *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
-                    <div class="row" *ngFor="let attachment of slide.slideAttachments">
-                        <div class="col-md-9">
-                            <a>{{attachment.chapterSlideAttachementExactName}}</a>
-                        </div>
-                        <div class="col-md-1">
-                            <button (click)="deleteAttach(attachment)" title="Delete" mat-button>
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
-                            <div class="col-md-2">
-                            <button title="Download"  (click)="downloadAttach(attachment)" mat-button>
-                                <mat-icon>cloud_download</mat-icon>
-                            </button>
+            <div class="attach-card col-lg-6">
+                <mat-card>
+                    <h4> Attachments</h4>
+                    <div *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
+                        <div class="attach-details" *ngFor="let attachment of slide.slideAttachments">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <a class="primary f-w-600">{{attachment.chapterSlideAttachementExactName}}</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <button (click)="deleteAttach(attachment)" title="Delete" mat-button
+                                        class="mat-delete">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button title="Download" (click)="downloadAttach(attachment)" mat-button
+                                        class="mat-download">
+                                        <mat-icon>cloud_download</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </mat-card>
-
-
-            <!-- <ng-container *ngIf="slide.slideAttachments && slide.slideAttachments.length>0">
-            <p>Attachements:</p>
-            <div *ngFor="let attachment of slide.slideAttachments">
-                {{attachment.chapterSlideAttachementExactName}}
+                </mat-card>
             </div>
-        </ng-container> -->
-
-
         </div>
     </mat-card>
 </div>

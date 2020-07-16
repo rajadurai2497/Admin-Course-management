@@ -60,7 +60,6 @@ export class PreviewCourseComponent implements OnInit {
       if (data && data.result) {
 
       }
-      console.log(data)
     })
   }
 

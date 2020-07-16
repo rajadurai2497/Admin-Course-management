@@ -15,10 +15,10 @@
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width">
   <!-- ID Column -->
-  <!-- <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>#</th>
-    <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
-  </ng-container> -->
+  <ng-container matColumnDef="paymentId">
+    <th mat-header-cell *matHeaderCellDef>paymentId</th>
+    <td mat-cell *matCellDef="let element">{{ element.paymentId }}</td>
+  </ng-container>
 
   <!-- Name-->
   <ng-container matColumnDef="name">
@@ -26,22 +26,10 @@
     <td mat-cell *matCellDef="let element">{{ element.name }}</td>
   </ng-container>
 
-  <!-- Course -->
-  <ng-container matColumnDef="course">
-    <th mat-header-cell *matHeaderCellDef>Course</th>
-    <td mat-cell *matCellDef="let element">{{ element.course }}</td>
-  </ng-container>
-
   <!-- Email -->
-  <ng-container matColumnDef="email">
+  <ng-container matColumnDef="emailId">
     <th mat-header-cell *matHeaderCellDef>Email</th>
-    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-  </ng-container>
-
-  <!-- Password -->
-  <ng-container matColumnDef="password">
-    <th mat-header-cell *matHeaderCellDef>Password</th>
-    <td mat-cell *matCellDef="let element">{{ element.passWord }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.emailId }}</td>
   </ng-container>
 
   <!-- Phone Number-->
@@ -51,15 +39,15 @@
   </ng-container>
 
   <!-- PaidAmount-->
-  <ng-container matColumnDef="paidAmount">
-    <th mat-header-cell *matHeaderCellDef>Paid Amount</th>
-    <td mat-cell *matCellDef="let element">{{ element.paidAmount }}</td>
+  <ng-container matColumnDef="courseAmount">
+    <th mat-header-cell *matHeaderCellDef>Course Amount</th>
+    <td mat-cell *matCellDef="let element">{{ element.courseAmount }}</td>
   </ng-container>
 
   <!-- PaidOn-->
-  <ng-container matColumnDef="paidOn">
-    <th mat-header-cell *matHeaderCellDef>Paid On</th>
-    <td mat-cell *matCellDef="let element">{{ element.paidOn }}</td>
+  <ng-container matColumnDef="paymentDate">
+    <th mat-header-cell *matHeaderCellDef>payment Date</th>
+    <td mat-cell *matCellDef="let element">{{ element.paymentDate }}</td>
   </ng-container>
 
   <!--Action-->

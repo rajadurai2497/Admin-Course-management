@@ -109,6 +109,7 @@ export class ChapterDetailComponent implements OnInit {
             this.chapter.slides = [];
             data.slideListByChapter.forEach(slide => {
               if (slide.chapterId = this.chapter.chapterId) {
+                this.fileShow(slide);
                 this.chapter.slides.push(slide);
               }
             });

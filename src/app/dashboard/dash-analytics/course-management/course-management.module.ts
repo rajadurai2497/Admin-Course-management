@@ -14,6 +14,8 @@ import { EditChapterComponent } from './edit-chapter/edit-chapter.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
 import { AddAttachmentComponent } from './add-attachment/add-attachment.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { AddCountComponent } from './add-count/add-count.component';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AddCourseManagementComponent,
@@ -25,13 +27,15 @@ import { EditCourseComponent } from './edit-course/edit-course.component';
     EditChapterComponent,
     AddTopicComponent,
     AddAttachmentComponent,
-    EditCourseComponent],
+    EditCourseComponent,
+    AddCountComponent],
   imports: [
     CommonModule,
     SharedModule,
     CourseManagementRoutingModule,
-    TinymceModule
+    TinymceModule,
+    MatSelectModule
   ],
-  entryComponents: [AddCourseManagementComponent,EditChapterComponent,AddAttachmentComponent,EditCourseComponent]
+  entryComponents: [AddCourseManagementComponent,AddCountComponent,EditChapterComponent,AddAttachmentComponent,EditCourseComponent]
 })
 export class CourseManagementModule { }
