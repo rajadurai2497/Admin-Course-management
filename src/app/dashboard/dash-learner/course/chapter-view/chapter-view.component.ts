@@ -34,12 +34,10 @@ export class ChapterViewComponent implements OnInit {
 
   updateAllComplete(chapterId) {
     this._userMycourseService.completedChapterCheckbox(chapterId)
-    console.log(chapterId)
   }
 
   constructor(private readonly _userMycourseService: UserMycourseService) { }
 
   ngOnInit() {
-
   }
 }

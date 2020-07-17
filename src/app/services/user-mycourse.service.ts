@@ -37,5 +37,9 @@ export class UserMycourseService extends ApiService {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetSlideAttachmentBySlideId?SlideId=` + SlideId;
     return this.doGet(apiUrl, true);
   }
+  downloadAttachment(): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + '/Course/DownloadAttachmentBySlideId';
+    return this.doGet(apiUrl, true);
+  }
 
 }

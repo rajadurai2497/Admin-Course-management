@@ -29,7 +29,7 @@
       </div>
       <div class="card-body">
         <div class="latest-update-box">
-          <div class="row p-t-20 p-b-20" *ngFor="let item of courseTopicList.purchasedSlideList"
+          <div class="row p-t-20 p-b-20" *ngFor="let item of courseTopicList.purchasedSlideListWithAttachement"
             [class.active]="item.slideId==slideId">
             <div class="col-auto text-right update-meta">
               <i class="b-primary update-icon ring"></i>
@@ -46,8 +46,10 @@
     <p class="slide-desc">Description</p>
     <div [innerHTML]="description"></div>
     <p class="slide-attach">Slide Attachments</p>
+    <div *ngFor="let item of slideAttachment; let i = index">
     <p>
-      <a (click)="onSlideClick(slideAttachment)" href="{{slideAttachment}}">click here to download</a>
+      <a (click)="downloadAttach(item.virtualPath)" href="{{item.virtualPath}}">Attachment {{i+1}}</a>
     </p>
+  </div>
   </mat-card>
 </div>
