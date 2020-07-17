@@ -24,7 +24,6 @@ export class MycourseViewComponent implements OnInit {
   constructor(private readonly _userMycourseService: UserMycourseService, public sanitizer: DomSanitizer) { }
   ngOnInit() {
     this.setCurrentSlide();
-    console.log(this.chapter)
   }
 
   ngOnChanges() {
@@ -37,31 +36,30 @@ export class MycourseViewComponent implements OnInit {
     } else {
       if (this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex] && this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl)
         this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl);
-      this.description = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].description;
+      this.description = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideDescription;
       this.slideName = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideName;
-      this.slideAttachment = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].virtualPath;
+      this.slideAttachment = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideAndAttachementEntityList;
       console.log( this.slideAttachment)
       this.slideId = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideId;
     }
   }
 
   downloadAttach(attachment) {
-    window.open(attachment.virtualPath,"_blank")
+    window.open(attachment,"_blank")
   }
 
-  onSlideClick(slide) {
-    console.log(slide)
-    if (slide.slideId == this.slideId) {
-      return;
-    } else {
-      this.currentIndex = this.courseTopicList.purchasedSlideListWithAttachement.indexOf(slide);
-      if (slide && slide.videoUrl)
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl);
-      this.description = slide.description;
-      this.slideName = slide.slideName;
-      this.slideAttachment = slide.virtualPath;
-      this.slideId = slide.slideId;
-    }
-  }
+  // onSlideClick(slide) {
+  //   if (slide.slideId == this.slideId) {
+  //     return;
+  //   } else {
+  //     this.currentIndex = this.courseTopicList.purchasedSlideListWithAttachement.indexOf(slide);
+  //     if (slide && slide.videoUrl)
+  //       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl);
+  //     this.description = slide.description;
+  //     this.slideName = slide.slideName;
+  //     this.slideAttachment = slide.virtualPath;
+  //     this.slideId = slide.slideId;
+  //   }
+  // }
 
 }
