@@ -3,11 +3,14 @@
     <div class="h-100 d-md-flex align-items-center auth-side-img">
       <div class="col-sm-10 auth-content w-auto">
         <img src="assets/images/loogo.png" alt="" class="imgfluid" />
-        <h2 class="text-black my-4">Welcome Back!</h2>
-        <h6 class="text-black  text-align">
-          Lurecap welcomes you to our share market trading training classes. We have best trainers who are highly
+        <h2 class="text-black my-4">Welcome!</h2>
+        <h6 class="text-black  text-align" *ngIf="pay==0">
+          Lurecap academy welcomes you to our share market trading training classes. We have best trainers who are highly
           qualified and experienced and have relevant industry exposure in their fields of expertise, capable of solving
           all your practical queries.
+        </h6>
+        <h6 class="text-black  text-align" *ngIf="pay==1">
+          Thanks for choosing our course. please Log in to view the course.
         </h6>
       </div>
     </div>

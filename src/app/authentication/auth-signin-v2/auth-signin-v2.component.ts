@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/theme/shared/service/authentication.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AuthLoginModel } from 'src/app/theme/shared/model/auth-login/auth-login-model';
 import { ValidationService } from 'src/app/services/validation.service';
@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 })
 
 export class AuthSigninV2Component implements OnInit {
-
+  pay:number=1;
   public loginform = new AuthLoginModel();
   loginForm: FormGroup;
   submitted = false;
@@ -24,7 +24,7 @@ export class AuthSigninV2Component implements OnInit {
   isInvalidCredentials: boolean;
 
 
-  constructor(private authenticationService: AuthenticationService, private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private readonly _validation: ValidationService, private readonly _router: Router) {
+  constructor(private authenticationService: AuthenticationService,  private route: ActivatedRoute,private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private readonly _validation: ValidationService, private readonly _router: Router) {
     // this.userName = '';
     // this.password = '';
   }
@@ -34,6 +34,15 @@ export class AuthSigninV2Component implements OnInit {
       // username: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
+    });
+    this.route.queryParams.forEach((params) => {
+      if (params['pay']) {
+        this.pay = params['pay'];
+        return;
+      }
+      else{
+        this.pay=0;
+      }
     });
   }
 
