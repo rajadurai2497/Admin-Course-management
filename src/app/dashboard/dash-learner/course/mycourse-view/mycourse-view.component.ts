@@ -47,4 +47,19 @@ export class MycourseViewComponent implements OnInit {
   downloadAttach(attachment) {
     window.open(attachment,"_blank")
   }
+
+  onSlideClick(slide) {
+    if (slide.slideId == this.slideId) {
+      return;
+    } else {
+      this.currentIndex = this.courseTopicList.purchasedSlideListWithAttachement.indexOf(slide);
+      if (slide && slide.videoUrl)
+        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl);
+      this.description = slide.description;
+      this.slideName = slide.slideName;
+      this.slideAttachment = slide.virtualPath;
+      this.slideId = slide.slideId;
+    }
+  }
+
 }
