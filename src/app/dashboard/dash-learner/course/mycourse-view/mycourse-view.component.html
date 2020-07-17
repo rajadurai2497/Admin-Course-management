@@ -15,8 +15,8 @@
       <button mat-button [disabled]="currentIndex==0" (click)="currentIndex=currentIndex-1;setCurrentSlide()"
         class="btn btn-primary float-left">Previous</button>
       <button mat-button (click)="currentIndex=currentIndex+1;setCurrentSlide()" class="btn btn-primary float-right">
-        <ng-container *ngIf="(currentIndex+1)==this.courseTopicList.purchasedSlideList.length">Finish</ng-container>
-        <ng-container *ngIf="(currentIndex+1)!=this.courseTopicList.purchasedSlideList.length">Next</ng-container>
+        <ng-container *ngIf="(currentIndex+1)==this.courseTopicList.purchasedSlideListWithAttachement.length">Finish</ng-container>
+        <ng-container *ngIf="(currentIndex+1)!=this.courseTopicList.purchasedSlideListWithAttachement.length">Next</ng-container>
       </button>
     </div>
   </div>

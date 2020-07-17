@@ -32,25 +32,31 @@ export class MycourseViewComponent implements OnInit {
   }
 
   setCurrentSlide() {
-    if (this.currentIndex == this.courseTopicList.purchasedSlideList.length) {
+    if (this.currentIndex == this.courseTopicList.purchasedSlideListWithAttachement.length) {
       this.isDetailsExit.emit(true);
     } else {
-      if (this.courseTopicList.purchasedSlideList[this.currentIndex] && this.courseTopicList.purchasedSlideList[this.currentIndex].videoUrl)
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[this.currentIndex].videoUrl);
-      this.description = this.courseTopicList.purchasedSlideList[this.currentIndex].description;
-      this.slideName = this.courseTopicList.purchasedSlideList[this.currentIndex].slideName;
-      this.slideAttachment = this.courseTopicList.purchasedSlideList[this.currentIndex].virtualPath;
-      this.slideId = this.courseTopicList.purchasedSlideList[this.currentIndex].slideId;
+      if (this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex] && this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl)
+        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl);
+      this.description = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].description;
+      this.slideName = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideName;
+      this.slideAttachment = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].virtualPath;
+      console.log( this.slideAttachment)
+      this.slideId = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideId;
     }
   }
 
+  downloadAttach(attachment) {
+    window.open(attachment.virtualPath,"_blank")
+  }
+
   onSlideClick(slide) {
+    console.log(slide)
     if (slide.slideId == this.slideId) {
       return;
     } else {
-      this.currentIndex = this.courseTopicList.purchasedSlideList.indexOf(slide);
+      this.currentIndex = this.courseTopicList.purchasedSlideListWithAttachement.indexOf(slide);
       if (slide && slide.videoUrl)
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideList[this.currentIndex].videoUrl);
+        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl);
       this.description = slide.description;
       this.slideName = slide.slideName;
       this.slideAttachment = slide.virtualPath;
