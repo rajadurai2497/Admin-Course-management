@@ -80,7 +80,7 @@ const NavLearner=[
   title: 'Contact Us',
   type: 'item',
   icon: 'feather icon-phone-call',
-  url: 'http://lurecap.com/contact-us.php',
+  url: 'http://lurecapacademy.com/Queries',
   target: true,
   external: true
 },
