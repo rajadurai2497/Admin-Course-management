@@ -29,7 +29,8 @@ export class UserProfileComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-      this.userProfile = result;
+      // this.userProfile = result;
+      this.getUserProfile();
       }
     });
 

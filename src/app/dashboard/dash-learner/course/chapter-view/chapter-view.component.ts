@@ -24,7 +24,7 @@ export class ChapterViewComponent implements OnInit {
   gotodetails(chapter) {
     this._userMycourseService.getSlideByChapter(chapter.chapterId).then((data) => {
       this.courseTopicList = data;
-      if (this.courseTopicList && this.courseTopicList.purchasedSlideList.length > 0)
+      if (this.courseTopicList && this.courseTopicList.purchasedSlideListWithAttachement.length > 0)
       {
         this.isShowChapter = true;
         this.currentChapter=chapter

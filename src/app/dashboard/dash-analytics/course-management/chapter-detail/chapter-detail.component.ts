@@ -135,7 +135,6 @@ export class ChapterDetailComponent implements OnInit {
     }
   }
   downloadAttach(attachment) {
-    // console.log(ROUTE_CONFIG.CourseManagementURL + attachment.chapterSlideAttachementFilePath + attachment.chapterSlideAttachementImageName)
     window.open(attachment.virtualPath,"_blank")
   }
 
