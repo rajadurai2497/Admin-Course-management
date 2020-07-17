@@ -41,7 +41,7 @@
   <!-- PaidAmount-->
   <ng-container matColumnDef="courseAmount">
     <th mat-header-cell *matHeaderCellDef>Course Amount</th>
-    <td mat-cell *matCellDef="let element">{{ element.courseAmount }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.courseAmount/100 }}</td>
   </ng-container>
 
   <!-- PaidOn-->
