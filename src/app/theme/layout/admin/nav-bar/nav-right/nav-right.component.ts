@@ -60,6 +60,7 @@ export class NavRightComponent implements OnInit, DoCheck {
   }
   logout(){
     this.authenticationService.logout();
+    localStorage.clear();
   }
   changePassword(){
     let dialogRef = this.dialog.open(ChangePasswordComponent, {
