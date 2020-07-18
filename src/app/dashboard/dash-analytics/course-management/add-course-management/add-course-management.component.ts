@@ -26,7 +26,7 @@ export class AddCourseManagementComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<AddCourseManagementComponent>,
     private readonly _courseManagementService: CourseManagementService,
     private readonly _validation: ValidationService) { }
-    
+
   ngOnInit(): void {
     this.courseForm = new FormGroup({
       basicContent: new FormControl(this.adCourse.basicContent, [
@@ -57,26 +57,27 @@ export class AddCourseManagementComponent implements OnInit {
   get dicountAmount() { return this.courseForm.get('dicountAmount'); }
 
   public addCourse(): void {
-    const course = {
+    let course = {
       courseMasterId: 0,
       courseName: this.adCourse.courseName,
       courseAmount: this.adCourse.price,
       description: this.adCourse.abtCourse,
       provideWhat: this.adCourse.weprovide,
       dicountAmount: this.adCourse.dicountAmount
-
     }
-    if(this.validationaddCourse()){
-    this._courseManagementService.addCourse(course).then((data) => {
-      if (data && data.result) {
-        this.dialogRef.close(true);
-        alert('Course added successfully...!')
-      }
-      else{
-        alert('Unable to add Course')
-      }
-    });
-  }
+    course.courseAmount = course.courseAmount ? parseInt(course.courseAmount + "") : 0;
+    course.dicountAmount = course.dicountAmount ? parseInt(course.dicountAmount + "") : 0;
+    if (this.validationaddCourse()) {
+      this._courseManagementService.addCourse(course).then((data) => {
+        if (data && data.result) {
+          this.dialogRef.close(true);
+          alert('Course added successfully...!')
+        }
+        else {
+          alert('Unable to add Course')
+        }
+      });
+    }
   }
   onNoClick(): void {
     this.dialogRef.close();
@@ -102,7 +103,7 @@ export class AddCourseManagementComponent implements OnInit {
       alert('price field empty');
       return false;
     }
-   
+
     return true;
   }
 

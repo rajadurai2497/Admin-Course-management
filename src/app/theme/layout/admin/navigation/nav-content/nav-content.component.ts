@@ -71,10 +71,10 @@ export class NavContentComponent implements OnInit, AfterViewInit {
       (document.querySelector('#side-nav-horizontal') as HTMLElement).style.marginLeft = '-' + this.scrollWidth + 'px';
     }
 
-    console.log('window width - ', this.windowWidth);
-    console.log('content width - ', this.contentWidth);
-    console.log('wrapper width - ', this.wrapperWidth);
-    console.log('scroll width - ', this.scrollWidth);
+    // console.log('window width - ', this.windowWidth);
+    // console.log('content width - ', this.contentWidth);
+    // console.log('wrapper width - ', this.wrapperWidth);
+    // console.log('scroll width - ', this.scrollWidth);
   }
 
   scrollMinus() {

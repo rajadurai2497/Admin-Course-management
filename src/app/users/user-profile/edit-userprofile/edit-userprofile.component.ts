@@ -51,7 +51,7 @@ export class EditUserprofileComponent implements OnInit {
       this.data.userId = currentUser.userId;
       this._userProfileService.updateUserProfile(this.data).then((data) => {
         if (data && data.result) {
-          this.dialogRef.close(data.saveResult);
+          this.dialogRef.close(true);
           alert('Profile updated successfully...!')
         }
         else {
@@ -94,7 +94,6 @@ export class EditUserprofileComponent implements OnInit {
       return false;
     }
     return true;
-    console.log(this.data.phoneNumber.length)
   }
 
 }

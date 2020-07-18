@@ -23,7 +23,7 @@ export class PurchaseManagementComponent implements OnInit {
   constructor(private readonly _purchaseManagementService: PurchaseManagementService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['paymentId','name','emailId','phoneNumber', 'courseAmount', 'paymentDate'];
+    this.displayedColumns = ['paymentId', 'name', 'emailId', 'phoneNumber', 'courseAmount', 'paymentDate', 'paymentStatus'];
     this.getAllPurchaseManagement();
   }
 
@@ -31,6 +31,9 @@ export class PurchaseManagementComponent implements OnInit {
     this._purchaseManagementService.getAllPurchaseManagement().then((data) => {
       if (data && data.result) {
         this.purchaseManagement = data.paymentDetails;
+        this.purchaseManagement.forEach(purchase => {
+          purchase.paymentDate = moment(purchase.paymentDate).format('DD/MM/YYYY');
+        });
         this.dataSource = new MatTableDataSource<PaymentDetails>(this.purchaseManagement);
         this.dataSource.paginator = this.paginator;
       }
@@ -45,8 +48,9 @@ export class PurchaseManagementComponent implements OnInit {
       moment(moment(this.toDate).format('DD/MM/YYYY'), 'DD/MM/YYYY') : null;
     if (fromDate && toDate) {
       this.purchaseManagement.forEach(element => {
-        const paidOn = moment(element.paidOn, "DD/MM/YYYY");
-        if (paidOn && paidOn.isBetween(fromDate, toDate)) {
+        const paidOn = moment(element.paymentDate, "DD/MM/YYYY");
+        if (paidOn && (paidOn.isBetween(fromDate, toDate)) ||
+          (paidOn.valueOf() == fromDate.valueOf() || paidOn.valueOf() == toDate.valueOf())) {
           filteredData.push(element);
         }
       });
@@ -58,4 +62,3 @@ export class PurchaseManagementComponent implements OnInit {
     }
   }
 }
-

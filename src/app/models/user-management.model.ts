@@ -6,4 +6,5 @@ export interface AllUserList {
   emailId: string;
   phoneNumber: string;
   city: string;
+  mailDate: string;
 }

@@ -2,6 +2,7 @@
 export class dashboardEntity{
   dashboardTableEntityObj: dashboardTableEntity[] = [];
   dashboardTileEntityObj: dashboardTileEntity;
+  paymentDate:string;
 
 }
 

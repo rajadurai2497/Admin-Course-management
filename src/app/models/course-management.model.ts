@@ -1,7 +1,7 @@
 export class AllCourse {
     courseMasterId: string;
     courseName: string;
-    courseAmount: string;
+    courseAmount: number;
     description: string;
     provideWhat: string;
     dicountAmount:number;

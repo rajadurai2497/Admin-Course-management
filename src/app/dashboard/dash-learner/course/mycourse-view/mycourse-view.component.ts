@@ -39,7 +39,6 @@ export class MycourseViewComponent implements OnInit {
       this.description = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideDescription;
       this.slideName = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideName;
       this.slideAttachment = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideAndAttachementEntityList;
-      console.log( this.slideAttachment)
       this.slideId = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideId;
     }
   }

@@ -43,12 +43,12 @@ export class ChangePasswordComponent implements OnInit {
   getPasswordChange(){
     if(this.changePasswordForm.valid){
     this._forgetPasswordService.getPasswordChange(this.changePasswordForm.value).then((data) => {
-      if (data && data.result) {
+      if (data && data.responseStatus) {
         this.dialogRef.close(true);
         alert('Password Change successfully...!')
       }
       else{
-        alert('Unable to Change Password')
+        alert(data.resposeResult)
       }
   });
 }
