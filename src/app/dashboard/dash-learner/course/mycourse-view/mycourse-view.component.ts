@@ -53,11 +53,11 @@ export class MycourseViewComponent implements OnInit {
     } else {
       this.currentIndex = this.courseTopicList.purchasedSlideListWithAttachement.indexOf(slide);
       if (slide && slide.videoUrl)
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl);
-      this.description = slide.description;
-      this.slideName = slide.slideName;
-      this.slideAttachment = slide.virtualPath;
-      this.slideId = slide.slideId;
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].videoUrl);
+      this.description = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideDescription;
+      this.slideName = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideName;
+      this.slideAttachment = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideAndAttachementEntityList;
+      this.slideId = this.courseTopicList.purchasedSlideListWithAttachement[this.currentIndex].slideId;
     }
   }
 
