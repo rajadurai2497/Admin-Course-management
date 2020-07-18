@@ -20,7 +20,6 @@ export class EditTopicComponent implements OnInit {
   constructor(private readonly _courselistService: CourseManagementService) { }
 
   ngOnInit() {
-    console.log(this.topic)
   }
 
 

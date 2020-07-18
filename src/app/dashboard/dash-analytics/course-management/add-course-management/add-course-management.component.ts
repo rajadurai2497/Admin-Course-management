@@ -65,8 +65,8 @@ export class AddCourseManagementComponent implements OnInit {
       provideWhat: this.adCourse.weprovide,
       dicountAmount: this.adCourse.dicountAmount
     }
-    course.courseAmount = parseInt(course.courseAmount + "");
-    course.dicountAmount = parseInt(course.dicountAmount + "");
+    course.courseAmount = course.courseAmount ? parseInt(course.courseAmount + "") : 0;
+    course.dicountAmount = course.dicountAmount ? parseInt(course.dicountAmount + "") : 0;
     if (this.validationaddCourse()) {
       this._courseManagementService.addCourse(course).then((data) => {
         if (data && data.result) {

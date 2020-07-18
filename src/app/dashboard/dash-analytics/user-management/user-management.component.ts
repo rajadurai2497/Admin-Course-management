@@ -39,6 +39,9 @@ export class UserManagementComponent implements OnInit {
     this._userManagementService.getAllUserManagement().then((data) => {
       if(data && data.result){
         this.userManagement = data.allUserList;
+        this.userManagement.forEach(user => {
+          user.mailDate = moment(user.mailDate).format('DD/MM/YYYY');
+        });
         this.dataSource=new MatTableDataSource<AllUserList>(this.userManagement);
         this.dataSource.paginator = this.paginator;
       }
@@ -50,22 +53,22 @@ export class UserManagementComponent implements OnInit {
       moment(moment(this.fromDate).format('DD/MM/YYYY'), 'DD/MM/YYYY') : null;
     const toDate = this.toDate ?
       moment(moment(this.toDate).format('DD/MM/YYYY'), 'DD/MM/YYYY') : null;
-    if (fromDate && toDate) {
-      this.userManagement.forEach(element => {
-        const paidOn = moment(element.mailDate, "DD/MM/YYYY");
-        if (paidOn && paidOn.isBetween(fromDate, toDate)) {
-          filteredData.push(element);
-        }
-      });
-      this.dataSource = new MatTableDataSource(filteredData);
-      this.dataSource.paginator = this.paginator;
-    } else {
+      if (fromDate && toDate) {
+        this.userManagement.forEach(element => {
+          const date = moment(element.mailDate, "DD/MM/YYYY");
+          if (date && (date.isBetween(fromDate, toDate)) ||
+            (date.valueOf() == fromDate.valueOf() || date.valueOf() == toDate.valueOf())) {
+            filteredData.push(element);
+          }
+        });
+        this.dataSource = new MatTableDataSource(filteredData);
+        this.dataSource.paginator = this.paginator;
+      }  else {
       this.dataSource = new MatTableDataSource(this.userManagement);
       this.dataSource.paginator = this.paginator;
     }
   }
 }
-
 
 
 

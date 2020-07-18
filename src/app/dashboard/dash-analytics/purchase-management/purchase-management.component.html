@@ -40,19 +40,19 @@
 
   <!-- PaidAmount-->
   <ng-container matColumnDef="courseAmount">
-    <th mat-header-cell *matHeaderCellDef>Course Amount</th>
+    <th mat-header-cell *matHeaderCellDef> Amount</th>
     <td mat-cell *matCellDef="let element">{{ element.courseAmount/100 }}</td>
   </ng-container>
 
   <!-- PaidOn-->
   <ng-container matColumnDef="paymentDate">
-    <th mat-header-cell *matHeaderCellDef>payment Date</th>
+    <th mat-header-cell *matHeaderCellDef>Date</th>
     <td mat-cell *matCellDef="let element">{{ element.paymentDate }}</td>
   </ng-container>
 
   <!-- PaidOn-->
   <ng-container matColumnDef="paymentStatus">
-    <th mat-header-cell *matHeaderCellDef>Payment Status</th>
+    <th mat-header-cell *matHeaderCellDef>Status</th>
     <td mat-cell *matCellDef="let element">{{ element.paymentStatus }}</td>
   </ng-container>
 

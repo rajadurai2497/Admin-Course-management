@@ -23,10 +23,17 @@ export class CommunityUserComponent implements OnInit {
     this.getAllCommunityUser();
   }
 
+
+ 
+
   public getAllCommunityUser(): void {
+    
     this._communityUserService.getAllCommunityUser().then((data) => {
       if (data && data.result) {
         this.communityUser = data.comunityUserList;
+        this.communityUser.forEach(community => {
+          community.createdDate = moment(community.createdDate).format('DD/MM/YYYY');
+        });
         this.dataSource = new MatTableDataSource<ComunityUserList>(this.communityUser);
         this.dataSource.paginator = this.paginator;
       }
@@ -41,8 +48,9 @@ export class CommunityUserComponent implements OnInit {
       moment(moment(this.toDate).format('DD/MM/YYYY'), 'DD/MM/YYYY') : null;
     if (fromDate && toDate) {
       this.communityUser.forEach(element => {
-        const paidOn = moment(element.createdDate, "DD/MM/YYYY");
-        if (paidOn && paidOn.isBetween(fromDate, toDate)) {
+        const createdDate = moment(element.createdDate, "DD/MM/YYYY");
+        if (createdDate && (createdDate.isBetween(fromDate, toDate)) ||
+          (createdDate.valueOf() == fromDate.valueOf() || createdDate.valueOf() == toDate.valueOf())) {
           filteredData.push(element);
         }
       });

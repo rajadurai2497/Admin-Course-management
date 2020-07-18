@@ -5,5 +5,5 @@ export interface PaymentDetails {
   email: string;
   phoneNumber: string;
   paidAmount: string;
-  paidOn: string;
+  paymentDate: string;
 }
