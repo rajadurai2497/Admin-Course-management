@@ -3,6 +3,7 @@ import { UserManagementService } from 'src/app/services/user-management.service'
 import { AllUserList } from 'src/app/models/user-management.model';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-management',
@@ -23,11 +24,14 @@ export class UserManagementComponent implements OnInit {
   public userManagement: AllUserList[]=[];
   dataSource = new MatTableDataSource<AllUserList>();
   expandedElement: AllUserList | null;
+  fromDate: Date = null;
+  toDate: Date = null;
+
 
   constructor(private readonly _userManagementService: UserManagementService) {}
 
   ngOnInit(): void {
-    this.displayedColumns = ['userName', 'emailId', 'phoneNumber', 'city'];
+    this.displayedColumns = ['userName', 'emailId', 'phoneNumber', 'city','mailDate'];
     this.getAllUserManagement();
   }
 
@@ -39,6 +43,26 @@ export class UserManagementComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       }
     });
+  }
+  filter() {
+    let filteredData: AllUserList[] = [];
+    const fromDate = this.fromDate ?
+      moment(moment(this.fromDate).format('DD/MM/YYYY'), 'DD/MM/YYYY') : null;
+    const toDate = this.toDate ?
+      moment(moment(this.toDate).format('DD/MM/YYYY'), 'DD/MM/YYYY') : null;
+    if (fromDate && toDate) {
+      this.userManagement.forEach(element => {
+        const paidOn = moment(element.mailDate, "DD/MM/YYYY");
+        if (paidOn && paidOn.isBetween(fromDate, toDate)) {
+          filteredData.push(element);
+        }
+      });
+      this.dataSource = new MatTableDataSource(filteredData);
+      this.dataSource.paginator = this.paginator;
+    } else {
+      this.dataSource = new MatTableDataSource(this.userManagement);
+      this.dataSource.paginator = this.paginator;
+    }
   }
 }
 

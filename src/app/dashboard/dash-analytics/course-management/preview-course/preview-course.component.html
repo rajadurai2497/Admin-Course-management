@@ -55,8 +55,8 @@
   </table>
 
 </div>
-<app-add-chapter *ngIf="isViewDetails" [course]="course" (isDetailsExit)="isViewDetails=false">
+<app-add-chapter *ngIf="isViewDetails" [course]="course" (isDetailsExit)="isViewDetails=false;getCourseChapters()">
 </app-add-chapter>
 
-<app-chapter-detail *ngIf="isChapterDetails" [chapter]="currentChapter" (isDetailsExit)="isChapterDetails=false">
+<app-chapter-detail *ngIf="isChapterDetails" [chapter]="currentChapter" (isDetailsExit)="isChapterDetails=false;getCourseChapters()">
 </app-chapter-detail>
