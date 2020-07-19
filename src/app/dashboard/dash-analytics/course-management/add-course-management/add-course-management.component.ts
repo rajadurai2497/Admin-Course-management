@@ -46,6 +46,9 @@ export class AddCourseManagementComponent implements OnInit {
       price: new FormControl(this.adCourse.price, [
         Validators.required,
       ]),
+      language: new FormControl(this.adCourse.language, [
+        Validators.required,
+      ]),
     });
   }
 
@@ -55,6 +58,7 @@ export class AddCourseManagementComponent implements OnInit {
   get price() { return this.courseForm.get('price'); }
   get abtCourse() { return this.courseForm.get('abtCourse'); }
   get dicountAmount() { return this.courseForm.get('dicountAmount'); }
+  get language() { return this.courseForm.get('language'); }
 
   public addCourse(): void {
     let course = {
@@ -63,7 +67,8 @@ export class AddCourseManagementComponent implements OnInit {
       courseAmount: this.adCourse.price,
       description: this.adCourse.abtCourse,
       provideWhat: this.adCourse.weprovide,
-      dicountAmount: this.adCourse.dicountAmount
+      dicountAmount: this.adCourse.dicountAmount,
+      language: this.adCourse.language
     }
     course.courseAmount = course.courseAmount ? parseInt(course.courseAmount + "") : 0;
     course.dicountAmount = course.dicountAmount ? parseInt(course.dicountAmount + "") : 0;
@@ -91,6 +96,10 @@ export class AddCourseManagementComponent implements OnInit {
       alert('Course Name field empty');
       return false;
     }
+    if (!this.adCourse.language) {
+      alert('language field empty');
+      return false;
+    }
     if (!this.adCourse.abtCourse) {
       alert('About Course field empty');
       return false;
@@ -103,6 +112,7 @@ export class AddCourseManagementComponent implements OnInit {
       alert('price field empty');
       return false;
     }
+    
 
     return true;
   }

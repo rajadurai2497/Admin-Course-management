@@ -6,6 +6,7 @@ export class AllCourse {
     provideWhat: string;
     dicountAmount:number;
     learnersNumber: string;
+    language: string;
     constructor() { }
 }
 
@@ -17,6 +18,7 @@ export class AddCourse {
     weprovide: string;
     price: number;
     dicountAmount:number;
+    language: string;
     constructor() { }
 }
 export class AddChapter {

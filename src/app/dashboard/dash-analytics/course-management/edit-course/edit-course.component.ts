@@ -23,6 +23,7 @@ export class EditCourseComponent implements OnInit {
   public updateCourse(): void {
     this.courseMap.courseMasterId = this.data.courseMasterId;
     this.courseMap.courseName = this.data.courseName;
+    this.courseMap.language = this.data.language;
     this.courseMap.provideWhat = this.data.provideWhat;
     this.courseMap.description = this.data.description;
     this.courseMap.courseAmount = this.data.courseAmount ? parseInt(this.data.courseAmount + "") : 0;
