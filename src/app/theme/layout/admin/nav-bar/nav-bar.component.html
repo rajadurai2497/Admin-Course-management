@@ -5,7 +5,8 @@
   <div class="m-header">
     <a href="javascript:" class="mobile-menu" id="mobile-collapse" (click)="navCollapse()"><span></span></a>
     <a  class="b-brand">
-      <img id="main-logo" src="assets/images/auth/auth-logo.png" alt="" class="logo img-fluid">
+      <img id="main-logo" src="assets/images/auth/auth-logo.png" alt="" class="logo img-fluid  d-lg-inline d-none ">
+      <img id="main-logo" src="assets/images/auth/auth-logo.png" alt="" class=" logo img-flud d-lg-none" style="margin-left: 85px;">
       <img src="assets/images/logo-icon.png" alt="" class="logo-thumb">
     </a>
     <a class="mob-toggler" [ngClass]="{'on' : this.menuClass}" href="javascript:" (click)="toggleMobOption()"><i class="feather icon-more-vertical"></i></a>
