@@ -5,17 +5,17 @@ import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserManagementComponent } from './user-management.component';
 import {
   MatDialogModule,
-  MatCardModule,
   MatFormFieldModule,
   MatSlideToggleModule,
   MatTableModule,
   MatIconModule,
   MatButtonModule,
+  MatSnackBarModule,
 } from '@angular/material';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @NgModule({
   declarations: [UserManagementComponent],
-  imports: [CommonModule, UserManagementRoutingModule, SharedModule, MatTableModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, UserManagementRoutingModule,MatSnackBarModule, SharedModule, MatTableModule, MatIconModule, MatButtonModule],
 })
-export class UserManagementModule {}
+export class UserManagementModule { }

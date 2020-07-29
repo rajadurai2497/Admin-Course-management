@@ -60,10 +60,10 @@ table.mat-table {
       color:  #1b2e8c!important;
     }
   }
-  background-color:  #33cacfe0 !important;
+  background-color:   #9ba1db !important;
   .mat-simple-snackbar-action .mat-button-wrapper {
     color: red !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
 }
 
@@ -98,4 +98,11 @@ span.pcoded-mtext {
 }
 .mat-icon{
   font-size: 15px;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #9ba1db;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #9ba1db;
 }

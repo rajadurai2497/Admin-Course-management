@@ -56,6 +56,16 @@
     <td mat-cell *matCellDef="let element">{{ element.paymentStatus }}</td>
   </ng-container>
 
+   <!-- Icon Column -->
+   <ng-container matColumnDef="refund">
+    <th mat-header-cell  *matHeaderCellDef > Refund</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle [(ngModel)]="element.refundFlag"
+      (change)="refundData(element)">
+      </mat-slide-toggle>
+    </td>
+  </ng-container>
+
   <!--Action-->
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>

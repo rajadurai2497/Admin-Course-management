@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserManagementService } from 'src/app/services/user-management.service';
 import { AllUserList } from 'src/app/models/user-management.model';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import * as moment from 'moment';
+import { AllCourse } from 'src/app/models/course-management.model';
 
 @Component({
   selector: 'app-user-management',
@@ -21,14 +22,17 @@ export class UserManagementComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator; 
 
   displayedColumns: string[];
+  columnsList: string[];
   public userManagement: AllUserList[]=[];
   dataSource = new MatTableDataSource<AllUserList>();
+  public purchasedCourse: AllCourse[]=[];
+  currentUser:any;
   expandedElement: AllUserList | null;
   fromDate: Date = null;
   toDate: Date = null;
 
 
-  constructor(private readonly _userManagementService: UserManagementService) {}
+  constructor(private readonly _userManagementService: UserManagementService,private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.displayedColumns = ['userName', 'emailId', 'phoneNumber', 'city','mailDate'];
@@ -67,6 +71,26 @@ export class UserManagementComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.userManagement);
       this.dataSource.paginator = this.paginator;
     }
+  }
+
+  courseList(element){
+    this.purchasedCourse=[];
+    this.currentUser=element;
+    this._userManagementService.getCourseForUsers(element.userId).then((data)=>{
+      this.purchasedCourse=data.allPurchasedCourse
+    })
+  }
+ 
+  public unlockAllChapters(courseMasterId): void {
+    this._userManagementService.unlockAllChapters(this.currentUser.userId,courseMasterId).then((data) => {
+      if(data.allUserList){
+        this._snackBar.open('Course Unlocked successfully', 'Close', {
+          duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right'
+        });
+    }
+    });
   }
 }
 

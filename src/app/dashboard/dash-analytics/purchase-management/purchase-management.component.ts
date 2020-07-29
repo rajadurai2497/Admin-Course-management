@@ -16,14 +16,13 @@ export class PurchaseManagementComponent implements OnInit {
   purchaseManagement: PaymentDetails[] = [];
   displayedColumns: string[];
 
-
   fromDate: Date = null;
   toDate: Date = null;
 
   constructor(private readonly _purchaseManagementService: PurchaseManagementService) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['paymentId', 'name', 'emailId', 'phoneNumber', 'courseAmount', 'paymentDate', 'paymentStatus'];
+    this.displayedColumns = ['paymentId', 'name', 'emailId', 'phoneNumber', 'courseAmount', 'paymentDate', 'paymentStatus', 'refund'];
     this.getAllPurchaseManagement();
   }
 
@@ -60,5 +59,14 @@ export class PurchaseManagementComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.purchaseManagement);
       this.dataSource.paginator = this.paginator;
     }
+  }
+  public refundData(element): void {
+    let refund = {
+      paymentId:element.paymentId,
+      refundFlag:element.refundFlag,
+      userId: element.userId,
+    }
+    this._purchaseManagementService.refundData(refund).then((data) => {
+    });
   }
 }

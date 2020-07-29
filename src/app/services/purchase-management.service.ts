@@ -15,4 +15,8 @@ export class PurchaseManagementService extends ApiService {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/GetAllPurchaseMangement`;
     return this.doGet(apiUrl, true);
   }
+  refundData(payment): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/PutRefundData`;
+    return this.doPost(apiUrl, payment, true);
+  }
 }
