@@ -37,15 +37,33 @@ tr.example-element-row:not(.example-expanded-row):active {
   box-shadow: none;
 }
 
-.margin-top{
-  margin-top:20px;
+.margin-top {
+  margin-top: 20px;
+}
+div.course-list {
+  width: 100%;
+  div.row {
+    padding: 10px;
+    border-bottom: 1px solid #1c214f4f;
+    margin-bottom: 10px;
+    div.col-md-6 {
+      padding-top: 15px;
+      font-weight: 400;
+      font-size: 14px;
+    }
+    button.btn-unlock {
+      font-weight: 600;
+      font-size: 12px;
+      color: #2d378c;
+      .mat-icon {
+        font-size: 25px;
+      }
+      span.unlock{
+        vertical-align: sub;
+      }
+    }
+  }
 }
 
-.unlock-button{
-  background-color: #9ba1db;
-}
-.course-list{
-  padding:10px;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 10px;
-}
+
+

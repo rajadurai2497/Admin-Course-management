@@ -538,6 +538,7 @@ body.gradient-dark {
 
         .btn-primary {
           background: darken($dark-layout,7%);
+          font-weight: 600;
           border-color: darken($dark-layout,7%);
         }
 

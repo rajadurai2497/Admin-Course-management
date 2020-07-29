@@ -106,3 +106,6 @@ span.pcoded-mtext {
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
   background-color: #9ba1db;
 }
+.cdk-overlay-container{
+  z-index:1500;
+  }
