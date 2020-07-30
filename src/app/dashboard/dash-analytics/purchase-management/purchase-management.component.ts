@@ -20,6 +20,7 @@ export class PurchaseManagementComponent implements OnInit {
 
   fromDate: Date = null;
   toDate: Date = null;
+  hasLoaded = false;
 
   constructor(private readonly _purchaseManagementService: PurchaseManagementService, private dialog:MatDialog) { }
 
@@ -31,6 +32,7 @@ export class PurchaseManagementComponent implements OnInit {
   public getAllPurchaseManagement(): void {
     this._purchaseManagementService.getAllPurchaseManagement().then((data) => {
       if (data && data.result) {
+        this.hasLoaded = true;
         this.purchaseManagement = data.paymentDetails;
         this.purchaseManagement.forEach(purchase => {
           purchase.paymentDate = moment(purchase.paymentDate).format('DD/MM/YYYY');
@@ -87,5 +89,9 @@ export class PurchaseManagementComponent implements OnInit {
       }
     });
 
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

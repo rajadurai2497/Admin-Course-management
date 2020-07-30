@@ -21,6 +21,11 @@ table.mat-table {
     tr:nth-child(even) {
       background: #bec1dc;
     }
+    }
+    tfoot {
+      .mat-column-noRecord {
+        text-align: center;
+      }
   }
   .mat-icon{
     font-size: 15px;

@@ -35,7 +35,7 @@ export class UserManagementComponent implements OnInit {
   constructor(private readonly _userManagementService: UserManagementService,private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.displayedColumns = ['userName', 'emailId', 'phoneNumber', 'city','mailDate'];
+    this.displayedColumns = ['name', 'emailId', 'phoneNumber', 'city','mailDate'];
     this.getAllUserManagement();
   }
 
