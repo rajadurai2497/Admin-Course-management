@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PurchaseManagementService } from 'src/app/services/purchase-management.service';
 import { PaymentDetails } from 'src/app/models/purchase-management.model';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import * as moment from 'moment';
+import { ConfirmComponent } from 'src/app/theme/shared/components/modal/confirm/confirm.component';
+import { Confirm } from 'src/app/theme/shared/components/modal/confirm/confirm.model';
 
 @Component({
   selector: 'app-purchase-management',
@@ -19,7 +21,7 @@ export class PurchaseManagementComponent implements OnInit {
   fromDate: Date = null;
   toDate: Date = null;
 
-  constructor(private readonly _purchaseManagementService: PurchaseManagementService) { }
+  constructor(private readonly _purchaseManagementService: PurchaseManagementService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.displayedColumns = ['paymentId', 'name', 'emailId', 'phoneNumber', 'courseAmount', 'paymentDate', 'paymentStatus', 'refund'];
@@ -61,12 +63,29 @@ export class PurchaseManagementComponent implements OnInit {
     }
   }
   public refundData(element): void {
-    let refund = {
-      paymentId:element.paymentId,
-      refundFlag:element.refundFlag,
-      userId: element.userId,
+
+    let confirm: Confirm = {
+      message: "Are you sure you want to initiate refund for this user?",
+      title: "Confirm"
     }
-    this._purchaseManagementService.refundData(refund).then((data) => {
+
+    let dialogRef = this.dialog.open(ConfirmComponent, {
+      data: confirm,
+      disableClose: true
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        let refund = {
+          paymentId: element.paymentId,
+          refundFlag: element.refundFlag,
+          userId: element.userId,
+        }
+        this._purchaseManagementService.refundData(refund).then((data) => {
+        });
+      } else {
+        element.refundFlag = !element.refundFlag;
+      }
+    });
+
   }
 }
