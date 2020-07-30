@@ -48,8 +48,12 @@
     </td>
   </ng-container>
 
-  <!--Action-->
+  <ng-container matColumnDef="noRecord">
+    <td mat-footer-cell *matFooterCellDef colspan="8">No records found.</td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <tr mat-footer-row *matFooterRowDef="['noRecord']" [hidden]="!hasLoaded || (hasLoaded && dataSource.data.length > 0)">
+  </tr>
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

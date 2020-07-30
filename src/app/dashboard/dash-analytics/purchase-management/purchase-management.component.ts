@@ -92,6 +92,13 @@ export class PurchaseManagementComponent implements OnInit {
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (filterValue) {
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+      this.dataSource = new MatTableDataSource(this.dataSource.filteredData);
+      this.dataSource.paginator = this.paginator;
+    } else {
+      this.dataSource = new MatTableDataSource(this.purchaseManagement);
+      this.dataSource.paginator = this.paginator;
+    }
   }
 }

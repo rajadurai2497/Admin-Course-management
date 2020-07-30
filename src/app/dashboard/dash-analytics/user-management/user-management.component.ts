@@ -30,7 +30,7 @@ export class UserManagementComponent implements OnInit {
   expandedElement: AllUserList | null;
   fromDate: Date = null;
   toDate: Date = null;
-
+  hasLoaded=false;
 
   constructor(private readonly _userManagementService: UserManagementService,private _snackBar: MatSnackBar) {}
 
@@ -42,6 +42,7 @@ export class UserManagementComponent implements OnInit {
   public getAllUserManagement(): void {
     this._userManagementService.getAllUserManagement().then((data) => {
       if(data && data.result){
+        this.hasLoaded=true;
         this.userManagement = data.allUserList;
         this.userManagement.forEach(user => {
           user.mailDate = moment(user.mailDate).format('DD/MM/YYYY');
