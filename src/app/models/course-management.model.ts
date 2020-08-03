@@ -39,7 +39,6 @@ export class SlideEntity {
     orderNo: number;
     fileAddFlag: string;
     slideAttachments?: SlideAttachement[];
-    // slideAttachments?: SlideAttachement;
     constructor() {
 
     }
@@ -52,33 +51,11 @@ export class ChapterEntity {
     orderNo: number;
     markCompleted: boolean;
     slides: SlideEntity[];
+    no:number;
     constructor() {
 
     }
 }
-
-// export class slideEntityObj {
-
-//     slideId: string;
-//     chapterId: string;
-//     slideName: string;
-//     slideDescription: string;
-//     videoUrl: string;
-//     fileAddFlag: true;
-//     orderNo: string;
-// }
-
-// export class chapterEntityObj {
-//     chapterId: string;
-//     courseMasterId: string;
-//     chapterName: string;
-//     orderNo: string;
-//     markCompleted: true;
-//     slides: slideEntityObj[];
-//     constructor() {
-
-//     }
-// }
 
 export class SlideAttachement {
     chapterSlideAttachementExactName: string;

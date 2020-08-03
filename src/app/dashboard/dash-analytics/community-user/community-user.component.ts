@@ -16,6 +16,7 @@ export class CommunityUserComponent implements OnInit {
   dataSource = new MatTableDataSource<ComunityUserList>();
   fromDate: Date = null;
   toDate: Date = null;
+  hasLoaded = false;
   constructor(private readonly _communityUserService: CommunityUserService) { }
 
   ngOnInit(): void {
@@ -23,13 +24,11 @@ export class CommunityUserComponent implements OnInit {
     this.getAllCommunityUser();
   }
 
-
- 
-
   public getAllCommunityUser(): void {
     
     this._communityUserService.getAllCommunityUser().then((data) => {
       if (data && data.result) {
+        this.hasLoaded = true;
         this.communityUser = data.comunityUserList;
         this.communityUser.forEach(community => {
           community.createdDate = moment(community.createdDate).format('DD/MM/YYYY');

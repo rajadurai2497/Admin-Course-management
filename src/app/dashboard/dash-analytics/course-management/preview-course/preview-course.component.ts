@@ -32,8 +32,6 @@ export class PreviewCourseComponent implements OnInit {
   dataSource = new MatTableDataSource<ChapterEntity>();
   currentChapter: ChapterEntity;
 
-  // dataSource = ELEMENT_DATA;
-  // columnsToDisplay = ['id', 'chaptername'];
   expandedElement: ChapterEntity | null;
 
 
@@ -51,7 +49,7 @@ export class PreviewCourseComponent implements OnInit {
     private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.displayedColumns = ['chapterId', 'chapterName','actions'];
+    this.displayedColumns = ['no','chapterName','actions'];
     this.getCourseChapters()
   }
 
@@ -68,7 +66,9 @@ export class PreviewCourseComponent implements OnInit {
     this._courseManagementService.getCourseChapters(this.course.courseMasterId).then((data) => {
       if (data && data.result) {
         this.allChapter = data.chapterListByCourse;
+        let index=0;
         this.allChapter.forEach(chapter => {
+          chapter.no=++index;
           chapter.slides = [];
           data.slideListByChapter.forEach(slide => {
             if (slide.chapterId == chapter.chapterId) {

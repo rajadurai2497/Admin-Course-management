@@ -23,7 +23,6 @@ this._loadingService.displayLoader(true);
 let headers = new HttpHeaders({
 'Content-Type': 'application/x-www-form-urlencoded'
 });
-console.log(currentUser.access_token);
 
 if (currentUser && currentUser.access_token) {
 headers = headers.append('Authorization', "bearer " + currentUser.access_token);

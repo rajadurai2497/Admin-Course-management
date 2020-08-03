@@ -20,6 +20,7 @@ import { MatFormFieldModule, MatDatepickerModule, MatInputModule, MatDialogModul
 import { NgbProgressbarModule, NgbPopoverModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LoadingService } from 'src/app/services/loading.service';
+import { ConfirmComponent } from './components/modal/confirm/confirm.component';
 
 /*import 'hammerjs';
 import 'mousetrap';
@@ -90,7 +91,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbTabsetModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ConfirmComponent
   ],
   declarations: [
     DataFilterPipe,
@@ -99,7 +101,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SpinnerComponent,
     ApexChartComponent,
     ToastComponent,
-    GalleryComponent
+    GalleryComponent,
+    ConfirmComponent,
   ],
   providers: [
     {
@@ -110,6 +113,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ToastService,
     LoadingService
   ],
-  
+  entryComponents: [
+    ConfirmComponent
+  ]
+
 })
 export class SharedModule { }
+
+

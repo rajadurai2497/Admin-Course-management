@@ -1,4 +1,5 @@
-<div>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-6">
   <mat-form-field>
     <input matInput [matDatepicker]="picker" [(ngModel)]="fromDate" (ngModelChange)="filter()"
       placeholder="Choose a date">
@@ -13,6 +14,13 @@
     <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
 </div>
+  <div class="col-lg-6 col-md-6 col-sm-6">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)"  placeholder="Search here">
+  </mat-form-field>
+</div>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width">
   <!-- ID Column -->
   <ng-container matColumnDef="paymentId">
@@ -56,6 +64,16 @@
     <td mat-cell *matCellDef="let element">{{ element.paymentStatus }}</td>
   </ng-container>
 
+   <!-- Icon Column -->
+   <ng-container matColumnDef="refund">
+    <th mat-header-cell  *matHeaderCellDef > Refund</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle [disabled]="element.refundFlag" [(ngModel)]="element.refundFlag"
+      (change)="refundData(element)">
+      </mat-slide-toggle>
+    </td>
+  </ng-container>
+
   <!--Action-->
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>
@@ -70,12 +88,12 @@
     </td>
   </ng-container>
 
-  <!--Action-->
+  <ng-container matColumnDef="noRecord">
+    <td mat-footer-cell *matFooterCellDef colspan="8">No records found.</td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-  <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">No data matching the filter </td>
+  <tr mat-footer-row *matFooterRowDef="['noRecord']" [hidden]="!hasLoaded || (hasLoaded && dataSource.data.length > 0)">
   </tr>
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

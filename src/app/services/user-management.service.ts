@@ -16,7 +16,14 @@ export class UserManagementService extends ApiService {
     const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/GetAllUserMangement`;
     return this.doGet(apiUrl, true);
   }
-
+  unlockAllChapters(userId,courseMasterId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Admin/UnlockAllChapterUser?UserId=`+userId+`&CourseMasterId=`+courseMasterId;
+    return this.doGet(apiUrl, true);
+  }
+  getCourseForUsers(userId): Promise<any> {
+    const apiUrl = ROUTE_CONFIG.CourseManagementURL + `/Course/GetPurchasedCourseForUsers?UserId=`+userId;
+    return this.doGet(apiUrl, true);
+  }
 }
 
 

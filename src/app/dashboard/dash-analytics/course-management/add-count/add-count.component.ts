@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CounterService } from 'src/app/services/counter.service';
-import { Counter } from 'src/app/models/counter.model';
 import { AllCourse } from 'src/app/models/course-management.model';
 
 @Component({
