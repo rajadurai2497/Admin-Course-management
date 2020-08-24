@@ -43,6 +43,7 @@ export class AddTopicComponent implements OnInit {
     this.chapterMap.chapterEntityObj.chapterName=this.chapter.chapterName;
     this.chapterMap.chapterEntityObj.chapterId=this.chapter.chapterId;
     this.chapterMap.chapterEntityObj.courseMasterId=this.chapter.courseMasterId;
+    this.chapterMap.chapterEntityObj.orderNo=this.chapter.orderNo;
     this._courseManagementService.updateChapter(this.chapterMap).then((data) => {
       if (data && data.result) {
         this.isDetailsExit.emit(true)
