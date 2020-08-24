@@ -51,7 +51,7 @@ export class ChapterEntity {
     orderNo: number;
     markCompleted: boolean;
     slides: SlideEntity[];
-    no:number;
+    no: number;
     constructor() {
 
     }
