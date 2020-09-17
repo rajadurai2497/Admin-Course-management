@@ -37,15 +37,18 @@ export class AuthenticationService {
 
   login(username: string, password: string): Observable<LoginResponseModel> {
     const apiUrl = `${ROUTE_CONFIG.BaseUrl}/${this.routePrefix}`;
-    const payload = 'username=' + username + '&password=' + password;
+    // const payload = 'username=' + username + '&password=' + password;
+    const payload =new URLSearchParams();
+    payload.append('username',username);
+    payload.append('password',password);
     return this.httpClient
-      .post<LoginResponseModel>(apiUrl, payload, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+      .post<LoginResponseModel>(apiUrl, payload.toString(), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
       .pipe(
         map((user) => {
           if (user.isAuthorize) {
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
-          } 
+          }
           return user;
         }),
       );

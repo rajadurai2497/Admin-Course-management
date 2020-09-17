@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 })
 
 export class AuthSigninV2Component implements OnInit {
-  pay:number=1;
+  pay= 1;
   public loginform = new AuthLoginModel();
   loginForm: FormGroup;
   submitted = false;
@@ -24,7 +24,12 @@ export class AuthSigninV2Component implements OnInit {
   isInvalidCredentials: boolean;
 
 
-  constructor(private authenticationService: AuthenticationService,  private route: ActivatedRoute,private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private readonly _validation: ValidationService, private readonly _router: Router) {
+  constructor(private authenticationService: AuthenticationService,
+              private route: ActivatedRoute,
+              private _snackBar: MatSnackBar,
+              private formBuilder: FormBuilder,
+              private readonly _validation: ValidationService,
+              private readonly _router: Router) {
     // this.userName = '';
     // this.password = '';
   }
@@ -36,12 +41,11 @@ export class AuthSigninV2Component implements OnInit {
       password: ['', [Validators.required]],
     });
     this.route.queryParams.forEach((params) => {
-      if (params['pay']) {
-        this.pay = params['pay'];
+      if (params.pay) {
+        this.pay = params.pay;
         return;
-      }
-      else{
-        this.pay=0;
+      } else {
+        this.pay = 0;
       }
     });
   }
@@ -57,17 +61,18 @@ export class AuthSigninV2Component implements OnInit {
 
   public login(): void {
     if (this.loginForm.valid) {
-        this.authenticationService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value).subscribe((data) => {
+        this.authenticationService
+        .login(this.loginForm.controls.username.value,
+           this.loginForm.controls.password.value)
+           .subscribe((data) => {
           if (data && data.isAuthorize) {
             if (data.roles == 'Admin') {
               this._router.navigate(['/dashboard/admin']);
-            }
-            else {
+            } else {
               this._router.navigate(['/dashboard/learner/mycourse']);
             }
 
-          }
-          else {
+          } else {
             this._snackBar.open(data.error, 'Close', {
               duration: 2000,
               verticalPosition: 'top',
@@ -75,7 +80,6 @@ export class AuthSigninV2Component implements OnInit {
             });
           }
         });
-      // }
     }
 
   }

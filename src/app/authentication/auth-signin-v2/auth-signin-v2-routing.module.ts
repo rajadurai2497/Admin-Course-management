@@ -8,7 +8,6 @@ const routes: Routes = [
     component: AuthSigninV2Component
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
