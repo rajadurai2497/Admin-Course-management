@@ -29,8 +29,7 @@ headers = headers.append('Authorization', "bearer " + currentUser.access_token);
 }
 
 
-const requestOptions = {
-headers: headers,
+const requestOptions = { headers: headers
 };
 return this._http.get(url, requestOptions).toPromise().then(response => {
 if (isShowLoading) {
